@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>235707589729-mjc1fcemss7pv45vmo57eaipn8gue3j6.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.235707589729-mjc1fcemss7pv45vmo57eaipn8gue3j6</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>235707589729-3ticdb6500845tiakic6k4iop9ps707s.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBjKONoeyphBYrHjVbaVKZ621SMzw5YgY8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>235707589729</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.docAppointment</string>
+	<key>PROJECT_ID</key>
+	<string>dr-appointments-630eb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>dr-appointments-630eb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:235707589729:ios:422187e49a6ad399313620</string>
+	<key>CFBundleURLTypes</key>
+		<array>
+			<dict>
+				<key>CFBundleTypeRole</key>
+				<string>Editor</string>
+				<key>CFBundleURLSchemes</key>
+				<array>
+					<string>com.googleusercontent.apps.235707589729-mjc1fcemss7pv45vmo57eaipn8gue3j6</string>
+				</array>
+			</dict>
+		</array>
+</dict>
+</plist>

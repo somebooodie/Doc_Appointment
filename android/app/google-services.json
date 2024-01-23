@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "235707589729",
+    "project_id": "dr-appointments-630eb",
+    "storage_bucket": "dr-appointments-630eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:235707589729:android:58a748cdc8295ae9313620",
+        "android_client_info": {
+          "package_name": "com.example.doc_appointment"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "235707589729-3ticdb6500845tiakic6k4iop9ps707s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.doc_appointment",
+            "certificate_hash": "58eed19d8763f76859ea1275bd2805e4d149aba3"
+          }
+        },
+        {
+          "client_id": "235707589729-s1t503ebkeangogd2p6a2nrn30mtu411.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAh94GSjME-nRub-MrLin2f7QifdZDumS0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "235707589729-s1t503ebkeangogd2p6a2nrn30mtu411.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "235707589729-mjc1fcemss7pv45vmo57eaipn8gue3j6.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.docAppointment"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
