@@ -1,4 +1,5 @@
 import 'package:doc_appointment/app/config/routes/named_routes.dart';
+import 'package:doc_appointment/app/modules/views/home_page.dart';
 import 'package:doc_appointment/app/modules/views/patient_views/login_patient_screen.dart';
 import 'package:doc_appointment/app/modules/views/splash.dart';
 import 'package:flutter/material.dart';
@@ -29,11 +30,20 @@ abstract class AppRouter {
       ),
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
-        path: "/${MyNamedRoutes.patientlogin}",
-        name: MyNamedRoutes.patientlogin,
+        path: "/${MyNamedRoutes.login}",
+        name: MyNamedRoutes.login,
         pageBuilder: (context, state) => NoTransitionPage(
           key: state.pageKey,
-          child: PatientLoginScreen(),
+          child: LoginScreen(),
+        ),
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        path: "/${MyNamedRoutes.homepage}",
+        name: MyNamedRoutes.homepage,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: HomeScreen(),
         ),
       ),
     ],
