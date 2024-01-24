@@ -1,5 +1,6 @@
 import 'package:doc_appointment/app/config/routes/named_routes.dart';
 import 'package:doc_appointment/app/modules/views/patient_views/login_patient_screen.dart';
+import 'package:doc_appointment/app/modules/views/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -17,11 +18,19 @@ abstract class AppRouter {
     navigatorKey: rootNavigatorKey,
     debugLogDiagnostics: true,
     routes: [
-      
       // outside the [ShellRoute] to make the screen on top of the [BottomNavBar]
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
         path: MyNamedRoutes.root,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: const SplashScreen(),
+        ),
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        path: "/${MyNamedRoutes.patientlogin}",
+        name: MyNamedRoutes.patientlogin,
         pageBuilder: (context, state) => NoTransitionPage(
           key: state.pageKey,
           child: PatientLoginScreen(),
