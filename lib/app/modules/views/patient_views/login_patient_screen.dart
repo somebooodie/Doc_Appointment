@@ -45,6 +45,21 @@ class PatientLoginScreen extends ConsumerWidget {
                       fontWeight: FontWeight.bold,
                       color: MyColors.primary_500)),
             ),
+            ElevatedButton(
+              onPressed: () {
+                if (registerFormKey.currentState?.validate() == true) {
+                  authController.register(
+                      email: formProvider.email,
+                      userName: formProvider.userName,
+                      password: formProvider.password);
+                  // sign up router will be here
+                }
+              },
+              child: Text(context.translate.register,
+                  style: context.textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: MyColors.primary_500)),
+            ),
           ],
         ),
       ),

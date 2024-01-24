@@ -17,6 +17,7 @@ abstract class AppRouter {
     navigatorKey: rootNavigatorKey,
     debugLogDiagnostics: true,
     routes: [
+      
       // outside the [ShellRoute] to make the screen on top of the [BottomNavBar]
       GoRoute(
         parentNavigatorKey: rootNavigatorKey,
