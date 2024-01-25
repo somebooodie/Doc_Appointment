@@ -128,6 +128,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Patient Login'**
   String get patientlogin;
+
+  /// No description provided for @home.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get home;
+
+  /// No description provided for @calendar.
+  ///
+  /// In en, this message translates to:
+  /// **'Calendar'**
+  String get calendar;
+
+  /// No description provided for @prescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Prescription'**
+  String get prescription;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

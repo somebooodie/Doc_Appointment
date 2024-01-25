@@ -4,5 +4,8 @@
     "email":"Email",
     "userName":"User Name",
     "password":"Password",
-    "patientlogin":"Patient Login"
+    "patientlogin":"Patient Login",
+    "home":"Home",
+    "calendar":"Calendar",
+    "prescription":"Prescription"
 }

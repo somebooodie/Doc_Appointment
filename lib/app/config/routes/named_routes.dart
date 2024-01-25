@@ -7,5 +7,6 @@ abstract class MyNamedRoutes {
   static const profile = 'profile';
   static const editProfile = 'editProfile';
   static const homepage = 'homepage';
-  
+  static const calendar = 'calendar';
+  static const prescription = 'prescription';
 }
