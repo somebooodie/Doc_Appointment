@@ -14,10 +14,11 @@ class HomeScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: context.screenHeight * 0.12,
         title: Image.asset(
           'assets/images/Screenshot 2024-01-24 at 10.26.03 AM.png', // Replace with your [DA] logo asset path
           width: context.screenHeight * 0.05,
-          height: context.screenHeight * 0.07,
+          height: context.screenHeight * 0.09,
           fit: BoxFit.cover,
         ),
       ),
