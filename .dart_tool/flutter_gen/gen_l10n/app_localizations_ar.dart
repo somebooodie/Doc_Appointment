@@ -5,7 +5,6 @@ class AppLocalizationsAr extends AppLocalizations {
   AppLocalizationsAr([String locale = 'ar']) : super(locale);
 
   @override
-
   String get login => 'تسجيل الدخول';
 
   @override
@@ -31,3 +30,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get prescription => 'الوصفة الطبية';
+
+  @override
+  String get profile => 'Profile';
+}

@@ -30,4 +30,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get prescription => 'Prescription';
+
+  @override
+  String get profile => 'Profile';
 }
