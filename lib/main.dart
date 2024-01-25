@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
         routerConfig: AppRouter.router,
         debugShowCheckedModeBanner: false,
-        title: "Chater",
+        title: "Dr.Appointments",
         themeMode: ThemeMode.light,
         //theme: MyColors.lightTheme,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
