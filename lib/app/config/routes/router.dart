@@ -3,8 +3,9 @@ import 'package:doc_appointment/app/modules/nav_bar/bottom_navbar_scaffold.dart'
 import 'package:doc_appointment/app/modules/nav_bar/bottom_navbar_tabs.dart';
 import 'package:doc_appointment/app/modules/views/calendar_screen.dart';
 import 'package:doc_appointment/app/modules/views/home_page.dart';
-import 'package:doc_appointment/app/modules/views/patient_views/login_patient_screen.dart';
+import 'package:doc_appointment/app/modules/views/login_screen.dart';
 import 'package:doc_appointment/app/modules/views/prescription.dart';
+import 'package:doc_appointment/app/modules/views/profile_page.dart';
 import 'package:doc_appointment/app/modules/views/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -40,6 +41,15 @@ abstract class AppRouter {
         pageBuilder: (context, state) => NoTransitionPage(
           key: state.pageKey,
           child: LoginScreen(),
+        ),
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        path: "/${MyNamedRoutes.profile}",
+        name: MyNamedRoutes.profile,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: const ProfileScreen(),
         ),
       ),
 

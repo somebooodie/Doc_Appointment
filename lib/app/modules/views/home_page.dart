@@ -3,6 +3,7 @@ import 'package:doc_appointment/app/core/extensions/build_context_extension.dart
 import 'package:doc_appointment/app/modules/feature/domain/providers/state/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({Key? key});
@@ -21,6 +22,19 @@ class HomeScreen extends ConsumerWidget {
           height: context.screenHeight * 0.09,
           fit: BoxFit.cover,
         ),
+        actions: [
+          // Profile Icon
+          Padding(
+            padding: EdgeInsets.only(right: 16.0),
+            child: IconButton(
+              onPressed: () {
+                GoRouter.of(context).goNamed(MyNamedRoutes
+                    .profile); // Add your profile navigation logic here
+              },
+              icon: Icon(Icons.account_circle),
+            ),
+          ),
+        ],
       ),
       body: Center(
         child: checkIfUserAuthenticated.when(
@@ -42,11 +56,16 @@ class HomeScreen extends ConsumerWidget {
               children: [
                 Expanded(
                   child: Center(
-                    child: Image.asset(
-                      'assets/images/Screenshot 2024-01-24 at 12.06.57 PM.png',
-                      width: context.screenHeight * 0.3,
-                      height: context.screenHeight * 0.2,
-                      fit: BoxFit.cover,
+                    child: GestureDetector(
+                      onTap: () {
+                        GoRouter.of(context).goNamed(MyNamedRoutes.login);
+                      },
+                      child: Image.asset(
+                        'assets/images/Screenshot 2024-01-24 at 12.06.57 PM.png',
+                        width: context.screenHeight * 0.3,
+                        height: context.screenHeight * 0.2,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),

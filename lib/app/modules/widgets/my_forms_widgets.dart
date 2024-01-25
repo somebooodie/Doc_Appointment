@@ -97,7 +97,7 @@ class _MyAuthFormState extends ConsumerState<MyAuthForm> {
                 },
                 togglePassword: () {
                   authFormContrller.togglePasswordIcon();
-                  print("helogfi");
+
                 },
                 suffixIcon: Icon(
                   authFormContrller.togglePassword

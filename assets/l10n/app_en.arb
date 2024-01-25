@@ -7,5 +7,6 @@
     "patientlogin":"Patient Login",
     "home":"Home",
     "calendar":"Calendar",
-    "prescription":"Prescription"
+    "prescription":"Prescription",
+    "profile":"Profile"
 }
