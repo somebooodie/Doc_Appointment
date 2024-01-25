@@ -8,7 +8,7 @@ each member will name the branch with his name and page or function implemented.
 
   Ex.: branch name: shaya-AppointmentConfirmPage
 
-  DON'T DELETE BRANCH AFTER MERGE IN main.branch
+DELETE BRANCH AFTER MERGE IN main.branch
 
 ## Getting Started
 
