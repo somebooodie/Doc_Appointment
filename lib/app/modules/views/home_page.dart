@@ -52,7 +52,7 @@ class HomeScreen extends ConsumerWidget {
                 Padding(
                   padding: EdgeInsets.only(bottom: context.screenHeight * 0.09),
                   child: Image.asset(
-                    'assets/images/Screenshot 2024-01-24 at 12.07.28 PM.png',
+                    'assets/images/undraw_Questions_re_1fy7.png',
                     width: context.screenHeight * 0.3,
                     height: context.screenHeight * 0.2,
                     fit: BoxFit.cover,
