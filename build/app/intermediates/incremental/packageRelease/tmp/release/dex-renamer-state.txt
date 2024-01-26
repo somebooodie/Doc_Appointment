@@ -1,0 +1,4 @@
+#Fri Jan 26 22:49:05 AST 2024
+base.0=/Users/somebooodie/Documents/GitHub/Doc_Appointment/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

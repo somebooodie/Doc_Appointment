@@ -1,6 +1,6 @@
 //import 'package:doc_appointment/app/config/routes/named_routes.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
-import 'package:doc_appointment/app/modules/feature/domain/providers/state/auth_provider.dart';
+import 'package:doc_appointment/app/modules/auth/domain/providers/state/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -16,11 +16,12 @@ class HomeScreen extends ConsumerWidget {
       appBar: AppBar(
         toolbarHeight: context.screenHeight * 0.12,
         title: Image.asset(
-          'assets/images/assets/images/dr-appointment-favicon-color.png', // Replace with your [DA] logo asset path
+          'assets/images/dr-appointment-favicon-color.png', // Replace with your [DA] logo asset path
           width: context.screenHeight * 0.05,
           height: context.screenHeight * 0.09,
           fit: BoxFit.cover,
         ),
+        centerTitle: true, // This will center the title image
       ),
       body: Center(
         child: checkIfUserAuthenticated.when(

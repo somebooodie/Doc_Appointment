@@ -1,4 +1,3 @@
-
 import 'package:doc_appointment/app/config/routes/named_routes.dart';
 import 'package:doc_appointment/app/config/theme/my_colors.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
@@ -19,7 +18,7 @@ class ScaffoldWithBottomNavBar extends StatefulWidget {
 }
 
 class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
-  _calculateCurrentIndex(context) {
+  int _calculateCurrentIndex(context) {
     final String location = GoRouterState.of(context).matchedLocation;
     if (location.startsWith('/${MyNamedRoutes.homepage}')) {
       return 0;
@@ -31,7 +30,7 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
     return 0;
   }
 
-  onItemTapped(int index, BuildContext context) {
+  void onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
         GoRouter.of(context).go('/${MyNamedRoutes.homepage}');
@@ -47,22 +46,34 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+final bool shouldShowNavBar = !GoRouterState.of(context)
+            .matchedLocation
+            .startsWith('/${MyNamedRoutes.signupPatient}') &&
+        !GoRouterState.of(context)
+            .matchedLocation
+            .startsWith('/${MyNamedRoutes.signupDoctor}') &&
+        !GoRouterState.of(context)
+            .matchedLocation
+            .startsWith('/${MyNamedRoutes.login}');
+            ;
     return Scaffold(
       body: widget.child,
-      bottomNavigationBar: BottomNavigationBar(
-        items: BottomNavBarItem.navtabs(context),
-        backgroundColor: MyColors.secondary_500,
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: MyColors.primary_500,
-        unselectedItemColor: MyColors.greyscale_500,
-        selectedLabelStyle: context.textTheme.bodyMedium?.copyWith(
-          color: MyColors.primary_500,
-        ),
-        unselectedLabelStyle: context.textTheme.bodyMedium
-            ?.copyWith(color: MyColors.greyscale_500),
-        onTap: (index) => onItemTapped(index, context),
-        currentIndex: _calculateCurrentIndex(context),
-      ),
+      bottomNavigationBar: shouldShowNavBar
+          ? BottomNavigationBar(
+              items: BottomNavBarItem.navtabs(context),
+              backgroundColor: MyColors.secondary_500,
+              type: BottomNavigationBarType.fixed,
+              selectedItemColor: MyColors.primary_500,
+              unselectedItemColor: MyColors.greyscale_500,
+              selectedLabelStyle: context.textTheme.bodyMedium?.copyWith(
+                color: MyColors.primary_500,
+              ),
+              unselectedLabelStyle: context.textTheme.bodyMedium
+                  ?.copyWith(color: MyColors.greyscale_500),
+              onTap: (index) => onItemTapped(index, context),
+              currentIndex: _calculateCurrentIndex(context),
+            )
+          : null,
     );
   }
 }
