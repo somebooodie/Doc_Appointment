@@ -43,33 +43,6 @@ class AuthRepository {
     }
   }
 
-  // Future<User?> signInWithGoogle() async {
-  //   try {
-  //     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-  //     if (googleUser == null) return null;
-
-  //     final googleAuth = await googleUser.authentication;
-  //     final credential = GoogleAuthProvider.credential(
-  //       accessToken: googleAuth.accessToken,
-  //       idToken: googleAuth.idToken,
-  //     );
-  //     final userCredential =
-  //         await _firebaseAuth.signInWithCredential(credential);
-  //     if (userCredential.user != null) {
-  //       await saveUserInfoToFirebase(
-  //           userCredential.user!.uid.toString(),
-  //           userCredential.user!.displayName.toString(),
-  //           userCredential.user!.email.toString(),
-  //           userCredential.user!.photoURL.toString());
-  //     }
-
-  //     return userCredential.user;
-  //   } catch (e) {
-  //     debugPrint(e.toString());
-  //     throw AuthException(e.toString());
-  //   }
-  // }
-
   Future<void> saveUserInfoToFirebase(
       String userId, String userName, String email, String photoURL,
       [String? docId]) async {

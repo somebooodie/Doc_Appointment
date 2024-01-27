@@ -27,27 +27,6 @@ class AuthController extends StateNotifier<AuthState> {
     return false;
   }
 
-  // Future<bool> signInWithGoogle() async {
-  //   state = state.copyWith(isLoading: true);
-  //   try {
-  //     final user = await _authRepository.signInWithGoogle();
-  //     if (user != null) {
-  //       state = state.copyWith(
-  //         isLoading: false,
-  //         isAuth: true,
-  //       );
-  //       return true;
-  //     } else {
-  //       state = state.copyWith(
-  //           isLoading: false, error: "Cannot retrieve user data");
-  //       return false;
-  //     }
-  //   } on AuthException catch (e) {
-  //     state = state.copyWith(isLoading: false, error: e.message.toString());
-  //   }
-  //   return false;
-  // }
-
   Future<bool> signIn({required String email, required String password}) async {
     state = state.copyWith(isLoading: true);
     try {
@@ -66,7 +45,6 @@ class AuthController extends StateNotifier<AuthState> {
       return false;
     }
   }
-  
 
   Future<bool> signOut() async {
     try {

@@ -20,11 +20,6 @@ class MyAuthFormController extends ChangeNotifier {
     notifyListeners();
   }
 
-  // void setDocIDField(String value) {
-  //   _docID = value;
-  //   notifyListeners();
-  // }
-
   void setUserNameField(String value) {
     _userName = value;
     notifyListeners();
@@ -45,7 +40,7 @@ class MyAuthFormController extends ChangeNotifier {
     notifyListeners();
   }
 
-    set docID(String value) {
+  set docID(String value) {
     // Setter for docID
     _docID = value;
     notifyListeners();
