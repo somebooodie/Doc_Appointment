@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeScreen extends ConsumerWidget {
-  const HomeScreen({Key? key});
+  HomeScreen({Key? key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -15,11 +15,13 @@ class HomeScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: context.screenHeight * 0.12,
-        title: Image.asset(
-          'assets/images/assets/images/dr-appointment-favicon-color.png', // Replace with your [DA] logo asset path
-          width: context.screenHeight * 0.05,
-          height: context.screenHeight * 0.09,
-          fit: BoxFit.cover,
+        title: Center(
+          child: Image.asset(
+            'assets/images/dr-appointment-favicon-color.png', // Replace with your [DA] logo asset path
+            width: context.screenHeight * 0.05,
+            height: context.screenHeight * 0.09,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
       body: Center(
@@ -43,7 +45,7 @@ class HomeScreen extends ConsumerWidget {
                 Expanded(
                   child: Center(
                     child: Image.asset(
-                      'assets/images/Screenshot 2024-01-24 at 12.06.57 PM.png',
+                      'assets/images/doctor-appointment-concept-profile-men-vector-35193930.jpg',
                       width: context.screenHeight * 0.3,
                       height: context.screenHeight * 0.2,
                       fit: BoxFit.cover,

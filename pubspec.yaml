@@ -75,10 +75,7 @@ flutter:
   generate: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/Screenshot 2024-01-24 at 10.26.03 AM.png
-    - assets/images/Screenshot 2024-01-24 at 10.31.01 AM.png
-    - assets/images/Screenshot 2024-01-24 at 12.06.57 PM.png
-    - assets/images/Screenshot 2024-01-24 at 12.07.28 PM.png
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
