@@ -27,7 +27,7 @@ class _CalendarPageState extends State<CalendarScreen> {
     _selectedDay = _focusedDay;
     _selectedEvents = ValueNotifier(_getEventsForDay(_selectedDay!));
     _calendarFormat = CalendarFormat.month;
-    _loadEventsFromFirebase();
+   // _loadEventsFromFirebase();
   }
 
   @override
@@ -49,31 +49,40 @@ class _CalendarPageState extends State<CalendarScreen> {
     return events[day] ?? [];
   }
 
-  Future<void> _loadEventsFromFirebase() async {
-    try {
-      QuerySnapshot querySnapshot = await eventsCollection.get();
+  // Future<void> _loadEventsFromFirebase() async {
+  //   try {
+  //     QuerySnapshot querySnapshot = await eventsCollection.get();
+  //
+  //     querySnapshot.docs.forEach((document) {
+  //       DateTime date = DateTime.fromMillisecondsSinceEpoch(
+  //           document['date'].millisecondsSinceEpoch);
+  //
+  //       List<dynamic> eventList = document['events'];
+  //
+  //       List<Event> events =
+  //           eventList.map((event) => Event(event['title'] ?? '', date)).toList();
+  //
+  //         if(date.day == DateTime.now().day){
+  //          _selectedEvents.value = events;
+  //          _getEventsForDay(date);
+  //          events.forEach((element) {
+  //            print("${element.title}");
+  //          });
+  //        }
+  //
+  //
+  //       print(_selectedEvents.value);
+  //
+  //     });
+  //
+  //    // _selectedEvents.value = _getEventsForDay(_selectedDay!);
+  //   } catch (e) {
+  //     print("Error loading events: $e");
+  //   }
+  // }
 
-      querySnapshot.docs.forEach((document) {
-        DateTime date = DateTime.fromMillisecondsSinceEpoch(
-            document['date'].millisecondsSinceEpoch);
-
-        List<dynamic> eventList = document['events'];
-
-        List<Event> events =
-            eventList.map((event) => Event(event['title'] ?? '')).toList();
-
-        events.forEach((event) {
-          events.addAll({
-            date: [event]
-          } as Iterable<Event>);
-        });
-      });
-
-      _selectedEvents.value = _getEventsForDay(_selectedDay!);
-    } catch (e) {
-      print("Error loading events: $e");
-    }
-  }
+  Stream<QuerySnapshot> eventsCollectionStream =
+  FirebaseFirestore.instance.collection('events').snapshots();
 
   Future<void> _addEventToFirebase(DateTime selectedDay, String title) async {
     try {
@@ -101,6 +110,7 @@ class _CalendarPageState extends State<CalendarScreen> {
           ]
         });
       }
+
     } catch (e) {
       print("Error adding event: $e");
     }
@@ -130,10 +140,12 @@ class _CalendarPageState extends State<CalendarScreen> {
                     ElevatedButton(
                       onPressed: () {
                         events.addAll({
-                          _selectedDay!: [Event(_eventController.text)]
+                          _selectedDay!: [Event(_eventController.text, _selectedDay!)]
                         });
                         Navigator.of(context).pop();
                         _selectedEvents.value = _getEventsForDay(_selectedDay!);
+                        _addEventToFirebase(_selectedDay?? DateTime.now(), _eventController.text);
+                        _eventController.clear();
                       },
                       child: const Text("Submit"),
                     ),
@@ -150,7 +162,9 @@ class _CalendarPageState extends State<CalendarScreen> {
             firstDay: DateTime.utc(2023, 12, 31),
             lastDay: DateTime.utc(2030, 1, 1),
             focusedDay: _focusedDay,
-            selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+            selectedDayPredicate: (day) {
+             return isSameDay(_selectedDay, day);
+            },
             calendarFormat: _calendarFormat,
             startingDayOfWeek: StartingDayOfWeek.sunday,
             onDaySelected: (selectedDay1, focusedDay1) {
@@ -184,27 +198,52 @@ class _CalendarPageState extends State<CalendarScreen> {
           ),
           const SizedBox(height: 8.0),
           Expanded(
-            child: ValueListenableBuilder<List<Event>>(
-                valueListenable: _selectedEvents,
-                builder: (context, value, _) {
-                  return ListView.builder(
-                      itemCount: value.length,
-                      itemBuilder: (context, index) {
-                        return Container(
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 4),
-                          decoration: BoxDecoration(
-                            border: Border.all(),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: ListTile(
-                            onTap: () => print("Dr.Appointment"),
-                            title: Text('${value[index].title}'),
-                          ),
-                        );
-                      });
-                }),
-          )
+            child: StreamBuilder<QuerySnapshot>(
+              stream: eventsCollection.snapshots(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                }
+
+                if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                }
+
+                List<Event> events = [];
+
+                snapshot.data!.docs.forEach((document) {
+                  DateTime date = DateTime.fromMillisecondsSinceEpoch(
+                      document['date'].millisecondsSinceEpoch);
+
+                  List<dynamic> eventList = document['events'];
+
+                  if (isSameDay(_selectedDay, date)) {
+                    events.addAll(eventList.map((event) {
+                      return Event(event['title'] ?? '', date);
+                    }));
+                  }
+                });
+
+                return ListView.builder(
+                  itemCount: events.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                      decoration: BoxDecoration(
+                        border: Border.all(),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: ListTile(
+                        onTap: () => print("Dr.Appointment"),
+                        title: Text('${events[index].title}'),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+
         ],
       ),
     );
