@@ -11,4 +11,5 @@ abstract class MyNamedRoutes {
   static const calendar = 'calendar';
   static const prescription = 'prescription';
   static const changepassword = 'changepassword';
+  
 }

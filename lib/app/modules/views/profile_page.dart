@@ -147,8 +147,13 @@ class ProfileScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // final appUsers = ref.watch(userProvider);
+  
     final currentuser = FirebaseAuth.instance.currentUser!;
+    /// currentuser.uid; 
+    /// create a function to get the current user data from collection 'users" based id.
+    /// create user object and map the value from firebase to this user object
+    /// display the data ( user ) from firebase
+    if(currentuser.displayName!.toString() == "hello"){}
     return Scaffold(
       appBar: AppBar(
         backgroundColor: MyColors.primary_500,

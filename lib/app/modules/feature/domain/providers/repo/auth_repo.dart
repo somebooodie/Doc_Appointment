@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doc_appointment/app/modules/feature/domain/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+
 
 class AuthRepository {
   AuthRepository(this._firebaseAuth);
@@ -13,38 +13,72 @@ class AuthRepository {
 
   User? get currentUser => _firebaseAuth.currentUser;
 
-  Future<User?> createUserWithEmailAndPassword(
-      {required String email,
-      required String password,
-      required String userName,
-      required String doctorId}) async {
-    try {
-      final UserCredential userCredential =
-          await _firebaseAuth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      await userCredential.user!.updateDisplayName(userName);
+  Future<User?> createUserWithEmailAndPassword({
+  required String email,
+  required String password,
+  required String userName,
+  required String doctorId,
+}) async {
+  try {
+    final UserCredential userCredential =
+        await _firebaseAuth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
 
-      // Pass doctorId and doctorPassword to saveUserInfoToFirebase
-      await saveUserInfoToFirebase(
-          userCredential.user!.uid.toString(),
-          userName,
-          userCredential.user!.email.toString(),
-          userCredential.user!.photoURL.toString(),
-          doctorId);
+    // updateDisplayName is not necessary here
+    // await userCredential.user!.updateDisplayName(userName);
 
-      return userCredential.user;
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        throw AuthException('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        throw AuthException('Wrong password provided for that user.');
-      } else {
-        throw AuthException(e.message!);
-      }
+    // Save user info to Firebase
+    await saveUserInfoToFirebase(
+      userCredential.user!.uid.toString(),
+      userName,
+      userCredential.user!.email.toString(),
+      doctorId,
+      password,
+    );
+
+    return userCredential.user;
+  } on FirebaseAuthException catch (e) {
+    if (e.code == 'user-not-found') {
+      throw AuthException('No user found for that email.');
+    } else if (e.code == 'wrong-password') {
+      throw AuthException('Wrong password provided for that user.');
+    } else {
+      throw AuthException(e.message!);
     }
   }
+}
+
+Future<void> saveUserInfoToFirebase(String userId, String userName,
+    String email, String doctorId, String password) async {
+  try {
+    await FirebaseFirestore.instance.collection('users').doc(userId).set(
+      {
+        'username': userName,
+        'email': email,
+        'id': userId,
+        'password': password,
+        'userLocation': null,
+        'doctorId': doctorId,
+      },
+    );
+
+    // // Store additional information specific to the doctor
+    // if (doctorId.isNotEmpty) {
+    //   await FirebaseFirestore.instance.collection('doctors').doc(doctorId).set(
+    //     {
+    //       'doctorId': doctorId,
+    //       'password': password,
+    //       // Add other fields related to the doctor if needed
+    //     },
+    //   );
+    // }
+  } catch (e) {
+    throw AuthException(e.toString());
+  }
+}
+
 
   Future<User?> signInWithEmailAndPassword({
     required String email,
@@ -75,38 +109,38 @@ class AuthRepository {
     }
   }
 
-  Future<void> saveUserInfoToFirebase(String userId, String userName,
-      String email, String doctorId, String password) async {
-    try {
-      await FirebaseFirestore.instance.collection('users').doc(userId).set(
-        {
-          'username': userName,
-          'email': email,
-          'id': userId,
-          // 'photo': photoURL,
-          'password': password,
-          'userLocation': null,
-          'doctorId': doctorId, // Add doctorId field
-        },
-      );
+  // Future<void> saveUserInfoToFirebase(String userId, String userName,
+  //     String email, String doctorId, String password) async {
+  //   try {
+  //     await FirebaseFirestore.instance.collection('users').doc(userId).set(
+  //       {
+  //         'username': userName,
+  //         'email': email,
+  //         'id': userId,
+  //         // 'photo': photoURL,
+  //         'password': password,
+  //         'userLocation': null,
+  //         'doctorId': doctorId, // Add doctorId field
+  //       },
+  //     );
 
-      // Store additional information specific to the doctor
-      if (doctorId.isNotEmpty) {
-        await FirebaseFirestore.instance
-            .collection('doctors')
-            .doc(doctorId)
-            .set(
-          {
-            'doctorId': doctorId,
-            'password': password,
-            // Add other fields related to the doctor if needed
-          },
-        );
-      }
-    } catch (e) {
-      throw AuthException(e.toString());
-    }
-  }
+  //     // Store additional information specific to the doctor
+  //     if (doctorId.isNotEmpty) {
+  //       await FirebaseFirestore.instance
+  //           .collection('doctors')
+  //           .doc(doctorId)
+  //           .set(
+  //         {
+  //           'doctorId': doctorId,
+  //           'password': password,
+  //           // Add other fields related to the doctor if needed
+  //         },
+  //       );
+  //     }
+  //   } catch (e) {
+  //     throw AuthException(e.toString());
+  //   }
+  // }
 
   Future<MyUser?> fetchUserById(String userId) async {
     try {

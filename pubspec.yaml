@@ -50,6 +50,7 @@ dependencies:
   image_picker: ^1.0.4 # access gallery and take images from camera
   uuid: ^4.3.3
   path: ^1.8.3
+  table_calendar: ^3.0.2
   #intl: ^0.18.1 #internationalized/localized messages, date and number formatting and parsing
 
 dev_dependencies:

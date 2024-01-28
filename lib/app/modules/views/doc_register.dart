@@ -3,13 +3,12 @@ import 'package:doc_appointment/app/config/theme/my_colors.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
 import 'package:doc_appointment/app/modules/feature/domain/providers/state/auth_provider.dart';
 import 'package:doc_appointment/app/modules/widgets/doc_forms_widgets.dart';
-import 'package:doc_appointment/app/modules/widgets/patient_forms_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class PatientRegisterScreen extends ConsumerWidget {
-  PatientRegisterScreen({super.key});
+class DocRegisterScreen extends ConsumerWidget {
+  DocRegisterScreen({super.key});
   final registerFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -28,7 +27,7 @@ class PatientRegisterScreen extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            PatientAuthForm(
+            DocAuthForm(
               registerFormKey: registerFormKey,
             ),
             SizedBox(
@@ -54,9 +53,9 @@ class PatientRegisterScreen extends ConsumerWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                GoRouter.of(context).goNamed(MyNamedRoutes.docRegister);
+                GoRouter.of(context).goNamed(MyNamedRoutes.patientRegister);
               },
-              child: Text("Switch to Doctor",
+              child: Text("Switch to Patient",
                   style: context.textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: MyColors.primary_500)),

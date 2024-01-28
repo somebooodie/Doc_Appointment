@@ -2,7 +2,9 @@ import 'package:doc_appointment/app/config/routes/named_routes.dart';
 import 'package:doc_appointment/app/config/theme/my_colors.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
 import 'package:doc_appointment/app/modules/feature/domain/providers/state/auth_provider.dart';
-import 'package:doc_appointment/app/modules/widgets/my_forms_widgets.dart';
+import 'package:doc_appointment/app/modules/widgets/doc_forms_widgets.dart';
+import 'package:doc_appointment/app/modules/widgets/login_forms_widget.dart';
+import 'package:doc_appointment/app/modules/widgets/patient_forms_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -19,7 +21,7 @@ class LoginScreen extends ConsumerWidget {
         backgroundColor: MyColors.primary_500,
         centerTitle: true,
         automaticallyImplyLeading: false,
-        title: Text(context.translate.patientlogin,
+        title: Text(context.translate.login,
             style: context.textTheme.headlineMedium
                 ?.copyWith(fontSize: 16, color: MyColors.white)),
       ),
@@ -27,7 +29,7 @@ class LoginScreen extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            MyAuthForm(
+            LoginAuthForm(
               registerFormKey: registerFormKey,
             ),
             SizedBox(

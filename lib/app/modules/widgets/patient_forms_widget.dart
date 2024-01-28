@@ -6,8 +6,8 @@ import 'package:doc_appointment/app/modules/widgets/my_textform_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class MyAuthForm extends ConsumerStatefulWidget {
-  const MyAuthForm({
+class PatientAuthForm extends ConsumerStatefulWidget {
+  const PatientAuthForm({
     super.key,
     this.registerFormKey,
   });
@@ -18,7 +18,7 @@ class MyAuthForm extends ConsumerStatefulWidget {
   ConsumerState createState() => _MyAuthFormState();
 }
 
-class _MyAuthFormState extends ConsumerState<MyAuthForm> {
+class _MyAuthFormState extends ConsumerState<PatientAuthForm> {
   final authValidators = AuthValidators();
 
   final TextEditingController emailController = TextEditingController();
@@ -92,21 +92,21 @@ class _MyAuthFormState extends ConsumerState<MyAuthForm> {
                   authFormContrller.setUserNameField(val);
                 },
               ),
-              SizedBox(height: context.screenHeight * 0.05),
-              MyTextFormField(
-                textEditingController: doctorIdController, // Change to doctorIdController
-                obscureText: false,
-                myFocusNode: doctorIdFocus, // Change to doctorIdFocus
-                validator: (input) =>
-                    authValidators.doctorIdValidator(input), // Adjust the validator if needed
-                prefexIcon: const Icon(Icons.medical_services),
-                labelText: context.translate.doctorId, // Change to doctorId
-                myTextInputAction: TextInputAction.next,
-                onChanged: (val) {
-                  // Handle doctor id changes
-                  // authFormContrller.setDoctorIdField(val);
-                },
-              ),
+              // SizedBox(height: context.screenHeight * 0.05),
+              // MyTextFormField(
+              //   textEditingController: doctorIdController, // Change to doctorIdController
+              //   obscureText: false,
+              //   myFocusNode: doctorIdFocus, // Change to doctorIdFocus
+              //   validator: (input) =>
+              //       authValidators.doctorIdValidator(input), // Adjust the validator if needed
+              //   prefexIcon: const Icon(Icons.medical_services),
+              //   labelText: context.translate.doctorId, // Change to doctorId
+              //   myTextInputAction: TextInputAction.next,
+              //   onChanged: (val) {
+              //     // Handle doctor id changes
+              //      authFormContrller.setDoctorId(val);
+              //   },
+              // ),
               
               SizedBox(height: context.screenHeight * 0.05),
               MyTextFormField(
