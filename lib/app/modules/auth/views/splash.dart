@@ -23,7 +23,7 @@ class SplashScreen extends ConsumerWidget {
           userAuthState.value?.uid != null) {
         GoRouter.of(context).goNamed(MyNamedRoutes.login);
       } else {
-        GoRouter.of(context).goNamed(MyNamedRoutes.signupPatient);
+        GoRouter.of(context).goNamed(MyNamedRoutes.homepage);
       }
     }
 

@@ -13,7 +13,7 @@ final myAuthFormControllerProvider =
     ChangeNotifierProvider((ref) => MyAuthFormController());
 
 class PatientSignup extends StatelessWidget {
-  PatientSignup({Key? key}) : super(key: key);
+  PatientSignup({super.key});
 
   final formKey = GlobalKey<FormState>();
 

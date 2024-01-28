@@ -39,6 +39,7 @@ dependencies:
   firebase_core: ^2.23.0 # enabling connecting to multiple Firebase apps
   firebase_auth: ^4.14.1 # enabling authentication using passwords, phone numbers and identity providers like Google, Facebook and Twitter
   firebase_messaging: ^14.7.10
+  table_calendar: ^3.0.2
 
   google_sign_in: ^6.1.6 # a secure authentication system for signing in with a Google
   cloud_firestore: ^4.13.1 # a cloud-hosted, noSQL database with live synchronization
