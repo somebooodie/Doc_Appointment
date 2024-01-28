@@ -2,10 +2,12 @@ import 'package:doc_appointment/app/config/routes/named_routes.dart';
 import 'package:doc_appointment/app/modules/nav_bar/bottom_navbar_scaffold.dart';
 import 'package:doc_appointment/app/modules/nav_bar/bottom_navbar_tabs.dart';
 import 'package:doc_appointment/app/modules/views/calendar_screen.dart';
+import 'package:doc_appointment/app/modules/views/change_password_screen.dart';
 import 'package:doc_appointment/app/modules/views/home_page.dart';
 import 'package:doc_appointment/app/modules/views/login_screen.dart';
 import 'package:doc_appointment/app/modules/views/prescription.dart';
 import 'package:doc_appointment/app/modules/views/profile_page.dart';
+import 'package:doc_appointment/app/modules/views/patient_register_screen.dart';
 import 'package:doc_appointment/app/modules/views/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -52,7 +54,25 @@ abstract class AppRouter {
           child: const ProfileScreen(),
         ),
       ),
-
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        path: "/${MyNamedRoutes.changepassword}",
+        name: MyNamedRoutes.changepassword,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: ChangePassword(),
+        ),
+      ),
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        path: "/${MyNamedRoutes.patientRegister}",
+        name: MyNamedRoutes.patientRegister,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: PatientRegisterScreen(),
+        ),
+      ),
+      
       ShellRoute(
         navigatorKey: shellRouteKey,
         builder: (context, state, child) {

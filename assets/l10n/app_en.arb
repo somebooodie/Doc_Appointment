@@ -8,5 +8,8 @@
     "home":"Home",
     "calendar":"Calendar",
     "prescription":"Prescription",
-    "profile":"Profile"
+    "profile":"Profile",
+    "changepassword": "Change Password",
+    "patientregister": "Patient Register",
+    "doctorId": "Doctor Id"
 }

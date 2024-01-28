@@ -36,12 +36,20 @@ class LoginScreen extends ConsumerWidget {
             ElevatedButton(
               onPressed: () {
                 if (registerFormKey.currentState?.validate() == true) {
-                  authController.register(
-                      email: formProvider.email,
-                      userName: formProvider.userName,
-                      password: formProvider.password);
+                  authController
+                      .login(
+                          email: formProvider.email,
+                          //  userName: formProvider.userName,
+                          password: formProvider.password)
+                      .then((value) {
+                    if (value == true) {
+                      GoRouter.of(context).goNamed(MyNamedRoutes.homepage);
+                    }
+                  });
+                  // sign up router will be here)
+                  //GoRouter.of(context).goNamed(MyNamedRoutes.homepage);
                 }
-                GoRouter.of(context).goNamed(MyNamedRoutes.homepage);
+                //GoRouter.of(context).goNamed(MyNamedRoutes.login);
               },
               child: Text(context.translate.login,
                   style: context.textTheme.bodyLarge?.copyWith(
@@ -50,13 +58,7 @@ class LoginScreen extends ConsumerWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                if (registerFormKey.currentState?.validate() == true) {
-                  authController.register(
-                      email: formProvider.email,
-                      userName: formProvider.userName,
-                      password: formProvider.password);
-                  // sign up router will be here
-                }
+                GoRouter.of(context).goNamed(MyNamedRoutes.patientRegister);
               },
               child: Text(context.translate.register,
                   style: context.textTheme.bodyLarge?.copyWith(

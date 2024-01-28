@@ -33,4 +33,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profile => 'Profile';
+
+  @override
+  String get changepassword => 'Change Password';
+
+  @override
+  String get patientregister => 'Patient Register';
+
+  @override
+  String get doctorId => 'Doctor Id';
 }
