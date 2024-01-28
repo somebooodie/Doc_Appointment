@@ -3,7 +3,7 @@ import 'package:doc_appointment/app/modules/auth/views/signup_doctor.dart';
 import 'package:doc_appointment/app/modules/auth/views/signup_patient.dart';
 import 'package:doc_appointment/app/modules/nav_bar/bottom_navbar_scaffold.dart';
 import 'package:doc_appointment/app/modules/nav_bar/bottom_navbar_tabs.dart';
-import 'package:doc_appointment/app/modules/views/calendar_screen.dart';
+import 'package:doc_appointment/app/modules/views/calendar/calendar_screen.dart';
 import 'package:doc_appointment/app/modules/views/home_page.dart';
 import 'package:doc_appointment/app/modules/auth/views/login_screen.dart';
 import 'package:doc_appointment/app/modules/views/prescription.dart';
