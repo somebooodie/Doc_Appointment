@@ -1,6 +1,6 @@
 // appointment_details_page.dart
 
-import 'package:doc_appointment/app/modules/views/appointments_info.dart';
+import 'package:doc_appointment/app/modules/views/calendar/appointments_info.dart';
 import 'package:flutter/material.dart';
 
 class AppointmentDetailsPage extends StatelessWidget {

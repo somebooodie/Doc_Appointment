@@ -4,7 +4,7 @@ import 'package:doc_appointment/app/core/extensions/build_context_extension.dart
 import 'package:doc_appointment/app/modules/auth/domain/providers/controller/text_form_provider.dart';
 import 'package:doc_appointment/app/modules/auth/domain/providers/state/auth_provider.dart';
 import 'package:doc_appointment/app/modules/auth/domain/providers/state/patient_auth_state.dart';
-import 'package:doc_appointment/app/modules/auth/widgets/my_forms_widgets.dart';
+import 'package:doc_appointment/app/modules/auth/widgets/my_login_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -12,8 +12,8 @@ import 'package:go_router/go_router.dart';
 final myAuthFormControllerProvider =
     ChangeNotifierProvider((ref) => MyAuthFormController());
 
-class PatientSignup extends StatelessWidget {
-  PatientSignup({super.key});
+class patientlogin extends StatelessWidget {
+  patientlogin({super.key});
 
   final formKey = GlobalKey<FormState>();
 
@@ -22,7 +22,7 @@ class PatientSignup extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          context.translate.register,
+          context.translate.login, // Change to login
           style: context.theme.textTheme.titleMedium?.copyWith(
             color: MyColors.white,
           ),
@@ -31,10 +31,12 @@ class PatientSignup extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          MyAuthForm(registerFormKey: formKey),
-          const SizedBox(
-            height: 12,
-          ),
+          MyAuthFormLogin(
+              LoginFormKey:
+                  formKey), // Make sure this has email and password fields only
+          const SizedBox(height: 12),
+
+          // Login button
           Consumer(builder: (context, ref, child) {
             final authStateProvider =
                 ref.watch(authControllerProvider.notifier);
@@ -45,15 +47,11 @@ class PatientSignup extends StatelessWidget {
             return ElevatedButton(
               onPressed: () async {
                 if (formKey.currentState!.validate()) {
-                  authFormController.docID =
-                      '0000'; // Set the docId for the patient
                   authStateProvider
-                      .register(
+                      .signIn(
+                          // Use signIn method
                           email: authFormController.email,
-                          userName: authFormController.userName,
-                          password: authFormController.password,
-                          docID: authFormController
-                              .docID) // Pass the docId to the register method
+                          password: authFormController.password)
                       .then((result) {
                     if (result == true) {
                       context.goNamed(MyNamedRoutes.patientHomeScreen);
@@ -71,28 +69,13 @@ class PatientSignup extends StatelessWidget {
                       ),
                     )
                   : Text(
-                      context.translate.register,
+                      context.translate.login, // Change to login
                     ),
             );
           }),
-          const SizedBox(
-            height: 25,
-          ),
-          Consumer(builder: (context, ref, child) {
-            return Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Patient'),
-                Switch(
-                  value: false, // Assuming the default role is Patient
-                  onChanged: (bool value) {
-                    GoRouter.of(context).goNamed(MyNamedRoutes.signupDoctor);
-                  },
-                ),
-                const Text('Doctor'),
-              ],
-            );
-          }),
+          const SizedBox(height: 25),
+
+          // Remove the Toggle switch for Doctor signup as it's not relevant for login
         ],
       ),
     );

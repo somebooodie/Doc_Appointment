@@ -21,9 +21,9 @@ class SplashScreen extends ConsumerWidget {
       final userAuthState = checkIfUserAuthinticated.value;
       if (userAuthState is AsyncData<User?> &&
           userAuthState.value?.uid != null) {
-        GoRouter.of(context).goNamed(MyNamedRoutes.login);
+        GoRouter.of(context).goNamed(MyNamedRoutes.patientlogin);
       } else {
-        GoRouter.of(context).goNamed(MyNamedRoutes.homepage);
+        GoRouter.of(context).goNamed(MyNamedRoutes.docHomeScreen);
       }
     }
 
@@ -41,7 +41,7 @@ class SplashScreen extends ConsumerWidget {
             Expanded(
               child: Center(
                 child: Image.asset(
-                  'assets/images/dr-appointment-favicon-color.png', // Replace with your [DA] logo asset path
+                  'assets/images/logo.png', // Replace with your [DA] logo asset path
                   width: context.screenHeight * 0.1,
                   height: context.screenHeight * 0.2,
                   fit: BoxFit.cover,
@@ -51,7 +51,7 @@ class SplashScreen extends ConsumerWidget {
             Padding(
               padding: EdgeInsets.only(bottom: context.screenHeight * 0.05),
               child: Image.asset(
-                'assets/images/Screenshot 2024-01-24 at 10.31.01 AM.png', // Replace with your other logo asset path
+                'assets/images/ypa_logo_2.png', // Replace with your other logo asset path
                 width: context.screenHeight * 0.13,
                 height: context.screenHeight * 0.11,
                 fit: BoxFit.cover,

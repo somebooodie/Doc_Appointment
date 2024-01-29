@@ -71,7 +71,7 @@ class DoctorSignup extends ConsumerWidget {
                         .text, // Pass the Doctor ID from the controller
                   );
                   if (result) {
-                    context.goNamed(MyNamedRoutes.homepage);
+                    context.goNamed(MyNamedRoutes.docHomeScreen);
                   } else if (authState.error != null) {
                     context.showSnackbar(authState.error.toString());
                   }

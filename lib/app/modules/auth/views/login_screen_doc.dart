@@ -12,8 +12,8 @@ import 'package:go_router/go_router.dart';
 final myAuthFormControllerProvider =
     ChangeNotifierProvider((ref) => MyAuthFormController());
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
+class doclogin extends StatelessWidget {
+  doclogin({super.key});
 
   final formKey = GlobalKey<FormState>();
 
@@ -54,7 +54,7 @@ class LoginScreen extends StatelessWidget {
                           password: authFormController.password)
                       .then((result) {
                     if (result == true) {
-                      context.goNamed(MyNamedRoutes.homepage);
+                      context.goNamed(MyNamedRoutes.patientHomeScreen);
                     } else if (authState.error != null) {
                       context.showSnackbar(authState.error.toString());
                     }

@@ -4,8 +4,8 @@ import 'package:doc_appointment/app/modules/auth/domain/providers/state/auth_pro
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class HomeScreen extends ConsumerWidget {
-  const HomeScreen({Key? key});
+class patientHomeScreen extends ConsumerWidget {
+  const patientHomeScreen({Key? key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -16,7 +16,7 @@ class HomeScreen extends ConsumerWidget {
       appBar: AppBar(
         toolbarHeight: context.screenHeight * 0.12,
         title: Image.asset(
-          'assets/images/dr-appointment-favicon-color.png', // Replace with your [DA] logo asset path
+          'assets/images/logo.png', // Replace with your [DA] logo asset path
           width: context.screenHeight * 0.05,
           height: context.screenHeight * 0.09,
           fit: BoxFit.cover,
@@ -44,7 +44,7 @@ class HomeScreen extends ConsumerWidget {
                 Expanded(
                   child: Center(
                     child: Image.asset(
-                      'assets/images/Screenshot 2024-01-24 at 12.06.57 PM.png',
+                      'assets/images/patient_appointment.png',
                       width: context.screenHeight * 0.3,
                       height: context.screenHeight * 0.2,
                       fit: BoxFit.cover,
@@ -54,7 +54,7 @@ class HomeScreen extends ConsumerWidget {
                 Padding(
                   padding: EdgeInsets.only(bottom: context.screenHeight * 0.09),
                   child: Image.asset(
-                    'assets/images/undraw_Questions_re_1fy7.png',
+                    'assets/images/faq_patient.png',
                     width: context.screenHeight * 0.3,
                     height: context.screenHeight * 0.2,
                     fit: BoxFit.cover,

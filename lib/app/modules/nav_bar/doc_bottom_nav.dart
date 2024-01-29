@@ -5,26 +5,27 @@ import 'package:doc_appointment/app/modules/nav_bar/bottom_navbar_tabs.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class ScaffoldWithBottomNavBar extends StatefulWidget {
-  const ScaffoldWithBottomNavBar(
+class DocScaffoldWithBottomNavBar extends StatefulWidget {
+  const DocScaffoldWithBottomNavBar(
       {super.key, required this.navtabs, required this.child});
 
   final List<BottomNavigationBarItem> navtabs;
   final Widget child;
 
   @override
-  State<ScaffoldWithBottomNavBar> createState() =>
+  State<DocScaffoldWithBottomNavBar> createState() =>
       _ScaffoldWithBottomNavBarState();
 }
 
-class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
+class _ScaffoldWithBottomNavBarState
+    extends State<DocScaffoldWithBottomNavBar> {
   int _calculateCurrentIndex(context) {
     final String location = GoRouterState.of(context).matchedLocation;
-    if (location.startsWith('/${MyNamedRoutes.homepage}')) {
+    if (location.startsWith('/${MyNamedRoutes.docHomeScreen}')) {
       return 0;
-    } else if (location.startsWith('/${MyNamedRoutes.calendar}')) {
+    } else if (location.startsWith('/${MyNamedRoutes.docCalendarScreen}')) {
       return 1;
-    } else if (location.startsWith('/${MyNamedRoutes.prescription}')) {
+    } else if (location.startsWith('/${MyNamedRoutes.mdDocPage}')) {
       return 2;
     }
     return 0;
@@ -33,20 +34,20 @@ class _ScaffoldWithBottomNavBarState extends State<ScaffoldWithBottomNavBar> {
   void onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
-        GoRouter.of(context).go('/${MyNamedRoutes.homepage}');
+        GoRouter.of(context).go('/${MyNamedRoutes.docHomeScreen}');
         break;
       case 1:
-        GoRouter.of(context).go('/${MyNamedRoutes.calendar}');
+        GoRouter.of(context).go('/${MyNamedRoutes.docCalendarScreen}');
         break;
       case 2:
-        GoRouter.of(context).go('/${MyNamedRoutes.prescription}');
+        GoRouter.of(context).go('/${MyNamedRoutes.mdDocPage}');
         break;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-final bool shouldShowNavBar = !GoRouterState.of(context)
+    final bool shouldShowNavBar = !GoRouterState.of(context)
             .matchedLocation
             .startsWith('/${MyNamedRoutes.signupPatient}') &&
         !GoRouterState.of(context)
@@ -54,8 +55,10 @@ final bool shouldShowNavBar = !GoRouterState.of(context)
             .startsWith('/${MyNamedRoutes.signupDoctor}') &&
         !GoRouterState.of(context)
             .matchedLocation
-            .startsWith('/${MyNamedRoutes.login}');
-            ;
+            .startsWith('/${MyNamedRoutes.patientlogin}') &&
+        !GoRouterState.of(context)
+            .matchedLocation
+            .startsWith('/${MyNamedRoutes.doclogin}');
     return Scaffold(
       body: widget.child,
       bottomNavigationBar: shouldShowNavBar
