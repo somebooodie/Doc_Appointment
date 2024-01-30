@@ -45,4 +45,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get doctorId => 'Doctor Id';
+
+  @override
+  String get docRegister => 'Doctor Register';
+
+  @override
+  String get patientRegister => 'Patient Register';
 }

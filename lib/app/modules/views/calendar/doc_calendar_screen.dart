@@ -123,6 +123,7 @@ class _PatientCalendarPageState extends State<DoctorCalendarScreen> {
                 );
               });
         },
+        child: Icon(Icons.add),
       ),
       body: Column(
         children: [

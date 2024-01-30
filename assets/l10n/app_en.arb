@@ -12,7 +12,9 @@
     "profile":"Profile",
     "changepassword": "Change Password",
     "patientregister": "Patient Register",
-    "doctorId": "Doctor Id"
+    "doctorId": "Doctor Id",
+    "docRegister":"Doctor Register",
+    "patientRegister": "Patient Register"
   
 
 }
