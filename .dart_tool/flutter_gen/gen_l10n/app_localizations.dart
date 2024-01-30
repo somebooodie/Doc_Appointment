@@ -176,6 +176,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Doctor Id'**
   String get doctorId;
+
+  /// No description provided for @docRegister.
+  ///
+  /// In en, this message translates to:
+  /// **'Doctor Register'**
+  String get docRegister;
+
+  /// No description provided for @patientRegister.
+  ///
+  /// In en, this message translates to:
+  /// **'Patient Register'**
+  String get patientRegister;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

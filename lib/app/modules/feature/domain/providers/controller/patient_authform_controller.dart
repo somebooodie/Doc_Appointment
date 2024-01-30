@@ -11,12 +11,14 @@ class AuthController extends StateNotifier<AuthState> {
       {required String email,
       required String userName,
       required String password,
-      required String doctorId
-      }) async {
+      required String doctorId}) async {
     state = state.copyWith(isLoading: true);
     try {
       User? user = await _authRepository.createUserWithEmailAndPassword(
-          email: email, password: password, userName: userName ,doctorId: doctorId);
+          email: email,
+          password: password,
+          userName: userName,
+          doctorId: doctorId);
       if (user != null) {
         await user.updateDisplayName(userName);
         state = state.copyWith(isLoading: false, isAuth: true);

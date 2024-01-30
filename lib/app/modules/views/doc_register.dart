@@ -2,7 +2,7 @@ import 'package:doc_appointment/app/config/routes/named_routes.dart';
 import 'package:doc_appointment/app/config/theme/my_colors.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
 import 'package:doc_appointment/app/modules/feature/domain/providers/state/auth_provider.dart';
-import 'package:doc_appointment/app/modules/widgets/doc_forms_widgets.dart';
+import 'package:doc_appointment/app/modules/widgets/doc_register_forms_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -18,8 +18,8 @@ class DocRegisterScreen extends ConsumerWidget {
       appBar: AppBar(
         backgroundColor: MyColors.primary_500,
         centerTitle: true,
-        automaticallyImplyLeading: false,
-        title: Text(context.translate.register,
+        automaticallyImplyLeading: true,
+        title: Text(context.translate.docRegister,
             style: context.textTheme.headlineMedium
                 ?.copyWith(fontSize: 16, color: MyColors.white)),
       ),
@@ -27,7 +27,7 @@ class DocRegisterScreen extends ConsumerWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            DocAuthForm(
+            DocRegisterAuthForm(
               registerFormKey: registerFormKey,
             ),
             SizedBox(
@@ -43,7 +43,7 @@ class DocRegisterScreen extends ConsumerWidget {
                     doctorId: formProvider.doctorId,
                   );
                   // sign up router will be here
-                  GoRouter.of(context).goNamed(MyNamedRoutes.login);
+                  GoRouter.of(context).goNamed(MyNamedRoutes.doclogin);
                 }
               },
               child: Text(context.translate.register,
@@ -53,7 +53,7 @@ class DocRegisterScreen extends ConsumerWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                GoRouter.of(context).goNamed(MyNamedRoutes.patientRegister);
+                GoRouter.of(context).pushNamed(MyNamedRoutes.patientRegister);
               },
               child: Text("Switch to Patient",
                   style: context.textTheme.bodyLarge?.copyWith(
