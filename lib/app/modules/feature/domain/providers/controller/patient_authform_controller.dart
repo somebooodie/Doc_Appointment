@@ -1,4 +1,3 @@
-
 import 'package:doc_appointment/app/modules/feature/domain/providers/state/patient_auth_state.dart';
 import 'package:doc_appointment/app/modules/feature/domain/providers/repo/auth_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,11 +10,13 @@ class AuthController extends StateNotifier<AuthState> {
   Future<bool> register(
       {required String email,
       required String userName,
-      required String password}) async {
+      required String password,
+      required String doctorId
+      }) async {
     state = state.copyWith(isLoading: true);
     try {
       User? user = await _authRepository.createUserWithEmailAndPassword(
-          email: email, password: password, userName: userName);
+          email: email, password: password, userName: userName ,doctorId: doctorId);
       if (user != null) {
         await user.updateDisplayName(userName);
         state = state.copyWith(isLoading: false, isAuth: true);
@@ -27,23 +28,22 @@ class AuthController extends StateNotifier<AuthState> {
     return false;
   }
 
-  Future<bool> signInWithGoogle() async {
+  Future<bool> login({
+    required String email,
+    required String password,
+    // required String userName
+  }) async {
     state = state.copyWith(isLoading: true);
     try {
-      final user = await _authRepository.signInWithGoogle();
+      User? user = await _authRepository.signInWithEmailAndPassword(
+          email: email, password: password);
       if (user != null) {
-        state = state.copyWith(
-          isLoading: false,
-          isAuth: true,
-        );
+        state = state.copyWith(isLoading: false, isAuth: true);
         return true;
-      } else {
-        state = state.copyWith(
-            isLoading: false, error: "Cannot retrieve user data");
-        return false;
       }
-    } on AuthException catch (e) {
-      state = state.copyWith(isLoading: false, error: e.message.toString());
+    } catch (e) {
+      state = state.copyWith(isLoading: false, error: e.toString());
+      return false;
     }
     return false;
   }

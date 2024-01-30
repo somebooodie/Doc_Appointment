@@ -129,6 +129,12 @@ abstract class AppLocalizations {
   /// **'Patient Login'**
   String get patientlogin;
 
+  /// No description provided for @docLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Doctor Login'**
+  String get docLogin;
+
   /// No description provided for @home.
   ///
   /// In en, this message translates to:
@@ -152,6 +158,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get profile;
+
+  /// No description provided for @changepassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Password'**
+  String get changepassword;
+
+  /// No description provided for @patientregister.
+  ///
+  /// In en, this message translates to:
+  /// **'Patient Register'**
+  String get patientregister;
+
+  /// No description provided for @doctorId.
+  ///
+  /// In en, this message translates to:
+  /// **'Doctor Id'**
+  String get doctorId;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

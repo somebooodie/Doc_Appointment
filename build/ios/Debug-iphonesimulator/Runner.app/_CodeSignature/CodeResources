@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		zDkrV5r3I/PTcOZ95qMxeCk8d7c=
+		eFZsorZYNdJ8Ozb+ivFwWD2lRr0=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,15 +54,15 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		j0BZEPevdRn8UHrFdRqYFZofMP0=
+		Hp4z+AUIUL+N7KaFvI2+oEzP8as=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
-		z88ZVEylq4ce3UIPNkqukUyNPKI=
+		UjGkhh8shOsnCzyC/r7IRWH3NOo=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<data>
-		hgFSRUvootb2jwmsKhfZn5mYnKI=
+		ryYBHfj86gQ8siHBgx1yd3HpnxE=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
 		<data>
@@ -70,7 +70,15 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		YKsMu3MNvHJzX6yL76IZO43P+zg=
+		/tRxQLs4DjZWuiaU0xYPGGSZFsc=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/.gitkeep</key>
+		<data>
+		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/Big_logo.png</key>
+		<data>
+		HBtVNpmQPdQkQX1K2zUh9iGYS1k=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/Screenshot%202024-01-24%20at%2010.26.03%E2%80%AFAM.png</key>
 		<data>
@@ -88,6 +96,42 @@
 		<data>
 		Yo7g3TW7bOjsBY8dhHH3rTxq9G4=
 		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/box_meds.png</key>
+		<data>
+		qLqY3yMBNBBYEulmL53rPT3Sn1o=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/doctor_appointment.png</key>
+		<data>
+		Q5aSoEu7oJGL8KN3fPJQcmHUMh8=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/faq_doctor.png</key>
+		<data>
+		wjLSnktCEaJePdvcd0Qhz632Z1Q=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/faq_patient.png</key>
+		<data>
+		eFjZEuGyhZ+Ve5zHPS5MwCpMNwY=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/logo.png</key>
+		<data>
+		YyFsT7ljsIs3mmbZkP0W8kR/4VE=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/med_report.png</key>
+		<data>
+		MnDlUyt6kC1VT/HMK0MCDcy31zs=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/patient_appointment.png</key>
+		<data>
+		TH9AxWXp7YuQj0a2rQqgAx3e5bw=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/ypa_logo.png</key>
+		<data>
+		lUAIlXLDHNXwgtde7z8A0wS6Hfc=
+		</data>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/ypa_logo_2.png</key>
+		<data>
+		ha81tb5EWqV6ljXVW7o9c4VcaQs=
+		</data>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<data>
 		/CUoTuPQqqdexfyOT9lpJhV+2MQ=
@@ -98,7 +142,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		TOhy1j8IqatILV2oZvvNBNOxeXY=
+		6RekVawbcNAaVVrBRrBjQjzxRcI=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -1055,7 +1099,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			FUIWAUcEEnq7aWOYfAHJPH1XKdRpVfmlXNWuQ5fKvfE=
+			+BuK4nQ/2XLqB7cWn61apNrYh9emYvmSmYnWSGkuJs8=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -1069,21 +1113,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9t75jQ98VYhXRpsznboIXOWphK5KuRhfZHFs54yVTqc=
+			awkZj2uuSVEVtGaCVVc3wvuRyPv4vRO9H8BGuFnpV6E=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			W4qKHZz+udnq6knYGftVl6kOR3lTYoit3zvDMqvAFHY=
+			z6NZ91dT5BNxt2fXvbFno93mgMynyf9seCHLKmZYFR4=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			95F6GERWyWKtwNcZqNI1O5Hj5y7/OJLlNkxjCmuLkag=
+			JP4936xnqF4BU8FfIncu/o1G/IGNyW7l/6cpPDniiNg=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/FontManifest.json</key>
@@ -1097,7 +1141,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ui8R/UmF4EerQ8uly40LHBgweBdWYo4yMQNyAlMstxY=
+			aYKNzlGquIeyKAh32ZGrrEdYI5O1SaE+s9LJgpgRbOc=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/.gitkeep</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/Big_logo.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ytpQdJGTc+2lk35B7Y+Kb//GA3F3yxH4Ia7Tr3KLLO4=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/images/Screenshot%202024-01-24%20at%2010.26.03%E2%80%AFAM.png</key>
@@ -1128,6 +1186,69 @@
 			/LaoKCoac4rmGTSxkfV3HTpSCEcPHPFyuKikrP2FhKg=
 			</data>
 		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/box_meds.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			dNe7hLcaCE4NXJA1uRJzK/9up8E9LQJ82ZaLnQH7KUY=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/doctor_appointment.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			KvRoUJHXzKcqRogG7lA+n2o95cZRZ4Ing8pXrq/4pIo=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/faq_doctor.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			p/2M2KoWh/qpDhCSDTtDlIJ4G1UisGPGY1+SzSQwegM=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/faq_patient.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			rmiZ04sN5DkMIbXFjUaUEOYCS1pQzj24MXX8Bh4P4+s=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/logo.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			AGEyNlcyjZPI/VS6rkhtAf3AiYvV6AggW0TI5XSiWe0=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/med_report.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			4Es2RWzQY7jaQzzOEz3pXrXmnNr1ZiDRKMWuJQFGU8Q=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/patient_appointment.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			NwpuNVbokUD59IuvuD2Vk8ItcXHyzOlRD35Q07neZwo=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/ypa_logo.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/WoWedtmlOheA3w+WWIFQa1rRwl+5JxTGmAnspyuF/o=
+			</data>
+		</dict>
+		<key>Frameworks/App.framework/flutter_assets/assets/images/ypa_logo_2.png</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			AuoR/RbXKn2IVwmK/dz0SqqXBGu2iccejGHZDc9urgc=
+			</data>
+		</dict>
 		<key>Frameworks/App.framework/flutter_assets/fonts/MaterialIcons-Regular.otf</key>
 		<dict>
 			<key>hash2</key>
@@ -1146,7 +1267,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			47gO91SSSFxe7RCMobk666Q/QbPfo5vpxUU7OlrGgDc=
+			Vz4FUB+49DANf5550tMf2zvuIFhMCTM63tlasQlL7Dc=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
