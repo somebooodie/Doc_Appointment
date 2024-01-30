@@ -129,6 +129,12 @@ abstract class AppLocalizations {
   /// **'Patient Login'**
   String get patientlogin;
 
+  /// No description provided for @docLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Doctor Login'**
+  String get docLogin;
+
   /// No description provided for @home.
   ///
   /// In en, this message translates to:

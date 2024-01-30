@@ -19,7 +19,7 @@ class DocRegisterScreen extends ConsumerWidget {
         backgroundColor: MyColors.primary_500,
         centerTitle: true,
         automaticallyImplyLeading: false,
-        title: Text(context.translate.patientregister,
+        title: Text(context.translate.register,
             style: context.textTheme.headlineMedium
                 ?.copyWith(fontSize: 16, color: MyColors.white)),
       ),

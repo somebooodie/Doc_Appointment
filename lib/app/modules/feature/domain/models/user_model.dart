@@ -6,26 +6,26 @@ class MyUser {
   final String id;
   final String username;
   final String email;
+  final String doctorId;
 
   MyUser({
     required this.id,
     required this.username,
     required this.email,
+    required this.doctorId,
   });
-
-  get isNotEmpty => null;
-
-  get first => null;
 
   MyUser copyWith({
     String? id,
     String? username,
     String? email,
+    String? doctorId,
   }) {
     return MyUser(
       id: id ?? this.id,
       username: username ?? this.username,
       email: email ?? this.email,
+      doctorId: doctorId ?? this.doctorId,
     );
   }
 
@@ -35,6 +35,7 @@ class MyUser {
     result.addAll({'id': id});
     result.addAll({'username': username});
     result.addAll({'email': email});
+    result.addAll({'doctorId': doctorId});
 
     return result;
   }
@@ -44,6 +45,7 @@ class MyUser {
       id: map['id'] ?? '',
       username: map['username'] ?? '',
       email: map['email'] ?? '',
+      doctorId: map['doctorId'] ?? '',
     );
   }
 
@@ -52,7 +54,9 @@ class MyUser {
   factory MyUser.fromJson(String source) => MyUser.fromMap(json.decode(source));
 
   @override
-  String toString() => 'MyUser(id: $id, username: $username, email: $email)';
+  String toString() {
+    return 'MyUser(id: $id, username: $username, email: $email, doctorId: $doctorId)';
+  }
 
   @override
   bool operator ==(Object other) {
@@ -61,11 +65,12 @@ class MyUser {
     return other is MyUser &&
         other.id == id &&
         other.username == username &&
-        other.email == email;
+        other.email == email &&
+        other.doctorId == doctorId;
   }
 
   @override
-  int get hashCode => id.hashCode ^ username.hashCode ^ email.hashCode;
- 
+  int get hashCode {
+    return id.hashCode ^ username.hashCode ^ email.hashCode ^ doctorId.hashCode;
+  }
 }
-

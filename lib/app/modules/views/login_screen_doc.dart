@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginScreen extends ConsumerWidget {
-  LoginScreen({super.key});
+class doclogin extends ConsumerWidget {
+  doclogin({super.key});
   final registerFormKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context, WidgetRef ref) {

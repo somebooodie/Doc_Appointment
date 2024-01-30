@@ -23,6 +23,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get patientlogin => 'تسجيل الدخول كمريض';
 
   @override
+  String get docLogin => 'Doctor Login';
+
+  @override
   String get home => 'الرئيسية';
 
   @override

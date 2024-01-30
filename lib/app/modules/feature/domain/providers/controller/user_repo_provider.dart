@@ -51,8 +51,8 @@ final userProvider = FutureProvider.autoDispose<User?>((ref) async {
 
       // Assuming you want the first user in the list
       // final user = userList.isNotEmpty ? userList.first : null;
-      final user = userList?.isNotEmpty ?? false ? userList!.first : null;
-      return user;
+    //final user = userList?.isNotEmpty ?? false ? userList!.first : null;
+     // return user;
     } else {
       // No logged-in user, return null or handle accordingly
       return null;

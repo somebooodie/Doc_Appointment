@@ -5,6 +5,7 @@
     "userName":"User Name",
     "password":"Password",
     "patientlogin":"Patient Login",
+    "docLogin":"Doctor Login",
     "home":"Home",
     "calendar":"Calendar",
     "prescription":"Prescription",
@@ -12,4 +13,6 @@
     "changepassword": "Change Password",
     "patientregister": "Patient Register",
     "doctorId": "Doctor Id"
+  
+
 }
