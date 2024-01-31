@@ -32,30 +32,27 @@ class DocHomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-        color: MyColors.greyscale_500,
-        child: Center(
-          // Center the content
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildSquareButton(
-                context: context,
-                imagePath: 'assets/images/doctor_appointment.png',
-                text: 'Manage Patient Sessions',
-                routeName: MyNamedRoutes.scheduleDoctor,
-              ),
-              SizedBox(height: context.screenHeight * 0.09),
-              _buildSquareButton(
-                context: context,
-                imagePath: 'assets/images/faq_doctor.png',
-                text: 'Answer FAQ',
-                routeName: MyNamedRoutes.faqDoctor,
-              ),
-            ],
+      body:Center(
+        // Center the content
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _buildSquareButton(
+              context: context,
+              imagePath: 'assets/images/doctor_appointment.png',
+              text: 'Manage Patient Sessions',
+              routeName: MyNamedRoutes.scheduleDoctor,
+            ),
+            SizedBox(height: context.screenHeight * 0.09),
+            _buildSquareButton(
+              context: context,
+              imagePath: 'assets/images/faq_doctor.png',
+              text: 'Answer FAQ',
+              routeName: MyNamedRoutes.faqDoctor,
+            ),
+          ],
           ),
-        ),
-      ),
+          ),
     );
   }
 

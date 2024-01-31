@@ -8,6 +8,25 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
+Future<MyUser?> getCurrentUserData() async {
+  try {
+    final currentuser = FirebaseAuth.instance.currentUser;
+    DocumentSnapshot userData = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(currentuser?.uid)
+        .get();
+
+    // 2. Create user object and map the value from Firebase to this user object.
+    MyUser user = MyUser.fromMap(userData.data() as Map<String, dynamic>);
+
+    return user;
+  } catch (e) {
+    print("Error fetching user data: $e");
+    return null;
+  }
+}
+
 // ... (your existing imports)
 
 class ProfileScreen extends ConsumerWidget {

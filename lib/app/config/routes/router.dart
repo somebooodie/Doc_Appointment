@@ -409,7 +409,7 @@ abstract class AppRouter {
             name: MyNamedRoutes.schedulePatient,
             pageBuilder: (context, state) => NoTransitionPage(
               key: state.pageKey,
-              child: SchedulePatient(),
+              child: const schedulePatient(),
             ),
           ),
         ],
