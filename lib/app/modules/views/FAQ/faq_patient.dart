@@ -26,6 +26,16 @@ class faqPatient extends ConsumerWidget {
         ref.watch(checkIfAuthinticatedFutureProvider);
 
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: context.screenHeight * 0.12,
+        title: Image.asset(
+          'assets/images/logo.png', // Replace with your [DA] logo asset path
+          width: context.screenHeight * 0.05,
+          height: context.screenHeight * 0.09,
+          fit: BoxFit.cover,
+        ),
+        centerTitle: true, // Centers the title image
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

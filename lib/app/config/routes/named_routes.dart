@@ -3,7 +3,10 @@ abstract class MyNamedRoutes {
   static const login = 'login';
   static const patientRegister = 'patientRegister';
   static const docRegister = 'docRegister';
-  static const profile = 'profile';
+  //static const profile = 'profile';
+  static const PatientProfileScreen = 'PatientProfileScreen';
+  static const DocProfileScreen = 'DocProfileScreen';
+  static const DocList = 'Doclist';
   static const editProfile = 'editProfile';
   static const homepage = 'homepage';
   static const calendar = 'calendar';
