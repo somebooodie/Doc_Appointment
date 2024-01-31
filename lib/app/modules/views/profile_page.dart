@@ -9,48 +9,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-Future<MyUser?> getCurrentUserData() async {
-  try {
-    final currentuser = FirebaseAuth.instance.currentUser;
-    DocumentSnapshot userData = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(currentuser?.uid)
-        .get();
 
-    // 2. Create user object and map the value from Firebase to this user object.
-    MyUser user = MyUser.fromMap(userData.data() as Map<String, dynamic>);
-
-    return user;
-  } catch (e) {
-    print("Error fetching user data: $e");
-    return null;
-  }
-}
-
-// ... (your existing imports)
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final currentuser = FirebaseAuth.instance.currentUser!;
-
-    // 1. Create a function to get the current user data from the 'users' collection based on the user ID.
-    Future<MyUser?> getCurrentUserData() async {
-      try {
-        DocumentSnapshot userData = await FirebaseFirestore.instance
-            .collection('users')
-            .doc(currentuser.uid)
-            .get();
-
-        // 2. Create user object and map the value from Firebase to this user object.
-        MyUser user = MyUser.fromMap(userData.data() as Map<String, dynamic>);
-        return user;
-      } catch (e) {
-        print("Error fetching user data: $e");
-        return null;
-      }
+    final currentuser = FirebaseAuth.instance.currentUser;
+    // Check if currentuser is null before accessing its properties
+    if (currentuser?.uid.isEmpty == true) {
+      // Handle the case where the user is not authenticated
+      return Scaffold(
+        body: Center(
+          child: Text("User not authenticated"),
+        ),
+      );
     }
 
     return Scaffold(
@@ -58,16 +32,21 @@ class ProfileScreen extends ConsumerWidget {
         backgroundColor: MyColors.primary_500,
         centerTitle: true,
         automaticallyImplyLeading: true,
-        title: Text(
-          "Profile",
-          style: context.textTheme.headlineMedium
-              ?.copyWith(fontSize: 16, color: MyColors.white),
-        ),
+
+        title: Text("Profile",
+            style: context.textTheme.headlineMedium
+                ?.copyWith(fontSize: 16, color: MyColors.white)),
+
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        FirebaseAuth.instance.signOut();
+        GoRouter.of(context).goNamed(MyNamedRoutes.docRegister);
+      }),
       body: FutureBuilder(
         // 1. Get the current user data
         future: getCurrentUserData(),
         builder: (context, snapshot) {
+          print(snapshot.data);
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           }

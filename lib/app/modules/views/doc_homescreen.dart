@@ -32,7 +32,9 @@ class DocHomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body:Center(
+
+      body: Center(
+
         // Center the content
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -68,7 +70,9 @@ class DocHomeScreen extends StatelessWidget {
         if (routeName == MyNamedRoutes.scheduleDoctor) {
           GoRouter.of(context).go('/docHomeScreen/scheduleDoctor');
         } else if (routeName == MyNamedRoutes.faqDoctor) {
-          GoRouter.of(context).go('/docHomeScreen/faqDoctor');
+
+          GoRouter.of(context).go('/faqDoctor');
+
         } else if (routeName == MyNamedRoutes.profile) {
           GoRouter.of(context).go('/docHomeScreen/profile');
         } else {
