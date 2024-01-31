@@ -23,7 +23,7 @@ class patientHomeScreen extends StatelessWidget {
             padding: EdgeInsets.only(right: 16.0),
             child: IconButton(
               onPressed: () {
-                GoRouter.of(context).goNamed(MyNamedRoutes
+                GoRouter.of(context).pushNamed(MyNamedRoutes
                     .profile); // Add your profile navigation logic here
               },
               icon: Icon(Icons.account_circle),
@@ -65,8 +65,7 @@ class patientHomeScreen extends StatelessWidget {
       onTap: () {
         // Check if it's a nested route and use the full path
         if (routeName == MyNamedRoutes.schedulePatient) {
-          // GoRouter.of(context).go('/docHomeScreen/schedulePatient');
-          GoRouter.of(context).pushNamed(routeName);
+          GoRouter.of(context).go('/docHomeScreen/schedulePatient');
         } else if (routeName == MyNamedRoutes.faqPatient) {
           GoRouter.of(context).go('/docHomeScreen/faqPatient');
         } else if (routeName == MyNamedRoutes.profile) {

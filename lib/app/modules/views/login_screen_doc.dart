@@ -95,15 +95,7 @@ class doclogin extends ConsumerWidget {
                   ),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  GoRouter.of(context).pushNamed(MyNamedRoutes.docRegister);
-                },
-                child: Text(context.translate.register,
-                    style: context.textTheme.bodyLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: MyColors.primary_500)),
-              ),
+
               ElevatedButton(
                 onPressed: () {
                   GoRouter.of(context).goNamed(MyNamedRoutes.patientlogin);
@@ -112,6 +104,23 @@ class doclogin extends ConsumerWidget {
                     style: context.textTheme.bodyLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                         color: MyColors.primary_500)),
+              ),
+              SizedBox(
+                height: context.screenHeight * 0.04,
+              ),
+              // Replace ElevatedButton with TextFormField
+              GestureDetector(
+                onTap: () {
+                  // Handle the tap event, you can open a registration screen or perform other actions
+                  GoRouter.of(context).pushNamed(MyNamedRoutes.docRegister);
+                },
+                child: Text(
+                  "Not Registered, Register",
+                  style: context.textTheme.bodyLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: MyColors.primary_500,
+                  ),
+                ),
               ),
             ],
           ),
