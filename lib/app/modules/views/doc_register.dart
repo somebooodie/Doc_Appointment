@@ -23,44 +23,47 @@ class DocRegisterScreen extends ConsumerWidget {
             style: context.textTheme.headlineMedium
                 ?.copyWith(fontSize: 16, color: MyColors.white)),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            DocRegisterAuthForm(
-              registerFormKey: registerFormKey,
-            ),
-            SizedBox(
-              height: context.screenHeight * 0.04,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                if (registerFormKey.currentState?.validate() == true) {
-                  authController.register(
-                    email: formProvider.email,
-                    userName: formProvider.userName,
-                    password: formProvider.password,
-                    doctorId: formProvider.doctorId,
-                  );
-                  // sign up router will be here
-                  GoRouter.of(context).goNamed(MyNamedRoutes.doclogin);
-                }
-              },
-              child: Text(context.translate.register,
-                  style: context.textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: MyColors.primary_500)),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                GoRouter.of(context).pushNamed(MyNamedRoutes.patientRegister);
-              },
-              child: Text("Switch to Patient",
-                  style: context.textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: MyColors.primary_500)),
-            ),
-          ],
+      body: Container(
+        color: MyColors.greyscale_500,
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              DocRegisterAuthForm(
+                registerFormKey: registerFormKey,
+              ),
+              SizedBox(
+                height: context.screenHeight * 0.04,
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  if (registerFormKey.currentState?.validate() == true) {
+                    authController.register(
+                      email: formProvider.email,
+                      userName: formProvider.userName,
+                      password: formProvider.password,
+                      doctorId: formProvider.doctorId,
+                    );
+                    // sign up router will be here
+                    GoRouter.of(context).goNamed(MyNamedRoutes.doclogin);
+                  }
+                },
+                child: Text(context.translate.register,
+                    style: context.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: MyColors.primary_500)),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  GoRouter.of(context).pushNamed(MyNamedRoutes.patientRegister);
+                },
+                child: Text("Switch to Patient",
+                    style: context.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: MyColors.primary_500)),
+              ),
+            ],
+          ),
         ),
       ),
     );

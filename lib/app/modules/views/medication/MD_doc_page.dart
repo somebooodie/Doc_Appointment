@@ -1,4 +1,5 @@
 import 'package:doc_appointment/app/config/routes/named_routes.dart';
+import 'package:doc_appointment/app/config/theme/my_colors.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -17,25 +18,28 @@ class mdDocPage extends StatelessWidget {
         ),
         centerTitle: true, // Centers the title image
       ),
-      body: Center(
-        // Center the content
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _buildSquareButton(
-              context: context,
-              imagePath: 'assets/images/box_meds.png',
-              text: 'Add meds for Patient',
-              routeName: MyNamedRoutes.medDocAdd,
-            ),
-            SizedBox(height: context.screenHeight * 0.09),
-            _buildSquareButton(
-              context: context,
-              imagePath: 'assets/images/med_report.png',
-              text: 'write prescription',
-              routeName: MyNamedRoutes.prescriptionDocPage,
-            ),
-          ],
+      body: Container(
+        color: MyColors.greyscale_500,
+        child: Center(
+          // Center the content
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildSquareButton(
+                context: context,
+                imagePath: 'assets/images/box_meds.png',
+                text: 'Add meds for Patient',
+                routeName: MyNamedRoutes.medDocAdd,
+              ),
+              SizedBox(height: context.screenHeight * 0.09),
+              _buildSquareButton(
+                context: context,
+                imagePath: 'assets/images/med_report.png',
+                text: 'write prescription',
+                routeName: MyNamedRoutes.prescriptionDocPage,
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:doc_appointment/app/config/routes/named_routes.dart';
+import 'package:doc_appointment/app/config/theme/my_colors.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -8,6 +9,7 @@ class DocHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        // backgroundColor: MyColors.primary_500,
         toolbarHeight: context.screenHeight * 0.12,
         title: Image.asset(
           'assets/images/logo.png', // Replace with your [DA] logo asset path
@@ -16,7 +18,7 @@ class DocHomeScreen extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         centerTitle: true, // Centers the title image
-              actions: [
+        actions: [
           // Profile Icon
           Padding(
             padding: EdgeInsets.only(right: 16.0),
@@ -30,7 +32,10 @@ class DocHomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Center( // Center the content
+
+      body: Center(
+
+        // Center the content
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -48,8 +53,8 @@ class DocHomeScreen extends StatelessWidget {
               routeName: MyNamedRoutes.faqDoctor,
             ),
           ],
-        ),
-      ),
+          ),
+          ),
     );
   }
 
@@ -65,11 +70,12 @@ class DocHomeScreen extends StatelessWidget {
         if (routeName == MyNamedRoutes.scheduleDoctor) {
           GoRouter.of(context).go('/docHomeScreen/scheduleDoctor');
         } else if (routeName == MyNamedRoutes.faqDoctor) {
-          GoRouter.of(context).go('/docHomeScreen/faqDoctor');
-        } 
-        else if (routeName == MyNamedRoutes.profile) {
-          GoRouter.of(context).go('/docHomeScreen/profile');}
-        else {
+
+          GoRouter.of(context).go('/faqDoctor');
+
+        } else if (routeName == MyNamedRoutes.profile) {
+          GoRouter.of(context).go('/docHomeScreen/profile');
+        } else {
           GoRouter.of(context).go(routeName);
         }
       },

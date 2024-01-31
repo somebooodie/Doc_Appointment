@@ -73,7 +73,7 @@ class _PatientCalendarPageState extends State<PatientCalendarScreen> {
             onDaySelected: (selectedDay1, focusedDay1) {
               _onDaySelected(selectedDay1, focusedDay1);
             },
-            eventLoader: _getEventsForDay,
+            eventLoader: _getEventsForDay ,
             onFormatChanged: (format) {
               if (_calendarFormat != format) {
                 setState(() {
