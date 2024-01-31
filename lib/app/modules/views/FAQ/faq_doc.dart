@@ -70,7 +70,7 @@ class faqDoctor extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
-              height: 80,
+              height: 60,
             ),
             Image.asset(
               'assets/images/faq_doctor.png',

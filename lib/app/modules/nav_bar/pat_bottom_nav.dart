@@ -58,7 +58,11 @@ class _ScaffoldWithBottomNavBarState
             .startsWith('/${MyNamedRoutes.patientlogin}') &&
         !GoRouterState.of(context)
             .matchedLocation
-            .startsWith('/${MyNamedRoutes.doclogin}');
+            .startsWith('/${MyNamedRoutes.doclogin}') &&
+        !GoRouterState.of(context)
+            .matchedLocation
+            .startsWith('/${MyNamedRoutes.faqPatient}');
+
     return Scaffold(
       body: widget.child,
       bottomNavigationBar: shouldShowNavBar
