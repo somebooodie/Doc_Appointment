@@ -46,7 +46,7 @@ class DocHomeScreen extends StatelessWidget {
               context: context,
               imagePath: 'assets/images/faq_doctor.png',
               text: 'Answer FAQ',
-              routeName: MyNamedRoutes.faqDoctor,
+              routeName: MyNamedRoutes.drFAQ,
             ),
           ],
         ),
@@ -65,8 +65,8 @@ class DocHomeScreen extends StatelessWidget {
         // Check if it's a nested route and use the full path
         if (routeName == MyNamedRoutes.scheduleDoctor) {
           GoRouter.of(context).go('/docHomeScreen/scheduleDoctor');
-        } else if (routeName == MyNamedRoutes.faqDoctor) {
-          GoRouter.of(context).go('/faqDoctor');
+        } else if (routeName == MyNamedRoutes.drFAQ) {
+          GoRouter.of(context).pushNamed(MyNamedRoutes.drFAQ);
         } else if (routeName == MyNamedRoutes.profile) {
           GoRouter.of(context).go('/docHomeScreen/profile');
         } else {

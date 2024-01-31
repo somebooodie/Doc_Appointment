@@ -9,6 +9,8 @@ abstract class MyNamedRoutes {
   static const calendar = 'calendar';
   static const prescription = 'prescription';
   static const changepassword = 'changepassword';
+  static const changeUsername = 'changeUsername';
+
   static const patientcalendar = 'patientCalendar';
 
   static const patientlogin = 'patientlogin';
@@ -30,7 +32,7 @@ abstract class MyNamedRoutes {
   static const medDetail = 'medDetail';
   static const medBoxPage = 'medBoxPage';
 
-  static const faqDoctor = 'faqDoctor';
+  static const drFAQ = 'drFAQ';
   static const scheduleDoctor = 'scheduleDoctor';
   static const faqPatient = 'faqPatient';
   static const schedulePatient = 'schedulePatient';

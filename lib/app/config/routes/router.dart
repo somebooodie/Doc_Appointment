@@ -115,8 +115,8 @@ abstract class AppRouter {
               routes: [
                 GoRoute(
                   parentNavigatorKey: shellDocRouteKey,
-                  path: "${MyNamedRoutes.faqDoctor}",
-                  name: MyNamedRoutes.faqDoctor,
+                  path: "${MyNamedRoutes.drFAQ}",
+                  name: MyNamedRoutes.drFAQ,
                   pageBuilder: (context, state) => NoTransitionPage(
                     key: state.pageKey,
                     child: faqDoctor(),

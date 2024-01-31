@@ -16,7 +16,7 @@ class patientHomeScreen extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         centerTitle: true, // Centers the title image
-              actions: [
+        actions: [
           // Profile Icon
           Padding(
             padding: EdgeInsets.only(right: 16.0),
@@ -30,7 +30,8 @@ class patientHomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Center( // Center the content
+      body: Center(
+        // Center the content
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -43,9 +44,9 @@ class patientHomeScreen extends StatelessWidget {
             SizedBox(height: context.screenHeight * 0.09),
             _buildSquareButton(
               context: context,
-              imagePath: 'assets/images/faq_patient.png', 
+              imagePath: 'assets/images/faq_patient.png',
               text: 'Answer FAQ',
-              routeName: MyNamedRoutes.faqDoctor,
+              routeName: MyNamedRoutes.drFAQ,
             ),
           ],
         ),
@@ -64,13 +65,11 @@ class patientHomeScreen extends StatelessWidget {
         // Check if it's a nested route and use the full path
         if (routeName == MyNamedRoutes.schedulePatient) {
           GoRouter.of(context).go('/docHomeScreen/schedulePatient');
-        } 
-        else if (routeName == MyNamedRoutes.faqPatient) {
+        } else if (routeName == MyNamedRoutes.faqPatient) {
           GoRouter.of(context).go('/docHomeScreen/faqPatient');
-        } 
-        else if (routeName == MyNamedRoutes.profile) {
-          GoRouter.of(context).go('/docHomeScreen/profile');}
-        else {
+        } else if (routeName == MyNamedRoutes.profile) {
+          GoRouter.of(context).go('/docHomeScreen/profile');
+        } else {
           GoRouter.of(context).go(routeName);
         }
       },
