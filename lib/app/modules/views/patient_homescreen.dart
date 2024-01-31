@@ -1,5 +1,6 @@
 import 'package:doc_appointment/app/config/routes/named_routes.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
+import 'package:doc_appointment/app/modules/views/Schedule/schedule_doc.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -22,7 +23,7 @@ class patientHomeScreen extends StatelessWidget {
             padding: EdgeInsets.only(right: 16.0),
             child: IconButton(
               onPressed: () {
-                GoRouter.of(context).goNamed(MyNamedRoutes
+                GoRouter.of(context).pushNamed(MyNamedRoutes
                     .profile); // Add your profile navigation logic here
               },
               icon: Icon(Icons.account_circle),
@@ -39,7 +40,7 @@ class patientHomeScreen extends StatelessWidget {
               context: context,
               imagePath: 'assets/images/patient_appointment.png',
               text: 'Manage Patient Sessions',
-              routeName: MyNamedRoutes.scheduleDoctor,
+              routeName: MyNamedRoutes.schedulePatient,
             ),
             SizedBox(height: context.screenHeight * 0.09),
             _buildSquareButton(
@@ -64,13 +65,15 @@ class patientHomeScreen extends StatelessWidget {
       onTap: () {
         // Check if it's a nested route and use the full path
         if (routeName == MyNamedRoutes.schedulePatient) {
-          GoRouter.of(context).push('/docHomeScreen/schedulePatient');
+
+          GoRouter.of(context).go('/docHomeScreen/schedulePatient');
         } else if (routeName == MyNamedRoutes.faqPatient) {
-          GoRouter.of(context).push('/docHomeScreen/faqPatient');
+          GoRouter.of(context).go('/docHomeScreen/faqPatient');
         } else if (routeName == MyNamedRoutes.profile) {
-          GoRouter.of(context).push('/docHomeScreen/profile');
+          GoRouter.of(context).go('/docHomeScreen/profile');
         } else {
-          GoRouter.of(context).push(routeName);
+          GoRouter.of(context).go(routeName);
+
         }
       },
       child: Container(
