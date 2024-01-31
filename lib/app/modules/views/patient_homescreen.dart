@@ -65,6 +65,7 @@ class patientHomeScreen extends StatelessWidget {
       onTap: () {
         // Check if it's a nested route and use the full path
         if (routeName == MyNamedRoutes.schedulePatient) {
+
           GoRouter.of(context).go('/docHomeScreen/schedulePatient');
         } else if (routeName == MyNamedRoutes.faqPatient) {
           GoRouter.of(context).go('/docHomeScreen/faqPatient');
@@ -72,6 +73,7 @@ class patientHomeScreen extends StatelessWidget {
           GoRouter.of(context).go('/docHomeScreen/profile');
         } else {
           GoRouter.of(context).go(routeName);
+
         }
       },
       child: Container(
