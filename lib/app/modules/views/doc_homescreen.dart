@@ -16,7 +16,7 @@ class DocHomeScreen extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         centerTitle: true, // Centers the title image
-              actions: [
+        actions: [
           // Profile Icon
           Padding(
             padding: EdgeInsets.only(right: 16.0),
@@ -30,7 +30,8 @@ class DocHomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: Center( // Center the content
+      body: Center(
+        // Center the content
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -65,11 +66,10 @@ class DocHomeScreen extends StatelessWidget {
         if (routeName == MyNamedRoutes.scheduleDoctor) {
           GoRouter.of(context).go('/docHomeScreen/scheduleDoctor');
         } else if (routeName == MyNamedRoutes.faqDoctor) {
-          GoRouter.of(context).go('/docHomeScreen/faqDoctor');
-        } 
-        else if (routeName == MyNamedRoutes.profile) {
-          GoRouter.of(context).go('/docHomeScreen/profile');}
-        else {
+          GoRouter.of(context).go('/faqDoctor');
+        } else if (routeName == MyNamedRoutes.profile) {
+          GoRouter.of(context).go('/docHomeScreen/profile');
+        } else {
           GoRouter.of(context).go(routeName);
         }
       },
