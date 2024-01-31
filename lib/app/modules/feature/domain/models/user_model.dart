@@ -41,7 +41,7 @@ class MyUser {
   }
 
   factory MyUser.fromMap(Map<String, dynamic> map) {
-    print("****** $map");
+    //print("****** $map");
     try {
       return MyUser(
         id: map['id'] ?? '',
