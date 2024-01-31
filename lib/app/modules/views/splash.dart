@@ -88,26 +88,43 @@ class SplashScreen extends ConsumerWidget {
         ref.watch(checkIfAuthinticatedFutureProvider);
 
     // Introduce a delay of 3 seconds before checking the condition
-    Future<void> navigateToNextScreen() async {
-      await Future.delayed(Duration(seconds: 2));
-      // After the delay, check the condition and navigate accordingly
-      final userAuthState = checkIfUserAuthinticated.value;
-      if (userAuthState is AsyncData<User?> &&
-          userAuthState.value?.uid != null) {
-        GoRouter.of(context).goNamed(MyNamedRoutes.patientlogin);
-      } else {
-        GoRouter.of(context).goNamed(MyNamedRoutes.patientHomeScreen);
-      }
-    }
+    // Future<void> navigateToNextScreen() async {
+    //   await Future.delayed(Duration(seconds: 2));
+    //   // After the delay, check the condition and navigate accordingly
+    //   final userAuthState = checkIfUserAuthinticated.value;
+    //   if (userAuthState is AsyncData<User?> &&
+    //       userAuthState.value?.uid != null) {
+    //     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    //       GoRouter.of(context).goNamed(MyNamedRoutes.patientlogin);
+    //     });
+    //   } else {
+    //     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    //       GoRouter.of(context).goNamed(MyNamedRoutes.patientHomeScreen);
+    //     });
+    //   }
+    // }
 
-    // Call the navigateToNextScreen function when the widget is built
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      navigateToNextScreen();
-    });
+    // // Call the navigateToNextScreen function when the widget is built
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   navigateToNextScreen();
+    // });
 
     // Return the splash screen widget
     return Scaffold(
-      body: Center(
+        body: checkIfUserAuthinticated.when(
+      data: (data) {
+        if (data.value?.uid != null) {
+          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+            GoRouter.of(context).goNamed(MyNamedRoutes.patientlogin);
+          });
+        } else {
+          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+            GoRouter.of(context).goNamed(MyNamedRoutes.patientHomeScreen);
+          });
+        }
+      },
+      error: (error, stackTrace) => Center(child: Text(error.toString())),
+      loading: () => Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -133,6 +150,6 @@ class SplashScreen extends ConsumerWidget {
           ],
         ),
       ),
-    );
+    ));
   }
 }

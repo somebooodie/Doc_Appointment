@@ -41,12 +41,17 @@ class MyUser {
   }
 
   factory MyUser.fromMap(Map<String, dynamic> map) {
-    return MyUser(
-      id: map['id'] ?? '',
-      username: map['username'] ?? '',
-      email: map['email'] ?? '',
-      doctorId: map['doctorId'] ?? '',
-    );
+    print("****** $map");
+    try {
+      return MyUser(
+        id: map['id'] ?? '',
+        username: map['username'] ?? '',
+        email: map['email'] ?? '',
+        doctorId: map['doctorId'] ?? '',
+      );
+    } catch (e) {
+      throw e.toString();
+    }
   }
 
   String toJson() => json.encode(toMap());
