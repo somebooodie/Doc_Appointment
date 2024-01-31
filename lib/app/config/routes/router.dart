@@ -1,147 +1,3 @@
-// import 'package:doc_appointment/app/config/routes/named_routes.dart';
-// import 'package:doc_appointment/app/modules/nav_bar/bottom_navbar_scaffold.dart';
-// import 'package:doc_appointment/app/modules/nav_bar/bottom_navbar_tabs.dart';
-// import 'package:doc_appointment/app/modules/views/calendar/calendar_screen.dart';
-// import 'package:doc_appointment/app/modules/views/calendar/patient_calendar_screen.dart';
-// import 'package:doc_appointment/app/modules/views/change_password_screen.dart';
-// import 'package:doc_appointment/app/modules/views/doc_register.dart';
-// import 'package:doc_appointment/app/modules/views/home_page.dart';
-// import 'package:doc_appointment/app/modules/views/login_screen.dart';
-// import 'package:doc_appointment/app/modules/views/prescription.dart';
-// import 'package:doc_appointment/app/modules/views/profile_page.dart';
-// import 'package:doc_appointment/app/modules/views/patient_register_screen.dart';
-// import 'package:doc_appointment/app/modules/views/splash.dart';
-// import 'package:flutter/material.dart';
-// import 'package:go_router/go_router.dart';
-
-// ///[rootNavigatorKey] used for global | general navigation
-// final rootNavigatorKey = GlobalKey<NavigatorState>();
-// final form = GlobalKey<FormState>();
-// final shellRouteKey = GlobalKey<NavigatorState>();
-
-// abstract class AppRouter {
-//   static Widget errorWidget(BuildContext context, GoRouterState state) =>
-//       const SizedBox();
-
-//   /// use this in [MaterialApp.router]
-//   static final _router = GoRouter(
-//     initialLocation: MyNamedRoutes.root,
-//     navigatorKey: rootNavigatorKey,
-//     debugLogDiagnostics: true,
-//     routes: [
-//       // outside the [ShellRoute] to make the screen on top of the [BottomNavBar]
-//       GoRoute(
-//         parentNavigatorKey: rootNavigatorKey,
-//         path: MyNamedRoutes.root,
-//         pageBuilder: (context, state) => NoTransitionPage(
-//           key: state.pageKey,
-//           child: const SplashScreen(),
-//         ),
-//       ),
-//       GoRoute(
-//         parentNavigatorKey: rootNavigatorKey,
-//         path: "/${MyNamedRoutes.login}",
-//         name: MyNamedRoutes.login,
-//         pageBuilder: (context, state) => NoTransitionPage(
-//           key: state.pageKey,
-//           child: LoginScreen(),
-//         ),
-//       ),
-//       GoRoute(
-//         parentNavigatorKey: rootNavigatorKey,
-//         path: "/${MyNamedRoutes.profile}",
-//         name: MyNamedRoutes.profile,
-//         pageBuilder: (context, state) => NoTransitionPage(
-//           key: state.pageKey,
-//           child: const ProfileScreen(),
-//         ),
-//       ),
-//       GoRoute(
-//         parentNavigatorKey: rootNavigatorKey,
-//         path: "/${MyNamedRoutes.changepassword}",
-//         name: MyNamedRoutes.changepassword,
-//         pageBuilder: (context, state) => NoTransitionPage(
-//           key: state.pageKey,
-//           child: ChangePassword(),
-//         ),
-//       ),
-
-//       GoRoute(
-//         parentNavigatorKey: rootNavigatorKey,
-//         path: "/${MyNamedRoutes.patientRegister}",
-//         name: MyNamedRoutes.patientRegister,
-//         pageBuilder: (context, state) => NoTransitionPage(
-//           key: state.pageKey,
-//           child: PatientRegisterScreen(),
-//         ),
-//       ),
-//       GoRoute(
-//         parentNavigatorKey: rootNavigatorKey,
-//         path: "/${MyNamedRoutes.docRegister}",
-//         name: MyNamedRoutes.docRegister,
-//         pageBuilder: (context, state) => NoTransitionPage(
-//           key: state.pageKey,
-//           child: DocRegisterScreen(),
-//         ),
-//       ),
-
-//       ShellRoute(
-//         navigatorKey: shellRouteKey,
-//         builder: (context, state, child) {
-//           return ScaffoldWithBottomNavBar(
-//             navtabs: BottomNavBarItem.navtabs(context),
-//             child: child,
-//           );
-//         },
-//         routes: [
-//           GoRoute(
-//             // parentNavigatorKey: rootNavigatorKey,
-//             path: "/${MyNamedRoutes.homepage}",
-//             name: MyNamedRoutes.homepage,
-//             pageBuilder: (context, state) => NoTransitionPage(
-//               key: state.pageKey,
-//               child: const HomeScreen(),
-//             ),
-//             routes: [];
-
-//           ),
-
-//           /// home route
-//           GoRoute(
-//             path: "/${MyNamedRoutes.calendar}",
-//             name: MyNamedRoutes.calendar,
-//             pageBuilder: (context, state) => NoTransitionPage(
-//               key: state.pageKey,
-//               child: CalendarScreen(),
-//             ),
-//           ),
-//           GoRoute(
-//             path: "/${MyNamedRoutes.patientcalendar}",
-//             name: MyNamedRoutes.patientcalendar,
-//             pageBuilder: (context, state) => NoTransitionPage(
-//               key: state.pageKey,
-//               child: PatientCalendarScreen(),
-//             ),
-//           ),
-
-//           /// location route
-//           GoRoute(
-//             path: "/${MyNamedRoutes.prescription}",
-//             name: MyNamedRoutes.prescription,
-//             pageBuilder: (context, state) => NoTransitionPage(
-//               key: state.pageKey,
-//               child: PrescriptionScreen(),
-//             ),
-//           ),
-//         ],
-//       ),
-//     ],
-//     errorBuilder: errorWidget,
-//   );
-
-//   static GoRouter get router => _router;
-// }
-
 import 'package:doc_appointment/app/config/routes/named_routes.dart';
 
 import 'package:doc_appointment/app/modules/nav_bar/doc_bottom_navbar.dart';
@@ -259,16 +115,16 @@ abstract class AppRouter {
               routes: [
                 GoRoute(
                   parentNavigatorKey: shellDocRouteKey,
-                  path: MyNamedRoutes.faqDoctor,
+                  path: "${MyNamedRoutes.faqDoctor}",
                   name: MyNamedRoutes.faqDoctor,
                   pageBuilder: (context, state) => NoTransitionPage(
                     key: state.pageKey,
-                    child: const faqDoctor(),
+                    child: faqDoctor(),
                   ),
                 ),
                 GoRoute(
                   parentNavigatorKey: shellDocRouteKey,
-                  path: MyNamedRoutes.scheduleDoctor,
+                  path: "${MyNamedRoutes.scheduleDoctor}",
                   name: MyNamedRoutes.scheduleDoctor,
                   pageBuilder: (context, state) => NoTransitionPage(
                     key: state.pageKey,
@@ -277,7 +133,7 @@ abstract class AppRouter {
                 ),
                 GoRoute(
                   parentNavigatorKey: shellDocRouteKey,
-                  path: MyNamedRoutes.profile,
+                  path: "${MyNamedRoutes.profile}",
                   name: MyNamedRoutes.profile,
                   pageBuilder: (context, state) => NoTransitionPage(
                     key: state.pageKey,
@@ -308,7 +164,7 @@ abstract class AppRouter {
             routes: [
               GoRoute(
                 parentNavigatorKey: shellDocRouteKey,
-                path: MyNamedRoutes.medDocAdd,
+                path: "${MyNamedRoutes.medDocAdd}",
                 name: MyNamedRoutes.medDocAdd,
                 pageBuilder: (context, state) => NoTransitionPage(
                   key: state.pageKey,
@@ -317,7 +173,7 @@ abstract class AppRouter {
               ),
               GoRoute(
                 parentNavigatorKey: shellDocRouteKey,
-                path: MyNamedRoutes.prescriptionDocPage,
+                path: "${MyNamedRoutes.prescriptionDocPage}",
                 name: MyNamedRoutes.prescriptionDocPage,
                 pageBuilder: (context, state) => NoTransitionPage(
                   key: state.pageKey,
