@@ -9,24 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-// 1. Create a function to get the current user data from the 'users' collection based on the user ID.
-Future<MyUser?> getCurrentUserData() async {
-  try {
-    final currentuser = FirebaseAuth.instance.currentUser;
-    DocumentSnapshot userData = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(currentuser?.uid)
-        .get();
 
-    // 2. Create user object and map the value from Firebase to this user object.
-    MyUser user = MyUser.fromMap(userData.data() as Map<String, dynamic>);
-
-    return user;
-  } catch (e) {
-    print("Error fetching user data: $e");
-    return null;
-  }
-}
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
@@ -49,9 +32,11 @@ class ProfileScreen extends ConsumerWidget {
         backgroundColor: MyColors.primary_500,
         centerTitle: true,
         automaticallyImplyLeading: true,
+
         title: Text("Profile",
             style: context.textTheme.headlineMedium
                 ?.copyWith(fontSize: 16, color: MyColors.white)),
+
       ),
       floatingActionButton: FloatingActionButton(onPressed: () {
         FirebaseAuth.instance.signOut();
@@ -80,9 +65,12 @@ class ProfileScreen extends ConsumerWidget {
             }
             // 3. Display the data (user) from Firebase
             return Column(
+              crossAxisAlignment: CrossAxisAlignment
+                  .stretch, // Ensure widgets span the entire width
               children: [
                 Padding(
-                  padding: EdgeInsets.all(context.screenHeight * 0.05),
+                  padding: EdgeInsets.only(
+                      top: context.screenHeight * 0.02), // Adjusted padding
                   child: Container(
                     width: context.screenWidth * 0.9,
                     height: context.screenWidth * 0.2,
@@ -131,7 +119,7 @@ class ProfileScreen extends ConsumerWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: context.screenHeight * 0.05),
+                  padding: EdgeInsets.only(top: context.screenHeight * 0.02),
                   child: GestureDetector(
                     onTap: () => GoRouter.of(context)
                         .goNamed(MyNamedRoutes.changepassword),
@@ -141,50 +129,55 @@ class ProfileScreen extends ConsumerWidget {
                       decoration: BoxDecoration(
                         border: Border.all(color: MyColors.primary_500),
                       ),
-                      child: Text("change username",
+                      child: Center(
+                        child: Text(
+                          "change username",
                           style: TextStyle(
-                              fontSize: 14, color: MyColors.primary_500)),
+                              fontSize: 14, color: MyColors.primary_500),
+                        ),
+                      ),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: context.screenHeight * 0.05),
+                  padding: EdgeInsets.only(top: context.screenHeight * 0.02),
                   child: Container(
-                    child: Container(
-                      child: Text("change password",
-                          style: TextStyle(
-                              fontSize: 14, color: MyColors.primary_500)),
-                      width: context.screenWidth * 0.9,
-                      height: context.screenWidth * 0.2,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: MyColors.primary_500),
-                      ),
-                    ),
                     width: context.screenWidth * 0.9,
                     height: context.screenWidth * 0.2,
                     decoration: BoxDecoration(
                       border: Border.all(color: MyColors.primary_500),
                     ),
+                    child: Center(
+                      child: Text(
+                        "change password",
+                        style: TextStyle(
+                            fontSize: 14, color: MyColors.primary_500),
+                      ),
+                    ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: context.screenHeight * 0.05),
+                  padding: EdgeInsets.only(top: context.screenHeight * 0.02),
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text("Switch Account",
-                        style: TextStyle(
-                            fontSize: 14, color: MyColors.primary_500)),
+                    child: Text(
+                      "Switch Account",
+                      style:
+                          TextStyle(fontSize: 14, color: MyColors.primary_500),
+                    ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: context.screenHeight * 0.05),
+                  padding: EdgeInsets.only(top: context.screenHeight * 0.02),
                   child: ElevatedButton(
                     onPressed: () {},
-                    child: Text("Delete Account",
-                        style: TextStyle(
-                            fontSize: 14, color: MyColors.primary_500)),
+                    child: Text(
+                      "Delete Account",
+                      style:
+                          TextStyle(fontSize: 14, color: MyColors.primary_500),
+                    ),
                   ),
-                ), // Rest of your UI...
+                ),
               ],
             );
           } else {
