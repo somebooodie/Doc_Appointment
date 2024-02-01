@@ -23,6 +23,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get patientlogin => 'تسجيل الدخول كمريض';
 
   @override
+  String get docLogin => 'Doctor Login';
+
+  @override
   String get home => 'الرئيسية';
 
   @override
@@ -30,4 +33,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get prescription => 'الوصفة الطبية';
+
+  @override
+  String get profile => 'Profile';
+
+  @override
+  String get changepassword => 'Change Password';
+
+  @override
+  String get patientregister => 'Patient Register';
+
+  @override
+  String get doctorId => 'Doctor Id';
+
+  @override
+  String get docRegister => 'Doctor Register';
+
+  @override
+  String get patientRegister => 'Patient Register';
 }
