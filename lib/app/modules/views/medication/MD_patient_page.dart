@@ -16,7 +16,7 @@ class mdPatientPage extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         centerTitle: true, // Centers the title image
-     ),
+      ),
       body: Center(
         // Center the content
         child: Column(
@@ -26,13 +26,13 @@ class mdPatientPage extends StatelessWidget {
               context: context,
               imagePath: 'assets/images/box_meds.png',
               text: 'Medication List for Patient',
-              routeName: MyNamedRoutes.medDocAdd,
+              routeName: MyNamedRoutes.medBoxPage,
             ),
             SizedBox(height: context.screenHeight * 0.09),
             _buildSquareButton(
               context: context,
               imagePath: 'assets/images/med_report.png',
-              text: 'view prescription fo Patient',
+              text: 'view prescription for Patient',
               routeName: MyNamedRoutes.prescriptionDocPage,
             ),
           ],
@@ -51,7 +51,7 @@ class mdPatientPage extends StatelessWidget {
       onTap: () {
         // Check if it's a nested route and use the full path
         if (routeName == MyNamedRoutes.medBoxPage) {
-          GoRouter.of(context).go('/mdPatientPage/medDocAdd');
+          GoRouter.of(context).go('/mdPatientPage/MedBoxPage');
         } else if (routeName == MyNamedRoutes.prescriptionPatientPage) {
           GoRouter.of(context).go('/mdPatientPage/prescriptionDocPage');
         } else {

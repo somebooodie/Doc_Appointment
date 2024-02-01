@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:doc_appointment/app/config/routes/named_routes.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
 
-class medBoxPage extends ConsumerWidget {
+class MedBoxPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final medicationList = ref.watch(medicationProvider);

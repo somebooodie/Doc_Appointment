@@ -38,14 +38,14 @@ class patientHomeScreen extends StatelessWidget {
             _buildSquareButton(
               context: context,
               imagePath: 'assets/images/patient_appointment.png',
-              text: 'Manage Patient Sessions',
+              text: 'Book Appointment for Patient',
               routeName: MyNamedRoutes.schedulePatient,
             ),
             SizedBox(height: context.screenHeight * 0.09),
             _buildSquareButton(
               context: context,
               imagePath: 'assets/images/faq_patient.png',
-              text: 'Answer FAQ',
+              text: 'Ask FAQ for Patient',
               routeName: MyNamedRoutes.faqPatient,
             ),
           ],

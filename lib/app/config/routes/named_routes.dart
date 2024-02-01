@@ -35,7 +35,7 @@ abstract class MyNamedRoutes {
   static const prescriptionDocPage = 'prescriptionDocPage';
   static const prescriptionPatientPage = 'prescriptionPatientPage';
   static const medDetail = 'medDetail';
-  static const medBoxPage = 'medBoxPage';
+  static const medBoxPage = 'MedBoxPage';
 
   static const faqDoctor = 'faqDoctor';
   static const scheduleDoctor = 'scheduleDoctor';

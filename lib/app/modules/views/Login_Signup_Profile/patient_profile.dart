@@ -27,10 +27,11 @@ Future<MyUser?> getCurrentUserData() async {
   }
 }
 
-class DocProfileScreen extends ConsumerWidget {
-  const DocProfileScreen({super.key});
+class PatientProfileScreen extends ConsumerWidget {
+  const PatientProfileScreen({super.key});
 
-  
+ 
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentuser = FirebaseAuth.instance.currentUser;

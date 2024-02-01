@@ -44,7 +44,7 @@ class PatientRegisterScreen extends ConsumerWidget {
                     doctorId: formProvider.doctorId,
                   );
                   // sign up router will be here
-                  GoRouter.of(context).goNamed(MyNamedRoutes.login);
+                  GoRouter.of(context).goNamed(MyNamedRoutes.patientlogin);
                 }
               },
               child: Text(context.translate.register,

@@ -51,7 +51,7 @@ class mdDocPage extends StatelessWidget {
       onTap: () {
         // Check if it's a nested route and use the full path
         if (routeName == MyNamedRoutes.medDocAdd) {
-          GoRouter.of(context).go('/mdDocPage/medDocAdd');
+          GoRouter.of(context).pushNamed(MyNamedRoutes.medDocAdd);
         } else if (routeName == MyNamedRoutes.prescriptionDocPage) {
           GoRouter.of(context).go('/mdDocPage/prescriptionDocPage');
         } else {

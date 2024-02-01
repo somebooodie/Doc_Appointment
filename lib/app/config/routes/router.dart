@@ -27,7 +27,7 @@ import 'package:doc_appointment/app/modules/views/medication/MD_patient_page.dar
 import 'package:doc_appointment/app/modules/views/medication/meds_DocAdd_page.dart';
 import 'package:doc_appointment/app/modules/views/medication/prescription_doc_page.dart';
 
-import 'package:doc_appointment/app/modules/views/Login_Signup_Profile/patient_profilescreen.dart';
+import 'package:doc_appointment/app/modules/views/Login_Signup_Profile/patient_profile.dart';
 
 import 'package:doc_appointment/app/modules/views/splash.dart';
 import 'package:doc_appointment/app/modules/views/medication/med_detail_page.dart';
@@ -184,7 +184,7 @@ abstract class AppRouter {
                 name: MyNamedRoutes.medDocAdd,
                 pageBuilder: (context, state) => NoTransitionPage(
                   key: state.pageKey,
-                  child: medDocAdd(),
+                  child: MedDocAdd(),
                 ),
               ),
               GoRoute(
@@ -285,7 +285,7 @@ abstract class AppRouter {
                 name: MyNamedRoutes.medBoxPage,
                 pageBuilder: (context, state) => NoTransitionPage(
                   key: state.pageKey,
-                  child: medBoxPage(),
+                  child: MedBoxPage(),
                 ),
               ),
               GoRoute(

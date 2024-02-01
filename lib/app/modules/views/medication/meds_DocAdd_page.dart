@@ -19,7 +19,7 @@ final medicationProvider =
   return StateController<List<Medication>>([]);
 });
 
-class medDocAdd extends ConsumerWidget {
+class MedDocAdd extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final nameController = TextEditingController();

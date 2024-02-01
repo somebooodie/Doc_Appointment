@@ -38,14 +38,14 @@ class DocHomeScreen extends StatelessWidget {
             _buildSquareButton(
               context: context,
               imagePath: 'assets/images/doctor_appointment.png',
-              text: 'Manage Patient Sessions',
+              text: 'Manage Patient Sessions by Doctor',
               routeName: MyNamedRoutes.scheduleDoctor,
             ),
             SizedBox(height: context.screenHeight * 0.09),
             _buildSquareButton(
               context: context,
               imagePath: 'assets/images/faq_doctor.png',
-              text: 'Answer FAQ',
+              text: 'Answer FAQ by Doctor',
               routeName: MyNamedRoutes.faqDoctor,
             ),
           ],
@@ -68,7 +68,7 @@ class DocHomeScreen extends StatelessWidget {
         } else if (routeName == MyNamedRoutes.faqDoctor) {
           GoRouter.of(context).pushNamed(MyNamedRoutes.faqDoctor);
         } else if (routeName == MyNamedRoutes.DocProfileScreen) {
-          GoRouter.of(context).go('/docHomeScreen/profile');
+          GoRouter.of(context).go('/docHomeScreen/DocProfileScreen');
         } else {
           GoRouter.of(context).go(routeName);
         }
