@@ -3,7 +3,7 @@ import 'package:doc_appointment/app/config/routes/named_routes.dart';
 import 'package:doc_appointment/app/config/theme/my_colors.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
 import 'package:doc_appointment/app/modules/feature/domain/models/User_model.dart';
-import 'package:doc_appointment/app/modules/feature/domain/providers/controller/user_repo_provider.dart';
+import 'package:doc_appointment/app/modules/auth/domain/providers/controller/user_repo_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

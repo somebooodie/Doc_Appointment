@@ -1,7 +1,7 @@
 import 'package:doc_appointment/app/config/routes/named_routes.dart';
 import 'package:doc_appointment/app/config/theme/my_colors.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
-import 'package:doc_appointment/app/modules/feature/domain/providers/state/auth_provider.dart';
+import 'package:doc_appointment/app/modules/auth/domain/providers/state/auth_provider.dart';
 import 'package:doc_appointment/app/modules/widgets/doc_register_forms_widgets.dart';
 import 'package:doc_appointment/app/modules/widgets/patient_register_forms_widget.dart';
 import 'package:flutter/material.dart';

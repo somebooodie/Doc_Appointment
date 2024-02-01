@@ -1,5 +1,5 @@
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
-import 'package:doc_appointment/app/modules/feature/domain/providers/state/auth_provider.dart';
+import 'package:doc_appointment/app/modules/auth/domain/providers/state/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
