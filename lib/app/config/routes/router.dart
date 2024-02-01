@@ -16,8 +16,8 @@ import 'package:doc_appointment/app/modules/views/Schedule/doctors_list_page.dar
 import 'package:doc_appointment/app/modules/views/homscreen/doc_homescreen.dart';
 import 'package:doc_appointment/app/modules/views/profile/doc_profile.dart';
 import 'package:doc_appointment/app/modules/views/register/doc_register.dart';
-import 'package:doc_appointment/app/modules/views/login/login_screen_doc.dart';
-import 'package:doc_appointment/app/modules/views/login/login_screen_patient.dart';
+import 'package:doc_appointment/app/modules/views/Login_Signup_Profile/login_screen_doc.dart';
+import 'package:doc_appointment/app/modules/views/Login_Signup_Profile/login_screen_patient.dart';
 
 // import 'package:doc_appointment/app/modules/views/login_screen_doc.dart';
 // import 'package:doc_appointment/app/modules/views/login_screen_patient.dart';
