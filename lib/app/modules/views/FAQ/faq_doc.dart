@@ -89,7 +89,7 @@ class faqDoctor extends ConsumerWidget {
                       title: Text(faqList[index]["question"] ?? ""),
                       subtitle: Text(
                         "Answer: ${faqList[index]["answer"] ?? ""}",
-                        style: TextStyle(color: Colors.blue),
+                        style: const TextStyle(color: Colors.blue),
                       ),
                     ),
                   );
