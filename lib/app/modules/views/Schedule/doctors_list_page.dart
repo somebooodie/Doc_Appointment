@@ -2,7 +2,7 @@ import 'package:doc_appointment/app/config/routes/named_routes.dart';
 import 'package:doc_appointment/app/config/theme/my_colors.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
 import 'package:doc_appointment/app/modules/auth/domain/providers/state/state_schedule_pateint.dart';
-import 'package:doc_appointment/app/modules/lists/doctor_list.dart';
+import 'package:doc_appointment/app/modules/views/Schedule/doctor_list.dart';
 import 'package:flutter/material.dart';
 import 'package:doc_appointment/app/modules/views/Schedule/schedule_patient.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
