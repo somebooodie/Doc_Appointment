@@ -14,6 +14,7 @@ abstract class MyNamedRoutes {
   static const calendar = 'calendar';
   static const prescription = 'prescription';
   static const changepassword = 'changepassword';
+  static const changeUsername = 'changeUsername';
   static const patientcalendar = 'patientCalendar';
 
   static const patientlogin = 'patientlogin';

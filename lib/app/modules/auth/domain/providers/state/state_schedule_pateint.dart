@@ -53,7 +53,8 @@ class SchedulePatientState {
   ];
 
   List<Map<String, dynamic>> filtered = []; // Add this line
-
+  List<String> timeAvailable = [];
+  List<String> dayAvailable = [];
   SchedulePatientState copyWith({
     String? issues,
     List<String>? issuesList,
@@ -64,6 +65,8 @@ class SchedulePatientState {
     String? prefArea,
     List<String>? areaList,
     List<Map<String, dynamic>>? filtered,
+    List<String>? dayAvailable,
+    List<String>? timeAvailable,
   }) {
     return SchedulePatientState()
       ..issues = issues ?? this.issues
@@ -74,7 +77,9 @@ class SchedulePatientState {
       ..timeList = timeList ?? this.timeList
       ..prefArea = prefArea ?? this.prefArea
       ..areaList = areaList ?? this.areaList
-      ..filtered = filtered ?? this.filtered;
+      ..filtered = filtered ?? this.filtered
+      ..dayAvailable = dayAvailable ?? this.dayAvailable
+      ..timeAvailable = timeAvailable ?? this.timeAvailable;
   }
 }
 

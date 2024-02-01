@@ -2,8 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:doc_appointment/app/config/routes/named_routes.dart';
 import 'package:doc_appointment/app/config/theme/my_colors.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
-import 'package:doc_appointment/app/modules/auth/domain/models/User_model.dart';
+import 'package:doc_appointment/app/modules/auth/domain/models/user_model.dart';
 import 'package:doc_appointment/app/modules/auth/domain/providers/controller/user_repo_provider.dart';
+import 'package:doc_appointment/app/modules/views/Login_Signup_Profile/UserInfo/user_info.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -53,10 +55,6 @@ class PatientProfileScreen extends ConsumerWidget {
             style: context.textTheme.headlineMedium
                 ?.copyWith(fontSize: 16, color: MyColors.white)),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        FirebaseAuth.instance.signOut();
-        GoRouter.of(context).goNamed(MyNamedRoutes.docRegister);
-      }),
       body: FutureBuilder(
         // 1. Get the current user data
         future: getCurrentUserData(),
@@ -85,46 +83,29 @@ class PatientProfileScreen extends ConsumerWidget {
                   padding: EdgeInsets.all(context.screenHeight * 0.05),
                   child: Container(
                     width: context.screenWidth * 0.9,
-                    height: context.screenWidth * 0.2,
                     decoration: BoxDecoration(
-                      border: Border.all(color: MyColors.primary_500),
+                      borderRadius: BorderRadius.circular(
+                          10), // Add border radius for a rounded look
+                      color: MyColors
+                          .primary_500, // Set background color to blue or your preferred color
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.3),
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: Offset(0, 3),
+                        ),
+                      ],
                     ),
-                    child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
                       child: Column(
+                        crossAxisAlignment:
+                            CrossAxisAlignment.start, // Align text to the left
                         children: [
-                          Row(
-                            children: [
-                              Text("username: ",
-                                  style: TextStyle(
-                                      fontSize: 14, color: MyColors.black)),
-                              Text(user.username,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: MyColors.primary_500)),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("email: ",
-                                  style: TextStyle(
-                                      fontSize: 14, color: MyColors.black)),
-                              Text(user.email,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: MyColors.primary_500)),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("Account type: ",
-                                  style: TextStyle(
-                                      fontSize: 14, color: MyColors.black)),
-                              Text(accountType,
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: MyColors.primary_500)),
-                            ],
-                          ),
+                          UserInfoRow("Name:", user.username),
+                          UserInfoRow("Email:", user.email),
+                          UserInfoRow("Account Type:", accountType),
                         ],
                       ),
                     ),
@@ -134,61 +115,100 @@ class PatientProfileScreen extends ConsumerWidget {
                   padding: EdgeInsets.only(top: context.screenHeight * 0.05),
                   child: GestureDetector(
                     onTap: () => GoRouter.of(context)
+                        .goNamed(MyNamedRoutes.changeUsername),
+                    child: Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(color: MyColors.primary_500),
+                      ),
+                      child: Container(
+                        width: context.screenWidth * 0.9,
+                        height: context.screenWidth * 0.2,
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Change Username",
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold, // Make the font bold
+                            color: MyColors.primary_500,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: context.screenHeight * 0.05),
+                  child: GestureDetector(
+                    onTap: () => GoRouter.of(context)
                         .goNamed(MyNamedRoutes.changepassword),
-                    child: Container(
-                      width: context.screenWidth * 0.9,
-                      height: context.screenWidth * 0.2,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: MyColors.primary_500),
+                    child: Card(
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        side: BorderSide(color: MyColors.primary_500),
                       ),
-                      child: Text("change username",
+                      child: Container(
+                        width: context.screenWidth * 0.9,
+                        height: context.screenWidth * 0.2,
+                        alignment: Alignment.center,
+                        child: Text(
+                          "Change Password",
                           style: TextStyle(
-                              fontSize: 14, color: MyColors.primary_500)),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: context.screenHeight * 0.05),
-                  child: Container(
-                    child: Container(
-                      child: Text("change password",
-                          style: TextStyle(
-                              fontSize: 14, color: MyColors.primary_500)),
-                      width: context.screenWidth * 0.9,
-                      height: context.screenWidth * 0.2,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: MyColors.primary_500),
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold, // Make the font bold
+                            color: MyColors.primary_500,
+                          ),
+                        ),
                       ),
                     ),
-                    width: context.screenWidth * 0.9,
-                    height: context.screenWidth * 0.2,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: MyColors.primary_500),
-                    ),
                   ),
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: context.screenHeight * 0.05),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text("Switch Account",
-                        style: TextStyle(
-                            fontSize: 14, color: MyColors.primary_500)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment
+                        .spaceEvenly, // Use spaceEvenly to distribute the space between buttons
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Switch Account",
+                          style: TextStyle(
+                              fontSize: 14, color: MyColors.primary_500),
+                        ),
+                      ),
+                      SizedBox(
+                          width: context.screenWidth *
+                              0.05), // Adjust the width as needed
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Delete Account",
+                          style: TextStyle(fontSize: 14, color: MyColors.red),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: context.screenHeight * 0.05),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: Text("Delete Account",
-                        style: TextStyle(
-                            fontSize: 14, color: MyColors.primary_500)),
+                SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    FirebaseAuth.instance.signOut();
+                    GoRouter.of(context).goNamed(MyNamedRoutes.docRegister);
+                  },
+                  child: Icon(
+                    Icons.exit_to_app,
+                    color: Colors.blue, // Set the color to blue
                   ),
-                ), // Rest of your UI...
+                ),
               ],
             );
           } else {
-            return Center(child: Text("User data not found"));
+            return const Center(child: Text("User data not found"));
           }
         },
       ),
