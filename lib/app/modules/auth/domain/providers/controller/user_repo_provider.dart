@@ -1,4 +1,4 @@
-import 'package:doc_appointment/app/modules/feature/domain/models/User_model.dart';
+import 'package:doc_appointment/app/modules/auth/domain/models/User_model.dart';
 import 'package:doc_appointment/app/modules/auth/domain/providers/repo/auth_repo.dart';
 //import 'package:doc_appointment/app/modules/feature/domain/providers/repo/user_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';

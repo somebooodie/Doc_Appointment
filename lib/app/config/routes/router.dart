@@ -6,6 +6,10 @@ import 'package:doc_appointment/app/modules/nav_bar/bottom_navbar_tabs.dart';
 
 import 'package:doc_appointment/app/modules/views/FAQ/faq_doc.dart';
 import 'package:doc_appointment/app/modules/views/FAQ/faq_patient.dart';
+import 'package:doc_appointment/app/modules/views/Login_Signup_Profile/doc_profile.dart';
+import 'package:doc_appointment/app/modules/views/Login_Signup_Profile/doc_register.dart';
+import 'package:doc_appointment/app/modules/views/Login_Signup_Profile/patient_profilescreen.dart';
+import 'package:doc_appointment/app/modules/views/Login_Signup_Profile/patient_register_screen.dart';
 import 'package:doc_appointment/app/modules/views/Schedule/schedule_doc.dart';
 import 'package:doc_appointment/app/modules/views/Schedule/schedule_patient.dart';
 import 'package:doc_appointment/app/modules/views/Schedule/availabilty.dart';
@@ -13,24 +17,15 @@ import 'package:doc_appointment/app/modules/views/calendar/doc_calendar_screen.d
 
 import 'package:doc_appointment/app/modules/views/calendar/patient_calendar_screen.dart';
 import 'package:doc_appointment/app/modules/views/Schedule/doctors_list_page.dart';
-import 'package:doc_appointment/app/modules/views/homscreen/doc_homescreen.dart';
-import 'package:doc_appointment/app/modules/views/profile/doc_profile.dart';
-import 'package:doc_appointment/app/modules/views/register/doc_register.dart';
+import 'package:doc_appointment/app/modules/views/doc_homescreen.dart';
+import 'package:doc_appointment/app/modules/views/patient_homescreen.dart';
 import 'package:doc_appointment/app/modules/views/Login_Signup_Profile/login_screen_doc.dart';
 import 'package:doc_appointment/app/modules/views/Login_Signup_Profile/login_screen_patient.dart';
-
-// import 'package:doc_appointment/app/modules/views/login_screen_doc.dart';
-// import 'package:doc_appointment/app/modules/views/login_screen_patient.dart';
 
 import 'package:doc_appointment/app/modules/views/medication/MD_doc_page.dart';
 import 'package:doc_appointment/app/modules/views/medication/MD_patient_page.dart';
 import 'package:doc_appointment/app/modules/views/medication/meds_DocAdd_page.dart';
 import 'package:doc_appointment/app/modules/views/medication/prescription_doc_page.dart';
-import 'package:doc_appointment/app/modules/views/homscreen/patient_homescreen.dart';
-import 'package:doc_appointment/app/modules/views/profile/patient_profilescreen.dart';
-import 'package:doc_appointment/app/modules/views/register/patient_register_screen.dart';
-// import 'package:doc_appointment/app/modules/views/patient_register_screen.dart';
-// import 'package:doc_appointment/app/modules/views/profile_page.dart';
 import 'package:doc_appointment/app/modules/views/splash.dart';
 import 'package:doc_appointment/app/modules/views/medication/med_detail_page.dart';
 import 'package:doc_appointment/app/modules/views/medication/meds_patient_page.dart';

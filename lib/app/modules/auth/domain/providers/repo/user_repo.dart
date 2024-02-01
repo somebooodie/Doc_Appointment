@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:doc_appointment/app/modules/feature/domain/models/User_model.dart';
+import 'package:doc_appointment/app/modules/auth/domain/models/User_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
