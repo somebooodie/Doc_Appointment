@@ -8,10 +8,11 @@ import 'package:doc_appointment/app/modules/views/FAQ/faq_doc.dart';
 import 'package:doc_appointment/app/modules/views/FAQ/faq_patient.dart';
 import 'package:doc_appointment/app/modules/views/Schedule/schedule_doc.dart';
 import 'package:doc_appointment/app/modules/views/Schedule/schedule_patient.dart';
+import 'package:doc_appointment/app/modules/views/Schedule/availabilty.dart';
 import 'package:doc_appointment/app/modules/views/calendar/doc_calendar_screen.dart';
 
 import 'package:doc_appointment/app/modules/views/calendar/patient_calendar_screen.dart';
-import 'package:doc_appointment/app/modules/views/doctors_page.dart';
+import 'package:doc_appointment/app/modules/views/Schedule/doctors_list_page.dart';
 import 'package:doc_appointment/app/modules/views/homscreen/doc_homescreen.dart';
 import 'package:doc_appointment/app/modules/views/profile/doc_profile.dart';
 import 'package:doc_appointment/app/modules/views/register/doc_register.dart';
@@ -69,6 +70,14 @@ abstract class AppRouter {
         pageBuilder: (context, state) => NoTransitionPage(
           key: state.pageKey,
           child: DocRegisterScreen(),
+        ),
+      ),
+      GoRoute(
+        path: "/${MyNamedRoutes.availability}",
+        name: MyNamedRoutes.availability,
+        pageBuilder: (context, state) => NoTransitionPage(
+          key: state.pageKey,
+          child: Availability(),
         ),
       ),
       GoRoute(
@@ -293,7 +302,7 @@ abstract class AppRouter {
           ),
         ],
       ),
-    
+
       GoRoute(
         path: "/${MyNamedRoutes.DocList}",
         name: MyNamedRoutes.DocList,

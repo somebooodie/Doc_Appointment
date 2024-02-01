@@ -1,3 +1,5 @@
+import 'package:doc_appointment/app/modules/views/Schedule/availabilty.dart';
+
 abstract class MyNamedRoutes {
   static const root = '/';
   static const login = 'login';
@@ -25,6 +27,7 @@ abstract class MyNamedRoutes {
   static const mdPatientPage = 'mdPatientPage';
 
   static const docHomeScreen = 'docHomeScreen';
+  static const availability = 'availability';
 
   static const mdDocPage = 'mdDocPage';
   static const medDocAdd = 'medDocAdd';
