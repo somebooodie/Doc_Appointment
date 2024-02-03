@@ -33,7 +33,7 @@ class mdPatientPage extends StatelessWidget {
               context: context,
               imagePath: 'assets/images/med_report.png',
               text: 'view prescription for Patient',
-              routeName: MyNamedRoutes.prescriptionDocPage,
+              routeName: MyNamedRoutes.PrescriptionPatientPage,
             ),
           ],
         ),
@@ -52,8 +52,8 @@ class mdPatientPage extends StatelessWidget {
         // Check if it's a nested route and use the full path
         if (routeName == MyNamedRoutes.medBoxPage) {
           GoRouter.of(context).go('/mdPatientPage/MedBoxPage');
-        } else if (routeName == MyNamedRoutes.prescriptionPatientPage) {
-          GoRouter.of(context).go('/mdPatientPage/prescriptionDocPage');
+        } else if (routeName == MyNamedRoutes.PrescriptionPatientPage) {
+          GoRouter.of(context).go('/mdPatientPage/PrescriptionPatientPage');
         } else {
           GoRouter.of(context).go(routeName);
         }
