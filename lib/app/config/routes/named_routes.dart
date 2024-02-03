@@ -40,4 +40,7 @@ abstract class MyNamedRoutes {
   static const scheduleDoctor = 'scheduleDoctor';
   static const faqPatient = 'faqPatient';
   static const schedulePatient = 'schedulePatient';
+  static const PrescriptionPatientPage = 'PrescriptionPatientPage';
+  static const PrescriptionUploadPage = 'PrescriptionUploadPage';
+  
 }

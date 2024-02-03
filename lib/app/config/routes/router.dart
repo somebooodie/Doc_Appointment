@@ -25,14 +25,13 @@ import 'package:doc_appointment/app/modules/views/patient_homescreen.dart';
 import 'package:doc_appointment/app/modules/views/medication/MD_doc_page.dart';
 import 'package:doc_appointment/app/modules/views/medication/MD_patient_page.dart';
 import 'package:doc_appointment/app/modules/views/medication/meds_DocAdd_page.dart';
-import 'package:doc_appointment/app/modules/views/medication/prescription_doc_page.dart';
 
 import 'package:doc_appointment/app/modules/views/Login_Signup_Profile/patient_profile.dart';
+import 'package:doc_appointment/app/modules/views/prescription/prescript_doctor.dart';
+import 'package:doc_appointment/app/modules/views/prescription/prescript_patient.dart';
 
 import 'package:doc_appointment/splash.dart';
-import 'package:doc_appointment/app/modules/views/medication/med_detail_page.dart';
 import 'package:doc_appointment/app/modules/views/medication/meds_patient_page.dart';
-import 'package:doc_appointment/app/modules/views/medication/presription_patient_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -189,11 +188,11 @@ abstract class AppRouter {
               ),
               GoRoute(
                 parentNavigatorKey: shellDocRouteKey,
-                path: MyNamedRoutes.prescriptionDocPage,
-                name: MyNamedRoutes.prescriptionDocPage,
+                path: MyNamedRoutes.PrescriptionUploadPage,
+                name: MyNamedRoutes.PrescriptionUploadPage,
                 pageBuilder: (context, state) => NoTransitionPage(
                   key: state.pageKey,
-                  child: prescriptionDocPage(),
+                  child: PrescriptionUploadPage(),
                 ),
               ),
             ],
@@ -273,14 +272,6 @@ abstract class AppRouter {
             ),
             routes: [
               GoRoute(
-                path: MyNamedRoutes.medDetail,
-                name: MyNamedRoutes.medDetail,
-                pageBuilder: (context, state) => NoTransitionPage(
-                  key: state.pageKey,
-                  child: medDetail(),
-                ),
-              ),
-              GoRoute(
                 path: MyNamedRoutes.medBoxPage,
                 name: MyNamedRoutes.medBoxPage,
                 pageBuilder: (context, state) => NoTransitionPage(
@@ -289,11 +280,11 @@ abstract class AppRouter {
                 ),
               ),
               GoRoute(
-                path: MyNamedRoutes.prescriptionPatientPage,
-                name: MyNamedRoutes.prescriptionPatientPage,
+                path: MyNamedRoutes.PrescriptionPatientPage,
+                name: MyNamedRoutes.PrescriptionPatientPage,
                 pageBuilder: (context, state) => NoTransitionPage(
                   key: state.pageKey,
-                  child: prescriptionPatientPage(),
+                  child: PrescriptionPatientPage(),
                 ),
               ),
             ],
