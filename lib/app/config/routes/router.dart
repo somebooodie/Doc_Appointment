@@ -29,7 +29,7 @@ import 'package:doc_appointment/app/modules/views/medication/prescription_doc_pa
 
 import 'package:doc_appointment/app/modules/views/Login_Signup_Profile/patient_profile.dart';
 
-import 'package:doc_appointment/app/modules/views/splash.dart';
+import 'package:doc_appointment/splash.dart';
 import 'package:doc_appointment/app/modules/views/medication/med_detail_page.dart';
 import 'package:doc_appointment/app/modules/views/medication/meds_patient_page.dart';
 import 'package:doc_appointment/app/modules/views/medication/presription_patient_page.dart';

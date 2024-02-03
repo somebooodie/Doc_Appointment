@@ -72,8 +72,7 @@
 
 import 'package:doc_appointment/app/config/routes/named_routes.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
-import 'package:doc_appointment/app/modules/auth/domain/providers/state/auth_provider.dart';
-// import 'package:doc_appointment/app/modules/auth/domain/providers/state/auth_provider.dart';
+import 'package:doc_appointment/app/modules/auth/domain/providers/state/doc_auth_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -87,7 +86,7 @@ class SplashScreen extends ConsumerWidget {
     final checkIfUserAuthinticated =
         ref.watch(checkIfAuthinticatedFutureProvider);
 
-    // Introduce a delay of 3 seconds before checking the condition
+    // // Introduce a delay of 3 seconds before checking the condition
     // Future<void> navigateToNextScreen() async {
     //   await Future.delayed(Duration(seconds: 2));
     //   // After the delay, check the condition and navigate accordingly
@@ -95,11 +94,11 @@ class SplashScreen extends ConsumerWidget {
     //   if (userAuthState is AsyncData<User?> &&
     //       userAuthState.value?.uid != null) {
     //     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //       GoRouter.of(context).goNamed(MyNamedRoutes.patientlogin);
+    //       GoRouter.of(context).goNamed(MyNamedRoutes.docRegister);
     //     });
     //   } else {
     //     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //       GoRouter.of(context).goNamed(MyNamedRoutes.patientHomeScreen);
+    //       GoRouter.of(context).goNamed(MyNamedRoutes.docHomeScreen);
     //     });
     //   }
     // }
@@ -115,11 +114,11 @@ class SplashScreen extends ConsumerWidget {
       data: (data) {
         if (data.value?.uid != null) {
           WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-            GoRouter.of(context).goNamed(MyNamedRoutes.login);
+            GoRouter.of(context).goNamed(MyNamedRoutes.doclogin);
           });
         } else {
           WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-            GoRouter.of(context).goNamed(MyNamedRoutes.patientHomeScreen);
+            GoRouter.of(context).goNamed(MyNamedRoutes.docRegister);
           });
         }
       },

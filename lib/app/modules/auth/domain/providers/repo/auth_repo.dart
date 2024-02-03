@@ -12,7 +12,7 @@ class AuthRepository {
 
   User? get currentUser => _firebaseAuth.currentUser;
 
-  Future<User?> createUserWithEmailAndPassword({
+  Future<User?> docCreateUserWithEmailAndPassword({
     required String email,
     required String password,
     required String userName,
@@ -107,8 +107,6 @@ class AuthRepository {
     }
   }
 
- 
-
   // Future<void> saveUserInfoToFirebase(String userId, String userName,
   //     String email, String doctorId, String password) async {
   //   try {
@@ -171,6 +169,11 @@ class AuthRepository {
       throw AuthException(e.toString());
     }
   }
+
+  patientCreateUserWithEmailAndPassword(
+      {required String email,
+      required String password,
+      required String userName}) {}
 }
 
 class AuthException implements Exception {

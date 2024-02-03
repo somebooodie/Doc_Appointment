@@ -1,7 +1,7 @@
 import 'package:doc_appointment/app/config/routes/named_routes.dart';
 import 'package:doc_appointment/app/config/theme/my_colors.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
-import 'package:doc_appointment/app/modules/auth/domain/providers/state/auth_provider.dart';
+import 'package:doc_appointment/app/modules/auth/domain/providers/state/patient_auth_provider.dart';
 import 'package:doc_appointment/app/modules/widgets/doc_register_forms_widgets.dart';
 import 'package:doc_appointment/app/modules/widgets/patient_login_forms_widget.dart';
 import 'package:doc_appointment/app/modules/widgets/patient_register_forms_widget.dart';
@@ -27,31 +27,43 @@ class LoginScreen extends ConsumerWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: EdgeInsets.only(top: context.screenHeight * 0.3),
-              child: PatientLoginAuthForm(
-                registerFormKey: registerFormKey,
-              ),
+            PatientLoginAuthForm(
+              registerFormKey: registerFormKey,
             ),
             SizedBox(
               height: context.screenHeight * 0.04,
             ),
             ElevatedButton(
               onPressed: () {
-                authController
-                    .login(
-                        email: formProvider.email,
-                        password: formProvider.password)
-                    .then((value) {
-                  if (value == true) {
-                    GoRouter.of(context)
-                        .goNamed(MyNamedRoutes.patientHomeScreen);
-                  }
-                });
+                if (registerFormKey.currentState?.validate() == true) {
+                  authController
+                      .login(
+                          email: formProvider.email,
+                          //  userName: formProvider.userName,
+                          password: formProvider.password)
+                      .then((value) {
+                    if (value == true) {
+                      GoRouter.of(context)
+                          .goNamed(MyNamedRoutes.patientHomeScreen);
+                    }
+                  });
+                  // sign up router will be here)
+                  //GoRouter.of(context).goNamed(MyNamedRoutes.homepage);
+                }
+                //GoRouter.of(context).goNamed(MyNamedRoutes.login);
               },
               child: Text(context.translate.login,
+                  style: context.textTheme.bodyLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: MyColors.primary_500)),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                GoRouter.of(context).pushNamed(MyNamedRoutes.patientRegister);
+              },
+              child: Text(context.translate.register,
                   style: context.textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: MyColors.primary_500)),
@@ -64,23 +76,6 @@ class LoginScreen extends ConsumerWidget {
                   style: context.textTheme.bodyLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: MyColors.primary_500)),
-            ),
-            SizedBox(
-              height: context.screenHeight * 0.04,
-            ),
-            // Replace ElevatedButton with TextFormField
-            GestureDetector(
-              onTap: () {
-                // Handle the tap event, you can open a registration screen or perform other actions
-                GoRouter.of(context).pushNamed(MyNamedRoutes.patientRegister);
-              },
-              child: Text(
-                "Not Registered, Register",
-                style: context.textTheme.bodyLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: MyColors.primary_500,
-                ),
-              ),
             ),
           ],
         ),

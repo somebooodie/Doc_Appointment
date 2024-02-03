@@ -3,22 +3,22 @@ import 'package:doc_appointment/app/modules/auth/domain/providers/state/patient_
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PatientAuthController extends StateNotifier<AuthState> {
-  PatientAuthController(super.state, this._authRepository);
+class AuthController extends StateNotifier<AuthState> {
+  AuthController(super.state, this._authRepository);
   final AuthRepository _authRepository;
 
-  Future<bool> patientregister({
-    required String email,
-    required String userName,
-    required String password,
-  }) async {
+  Future<bool> docregister(
+      {required String email,
+      required String userName,
+      required String password,
+      required String doctorId}) async {
     state = state.copyWith(isLoading: true);
     try {
-      User? user = await _authRepository.patientCreateUserWithEmailAndPassword(
-        email: email,
-        password: password,
-        userName: userName,
-      );
+      User? user = await _authRepository.docCreateUserWithEmailAndPassword(
+          email: email,
+          password: password,
+          userName: userName,
+          doctorId: doctorId);
       if (user != null) {
         await user.updateDisplayName(userName);
         state = state.copyWith(isLoading: false, isAuth: true);
@@ -62,4 +62,9 @@ class PatientAuthController extends StateNotifier<AuthState> {
       return false;
     }
   }
+
+  void patientregister(
+      {required String email,
+      required String userName,
+      required String password}) {}
 }

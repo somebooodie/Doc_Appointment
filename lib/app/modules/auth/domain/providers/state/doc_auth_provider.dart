@@ -1,3 +1,4 @@
+import 'package:doc_appointment/app/modules/auth/domain/providers/controller/doc_authform_controller.dart';
 import 'package:doc_appointment/app/modules/auth/domain/providers/controller/patient_authform_controller.dart';
 import 'package:doc_appointment/app/modules/auth/domain/providers/controller/text_form_provider.dart';
 import 'package:doc_appointment/app/modules/auth/domain/providers/repo/auth_repo.dart';
