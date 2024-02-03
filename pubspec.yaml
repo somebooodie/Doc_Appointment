@@ -5,7 +5,6 @@ version: 1.0.0+1
 
 environment:
   sdk: ">=2.17.0 <4.0.0"
-  # flutter_local_notifications: ^16.3.0
 
 dependencies:
   flutter:
@@ -25,11 +24,14 @@ dependencies:
   flutter_riverpod: ^2.4.8
   go_router: ^12.1.1
   google_fonts: ^6.1.0
-  image_picker: ^1.0.4
+  image_picker: ^1.0.4 # This was already included, ensure it's updated if needed
   uuid: ^4.3.3
   path: ^1.8.3
   table_calendar: ^3.0.2
   date_time_picker: ^2.0.0
+  file_picker: ^4.5.0 # Added for picking files
+  path_provider: ^2.0.9 # Added for accessing the file system path
+  permission_handler: ^10.4.5 # Added for handling permissions
 
 dev_dependencies:
   flutter_test:
@@ -41,5 +43,6 @@ flutter:
   generate: true
   assets:
     - assets/images/
+
 dependency_overrides:
   intl: ^0.18.1

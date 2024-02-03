@@ -33,7 +33,7 @@ class mdDocPage extends StatelessWidget {
               context: context,
               imagePath: 'assets/images/med_report.png',
               text: 'write prescription by Docotor',
-              routeName: MyNamedRoutes.prescriptionDocPage,
+              routeName: MyNamedRoutes.PrescriptionUploadPage,
             ),
           ],
         ),
@@ -52,8 +52,8 @@ class mdDocPage extends StatelessWidget {
         // Check if it's a nested route and use the full path
         if (routeName == MyNamedRoutes.medDocAdd) {
           GoRouter.of(context).pushNamed(MyNamedRoutes.medDocAdd);
-        } else if (routeName == MyNamedRoutes.prescriptionDocPage) {
-          GoRouter.of(context).go('/mdDocPage/prescriptionDocPage');
+        } else if (routeName == MyNamedRoutes.PrescriptionUploadPage) {
+          GoRouter.of(context).go('/mdDocPage/PrescriptionUploadPage');
         } else {
           GoRouter.of(context).go(routeName);
         }
