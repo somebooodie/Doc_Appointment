@@ -4,3 +4,11 @@ build/app/intermediates/merged_native_libs/debug/out/lib/arm64-v8a/libVkLayer_kh
 .flutter-plugins-dependencies
 .dart_tool/package_config.json
 .flutter-plugins-dependencies
+lib/app/modules/auth/.DS_Store
+lib/app/modules/auth/domain/.DS_Store
+lib/app/modules/auth/domain/providers/.DS_Store
+lib/app/modules/auth/domain/providers/controller/user_repo_provider.dart
+lib/app/modules/auth/domain/providers/repo/user_repo.dart
+lib/app/modules/views/Login_Signup_Profile/doc_register.dart
+lib/app/modules/views/medication/meds_DocAdd_page.dart
+lib/splash.dart

@@ -146,7 +146,7 @@ class MedDocAdd extends ConsumerWidget {
                       labelText: 'Quantity in Box',
                       labelStyle: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.blue,
+                        color: Colors.purple,
                       ),
                     ),
                     keyboardType: TextInputType.number,
