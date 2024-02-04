@@ -53,10 +53,11 @@ class DocProfileScreen extends ConsumerWidget {
             style: context.textTheme.headlineMedium
                 ?.copyWith(fontSize: 16, color: MyColors.white)),
       ),
-      body: FutureBuilder(
-        // 1. Get the current user data
-        future: getCurrentUserData(),
-        builder: (context, snapshot) {
+      body: SingleChildScrollView( // Wrap the body with SingleChildScrollView
+        child: FutureBuilder(
+          // 1. Get the current user data
+          future: getCurrentUserData(),
+          builder: (context, snapshot) {
           print(snapshot.data);
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
@@ -209,6 +210,7 @@ class DocProfileScreen extends ConsumerWidget {
             return const Center(child: Text("User data not found"));
           }
         },
+      ),
       ),
     );
   }
