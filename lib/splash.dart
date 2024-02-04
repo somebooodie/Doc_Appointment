@@ -118,7 +118,7 @@ class SplashScreen extends ConsumerWidget {
           });
         } else {
           WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-            GoRouter.of(context).goNamed(MyNamedRoutes.patientHomeScreen);
+            GoRouter.of(context).goNamed(MyNamedRoutes.doclogin);
           });
         }
       },

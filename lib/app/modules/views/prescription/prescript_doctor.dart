@@ -1,122 +1,195 @@
-import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'hospitals.dart';
 
-class PrescriptionUploadPage extends StatelessWidget {
+class PrescriptionUploadPage extends StatefulWidget {
+  @override
+  _PrescriptionUploadPageState createState() => _PrescriptionUploadPageState();
+}
+
+class _PrescriptionUploadPageState extends State<PrescriptionUploadPage> {
+  String? selectedPatient;
+  String? selectedGovernance;
+  String? selectedHospital;
+  final TextEditingController medicationController = TextEditingController();
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedGovernance = Hospitals.getGovernances().first;
+    selectedHospital =
+        Hospitals.getHospitalsForGovernance(selectedGovernance!).first;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Upload Prescription")),
-      body: FutureBuilder<QuerySnapshot>(
-        future: FirebaseFirestore.instance.collection('users').get(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          }
-
-          if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          }
-
-          if (snapshot.hasData && snapshot.data!.docs.isNotEmpty) {
-            List<DropdownMenuItem<String>> dropdownItems = snapshot.data!.docs
-                .map((doc) => DropdownMenuItem<String>(
-                      value: doc.id, // Assuming doc.id is the identifier for the user
-                      child: Text(doc['username'] as String),
-                    ))
-                .toList();
-
-            return UploadForm(dropdownItems: dropdownItems);
-          }
-
-          return Center(child: Text('No users found'));
-        },
+      appBar: AppBar(
+        title:
+            Text('Prescription Upload', style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.blue,
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            FutureBuilder<QuerySnapshot>(
+              future: FirebaseFirestore.instance.collection('users').get(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
+                }
+                if (snapshot.hasData && snapshot.data!.docs.isNotEmpty) {
+                  List<String> usernames = snapshot.data!.docs
+                      .map((doc) => doc['username'] as String)
+                      .toList();
+                  return DropdownButtonFormField<String>(
+                    decoration: InputDecoration(
+                        labelText: 'Patient', border: OutlineInputBorder()),
+                    value: selectedPatient,
+                    hint: Text('Select Patient'),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        selectedPatient = newValue;
+                      });
+                    },
+                    items:
+                        usernames.map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                    dropdownColor:
+                        Colors.blue, // Set the dropdown color to blue
+                  );
+                } else {
+                  return Text("No patients found");
+                }
+              },
+            ),
+            SizedBox(height: 10),
+            DropdownButtonFormField<String>(
+              value: selectedGovernance,
+              onChanged: (value) {
+                setState(() {
+                  selectedGovernance = value;
+                  selectedHospital =
+                      Hospitals.getHospitalsForGovernance(value!).first;
+                });
+              },
+              items: Hospitals.getGovernances()
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              decoration: InputDecoration(labelText: 'Governance'),
+            ),
+            SizedBox(height: 10),
+            if (selectedGovernance != null)
+              DropdownButtonFormField<String>(
+                value: selectedHospital,
+                onChanged: (value) => setState(() => selectedHospital = value),
+                items: Hospitals.getHospitalsForGovernance(selectedGovernance!)
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                decoration: InputDecoration(labelText: 'Hospital'),
+              ),
+            SizedBox(height: 10),
+            TextField(
+              controller: medicationController,
+              decoration: InputDecoration(
+                labelText: 'Medication Name',
+                border:
+                    UnderlineInputBorder(), // Line design for Medication Name
+              ),
+            ),
+            SizedBox(height: 20),
+            Center(
+              child: SizedBox(
+                width: double.infinity, // Set the width to your desired size
+                height: 60.0, // Set the height to your desired size
+                child: ElevatedButton(
+                  onPressed: () => sendPrescription(),
+                  child: Text(
+                    'Send Prescription',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color:
+                          Colors.white, // Text color set to white for contrast
+                    ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue, // Button color set to blue
+                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
-}
 
-class UploadForm extends StatefulWidget {
-  final List<DropdownMenuItem<String>> dropdownItems;
-
-  UploadForm({required this.dropdownItems});
-
-  @override
-  _UploadFormState createState() => _UploadFormState();
-}
-
-class _UploadFormState extends State<UploadForm> {
-  String? selectedUserId;
-  File? file;
-  final picker = ImagePicker();
-
-  Future<void> pickFile() async {
-    final result = await FilePicker.platform.pickFiles(
-      type: FileType.custom,
-      allowedExtensions: ['jpg', 'pdf'],
-    );
-    if (result != null && result.files.single.path != null) {
-      setState(() {
-        file = File(result.files.single.path!);
-      });
+  void sendPrescription() async {
+    if (selectedPatient != null &&
+        selectedGovernance != null &&
+        selectedHospital != null &&
+        medicationController.text.isNotEmpty) {
+      await _firestore
+          .collection('prescriptions')
+          .add({
+            'patient': selectedPatient,
+            'governance': selectedGovernance,
+            'hospital': selectedHospital,
+            'medication': medicationController.text,
+            'timestamp': FieldValue.serverTimestamp(),
+          })
+          .then((_) => {
+                clearForm(),
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text("Success"),
+                      content: Text("Prescription uploaded successfully."),
+                      actions: [
+                        TextButton(
+                          child: Text("OK"),
+                          onPressed: () => Navigator.of(context).pop(),
+                        ),
+                      ],
+                    );
+                  },
+                )
+              })
+          .catchError((error) => print("Failed to add prescription: $error"));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('No file selected or operation was canceled.')),
-      );
+      print("Please fill all the fields");
     }
   }
 
-  Future<void> uploadFile() async {
-    if (selectedUserId == null || file == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please select a user and a file.')),
-      );
-      return;
-    }
-    String fileName = file!.path.split('/').last;
-    try {
-      await FirebaseStorage.instance
-          .ref('prescriptions/$selectedUserId/$fileName')
-          .putFile(file!);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Prescription uploaded successfully')),
-      );
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error uploading prescription: $e')),
-      );
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        DropdownButton<String>(
-          hint: Text("Select User"),
-          value: selectedUserId,
-          onChanged: (String? newValue) {
-            setState(() {
-              selectedUserId = newValue;
-            });
-          },
-          items: widget.dropdownItems,
-        ),
-        ElevatedButton(
-          onPressed: pickFile,
-          child: Text("Pick File"),
-        ),
-        ElevatedButton(
-          onPressed: uploadFile,
-          child: Text("Upload"),
-        ),
-        if (file != null)
-          Text("Selected File: ${file!.path.split('/').last}"),
-      ],
-    );
+  void clearForm() {
+    setState(() {
+      medicationController.clear();
+      selectedPatient = null;
+      selectedGovernance = Hospitals.getGovernances().first;
+      selectedHospital =
+          Hospitals.getHospitalsForGovernance(selectedGovernance!).first;
+    });
   }
 }
