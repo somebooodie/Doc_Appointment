@@ -1,79 +1,85 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:doc_appointment/app/modules/auth/domain/models/User_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-// class UserRepo {
-//   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+import 'package:doc_appointment/app/modules/auth/domain/models/User_model.dart';
+class UserRepo {
+  final String id;
+  final String username;
+  final String email;
 
-//   Future<List<MyUser>> fetchRegisteredUsers() async {
-//     try {
-//       QuerySnapshot querySnapshot = await _firestore.collection('users').get();
-//       List<MyUser> userList = querySnapshot.docs
-//           .map((doc) => MyUser.fromMap(doc.data() as Map<String, dynamic>))
-//           .toList();
+  UserRepo({
+    required this.id,
+    required this.username,
+    required this.email,
+  });
 
-//       return userList;
-//     } catch (e) {
-//       debugPrint('Error fetching users: $e');
-//       return [];
-//     }
-//   }
-// // }
-// class UserRepo {
-//   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  UserRepo copyWith({
+    String? id,
+    String? username,
+    String? email,
+  }) {
+    return UserRepo(
+      id: id ?? this.id,
+      username: username ?? this.username,
+      email: email ?? this.email,
+    );
+  }
 
-//   Future<MyUser?> fetchRegisteredUser(String userId) async {
-//     try {
-//       // Assuming you have a 'users' collection where each document has a 'userId' field
-//       QuerySnapshot querySnapshot = await _firestore
-//           .collection('users')
-//           .where('userId', isEqualTo: userId)
-//           .get();
+  Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{};
+  
+    result.addAll({'id': id});
+    result.addAll({'username': username});
+    result.addAll({'email': email});
+  
+    return result;
+  }
 
-//       if (querySnapshot.docs.isNotEmpty) {
-//         // Assuming you want to get the first user with the specified ID
-//         MyUser user = MyUser.fromMap(
-//             querySnapshot.docs.first.data() as Map<String, dynamic>);
-//         return user;
-//       } else {
-//         return null; // No user found with the specified ID
-//       }
-//     } catch (e) {
-//       debugPrint('Error fetching user: $e');
-//       return null;
-//     }
-//   }
-// // }class UserRepo {
-// final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-// final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  factory UserRepo.fromMap(Map<String, dynamic> map) {
+    return UserRepo(
+      id: map['id'] ?? '',
+      username: map['username'] ?? '',
+      email: map['email'] ?? '',
+    );
+  }
 
-// User? get currentUser => _firebaseAuth.currentUser;
+  String toJson() => json.encode(toMap());
 
-// Future<MyUser?> fetchRegisteredUser() async {
-//   try {
-//     // Check if there is a logged-in user
-//     if (currentUser != null) {
-//       // Assuming 'fetchRegisteredUser' method needs the user ID
-//       QuerySnapshot querySnapshot = await _firestore
-//           .collection('users')
-//           .where('userId', isEqualTo: currentUser!.uid)
-//           .get();
+  factory UserRepo.fromJson(String source) => UserRepo.fromMap(json.decode(source));
 
-//       if (querySnapshot.docs.isNotEmpty) {
-//         // Assuming you want to get the first user with the specified ID
-//         MyUser user = MyUser.fromMap(
-//             querySnapshot.docs.first.data() as Map<String, dynamic>);
-//         return user;
-//       } else {
-//         return null; // No user found with the specified ID
-//       }
-//     } else {
-//       // No logged-in user, return null or handle accordingly
-//       return null;
-//     }
-//   } catch (e) {
-//     debugPrint('Error fetching user: $e');
-//     return null;
-//   }
-// }
+  @override
+  String toString() => 'UserRepo(id: $id, username: $username, email: $email)';
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+  
+    return other is UserRepo &&
+      other.id == id &&
+      other.username == username &&
+      other.email == email;
+  }
+
+  @override
+  int get hashCode => id.hashCode ^ username.hashCode ^ email.hashCode;
+}
+class UserRepository {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<List<UserRepo>> fetchRegisteredUsers() async {
+    try {
+      QuerySnapshot querySnapshot = await _firestore.collection('users').get();
+      List<UserRepo> userList = querySnapshot.docs
+          .map((doc) => UserRepo.fromMap(doc.data() as Map<String, dynamic>))
+          .toList();
+
+      return userList;
+    } catch (e) {
+      debugPrint('Error fetching users: $e');
+      return [];
+    }
+  }
+}

@@ -5,36 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-//  final userRepoProvider = Provider((ref) => UserRepo());
-
-// final userProvider = FutureProvider.autoDispose<MyUser?>((ref) async {
-//   final userRepo = ref.watch(userRepoProvider);
-//   debugPrint("*******");
-//   try {
-//     final user = await userRepo
-//         .fetchRegisteredUsers(); // Replace with your logic to fetch a single user
-//     return user;
-//   } catch (e) {
-//     debugPrint('Error fetching user: $e');
-//     return null;
-//   }
-//  });
-// final userRepoProvider = Provider((ref) => UserRepo());
-
-// final userProvider = FutureProvider.autoDispose<MyUser?>((ref) async {
-//   final userRepo = ref.watch(userRepoProvider);
-//   // Replace 'userId' with the actual ID of the logged-in user
-//   final userId = 'your_user_id';
-
-//   try {
-//     final user = await userRepo.fetchRegisteredUser(userId);
-//     return user;
-//   } catch (e) {
-//     debugPrint('Error fetching user: $e');
-//     return null;
-//   }
-// });
-
 final userRepoProvider =
     Provider((ref) => AuthRepository(FirebaseAuth.instance));
 
