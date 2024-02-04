@@ -103,6 +103,7 @@ class MedDocAdd extends ConsumerWidget {
                         child: Text(value),
                       );
                     }).toList(),
+                    dropdownColor: Colors.blue,
                   ),
                   SizedBox(height: 16),
                   TextFormField(
