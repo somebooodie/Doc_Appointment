@@ -1,8 +1,5 @@
-
 import 'package:doc_appointment/app/config/routes/named_routes.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
-import 'package:doc_appointment/app/modules/auth/domain/providers/state/doc_auth_provider.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -12,54 +9,28 @@ class SplashScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final checkIfUserAuthinticated =
-        ref.watch(checkIfAuthinticatedFutureProvider);
+    // Introduce a delay of 3 seconds before navigating
+    Future<void> navigateToNextScreen() async {
+      await Future.delayed(const Duration(seconds: 2)); // Delay for 3 seconds
+      // Navigate to docHomeScreen after the delay
+      GoRouter.of(context).goNamed(MyNamedRoutes.patientHomeScreen);
+    }
 
-    // // Introduce a delay of 3 seconds before checking the condition
-    // Future<void> navigateToNextScreen() async {
-    //   await Future.delayed(Duration(seconds: 2));
-    //   // After the delay, check the condition and navigate accordingly
-    //   final userAuthState = checkIfUserAuthinticated.value;
-    //   if (userAuthState is AsyncData<User?> &&
-    //       userAuthState.value?.uid != null) {
-    //     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //       GoRouter.of(context).goNamed(MyNamedRoutes.docRegister);
-    //     });
-    //   } else {
-    //     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-    //       GoRouter.of(context).goNamed(MyNamedRoutes.docHomeScreen);
-    //     });
-    //   }
-    // }
-
-    // // Call the navigateToNextScreen function when the widget is built
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   navigateToNextScreen();
-    // });
+    // Call the navigateToNextScreen function when the widget is built
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      navigateToNextScreen();
+    });
 
     // Return the splash screen widget
     return Scaffold(
-        body: checkIfUserAuthinticated.when(
-      data: (data) {
-        if (data.value?.uid != null) {
-          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-            GoRouter.of(context).goNamed(MyNamedRoutes.login);
-          });
-        } else {
-          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-            GoRouter.of(context).goNamed(MyNamedRoutes.doclogin);
-          });
-        }
-      },
-      error: (error, stackTrace) => Center(child: Text(error.toString())),
-      loading: () => Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(
               child: Center(
                 child: Image.asset(
-                  'assets/images/logo.png', // Replace with your [DA] logo asset path
+                  'assets/images/logo.png', // Replace with your logo asset path
                   width: context.screenHeight * 0.1,
                   height: context.screenHeight * 0.2,
                   fit: BoxFit.cover,
@@ -78,6 +49,6 @@ class SplashScreen extends ConsumerWidget {
           ],
         ),
       ),
-    ));
+    );
   }
 }
