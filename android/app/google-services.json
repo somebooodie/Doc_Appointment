@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "235707589729",
+    "firebase_url": "https://dr-appointments-630eb-default-rtdb.firebaseio.com",
     "project_id": "dr-appointments-630eb",
     "storage_bucket": "dr-appointments-630eb.appspot.com"
   },
@@ -19,6 +20,14 @@
           "android_info": {
             "package_name": "com.example.doc_appointment",
             "certificate_hash": "58eed19d8763f76859ea1275bd2805e4d149aba3"
+          }
+        },
+        {
+          "client_id": "235707589729-fnua3pnsl2jrlu6pusaldtgr6tdbak3c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.doc_appointment",
+            "certificate_hash": "5a2bcffff476737f919d6c4135f4402b3c680f6f"
           }
         },
         {

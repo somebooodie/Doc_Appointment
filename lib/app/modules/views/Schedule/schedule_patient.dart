@@ -10,14 +10,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class schedulePatient extends StatefulWidget {
-  const schedulePatient({super.key});
+class SchedulePatient extends StatefulWidget {
+  const SchedulePatient({super.key});
 
   @override
-  State<schedulePatient> createState() => _schedulePatientState();
+  State<SchedulePatient> createState() => _SchedulePatientState();
 }
 
-class _schedulePatientState extends State<schedulePatient> {
+class _SchedulePatientState extends State<SchedulePatient> {
   String issues = "What is your issue?";
   List<String> issuesList = <String>[
     'What is your issue?',

@@ -1,3 +1,4 @@
+import 'package:doc_appointment/app/config/theme/my_colors.dart';
 import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -92,7 +93,12 @@ class MedDocAdd extends ConsumerWidget {
                     decoration: InputDecoration(
                         labelText: 'Patient', border: OutlineInputBorder()),
                     value: selectedPatient,
-                    hint: Text('Select Patient'),
+                    iconEnabledColor: MyColors.blue,
+                    hint: Text(
+                      'Select Patient',
+                      selectionColor: MyColors.blue,
+                    ),
+                    focusColor: MyColors.blue,
                     onChanged: (String? newValue) {
                       selectedPatient = newValue;
                     },
@@ -100,16 +106,21 @@ class MedDocAdd extends ConsumerWidget {
                         usernames.map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
-                        child: Text(value),
+                        child: Text(
+                          value,
+                          style: TextStyle(
+                            color: Colors.blue, // Set text color to blue
+                          ),
+                        ),
                       );
                     }).toList(),
-                    dropdownColor: Colors.blue,
+                    dropdownColor: Colors.white,
                   ),
                   SizedBox(height: 16),
                   TextFormField(
                     controller: nameController,
                     decoration: InputDecoration(
-                      labelText: 'Medication Name',
+                      labelText: 'Medicine Name',
                       labelStyle: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -135,7 +146,7 @@ class MedDocAdd extends ConsumerWidget {
                       labelText: 'Quantity in Box',
                       labelStyle: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.purple,
+                        color: Colors.blue,
                       ),
                     ),
                     keyboardType: TextInputType.number,

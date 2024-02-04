@@ -174,7 +174,7 @@ abstract class AppRouter {
             name: MyNamedRoutes.mdDocPage,
             pageBuilder: (context, state) => NoTransitionPage(
               key: state.pageKey,
-              child: mdDocPage(),
+              child: MdDocPage(),
             ),
             routes: [
               GoRoute(
@@ -220,7 +220,7 @@ abstract class AppRouter {
               name: MyNamedRoutes.patientHomeScreen,
               pageBuilder: (context, state) => NoTransitionPage(
                     key: state.pageKey,
-                    child: patientHomeScreen(),
+                    child: PatientHomeScreen(),
                   ),
               routes: [
                 GoRoute(
@@ -238,7 +238,7 @@ abstract class AppRouter {
                   name: MyNamedRoutes.schedulePatient,
                   pageBuilder: (context, state) => NoTransitionPage(
                     key: state.pageKey,
-                    child: schedulePatient(),
+                    child: SchedulePatient(),
                   ),
                 ),
                 GoRoute(
