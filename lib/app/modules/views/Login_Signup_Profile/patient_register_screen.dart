@@ -19,16 +19,6 @@ class PatientRegisterScreen extends ConsumerWidget {
     final formProvider = ref.watch(authFormController);
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: MyColors.primary_500,
-        centerTitle: true,
-        automaticallyImplyLeading: true,
-        title: Text(
-          context.translate.patientRegister,
-          style: context.textTheme.headlineMedium
-              ?.copyWith(fontSize: 16, color: MyColors.white),
-        ),
-      ),
       body: Column(
         children: [
           // Adjust the height of the image asset to fill the top part
@@ -65,10 +55,10 @@ class PatientRegisterScreen extends ConsumerWidget {
                 }
               },
               child: Text(
-                context.translate.register,
+                context.translate.login,
                 style: context.textTheme.bodyLarge?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: MyColors.primary_500,
+                  color: MyColors.blue,
                 ),
               ),
             ),
@@ -76,7 +66,7 @@ class PatientRegisterScreen extends ConsumerWidget {
           SizedBox(height: context.screenHeight * 0.02), // Adjust spacing
           Container(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: ElevatedButton(
+            child: TextButton(
               onPressed: () {
                 GoRouter.of(context).pushNamed(MyNamedRoutes.docRegister);
               },
@@ -85,6 +75,26 @@ class PatientRegisterScreen extends ConsumerWidget {
                 style: context.textTheme.bodyLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: MyColors.primary_500,
+                  decoration: TextDecoration.underline,
+                  decorationColor: MyColors.blue,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: context.screenHeight * 0.02), // Adjust spacing
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: TextButton(
+              onPressed: () {
+                GoRouter.of(context).goNamed(MyNamedRoutes.patientlogin);
+              },
+              child: Text(
+                "Already have an account? Login",
+                style: context.textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: MyColors.primary_500,
+                  decoration: TextDecoration.underline,
+                  decorationColor: MyColors.blue,
                 ),
               ),
             ),

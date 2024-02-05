@@ -17,17 +17,9 @@ class DocRegisterScreen extends ConsumerWidget {
     final formProvider = ref.watch(authFormController);
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: MyColors.primary_500,
-        centerTitle: true,
-        automaticallyImplyLeading: true,
-        title: Text(
-          context.translate.docRegister,
-          style: context.textTheme.headlineMedium
-              ?.copyWith(fontSize: 16, color: MyColors.white),
-        ),
-      ),
       body: Column(
+        crossAxisAlignment:
+            CrossAxisAlignment.center, // Make components take full width
         children: [
           // Adjust the height of the image asset to fill the top part
           Expanded(
@@ -41,14 +33,14 @@ class DocRegisterScreen extends ConsumerWidget {
             ),
           ),
           // Smaller and less spaced-out cards
-          Container(
+          Padding(
             padding: EdgeInsets.all(16.0),
             child: DocRegisterAuthForm(
               registerFormKey: registerFormKey,
             ),
           ),
           SizedBox(height: context.screenHeight * 0.02), // Adjust spacing
-          Container(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: ElevatedButton(
               onPressed: () {
@@ -64,7 +56,7 @@ class DocRegisterScreen extends ConsumerWidget {
                 }
               },
               child: Text(
-                context.translate.register,
+                "Register",
                 style: context.textTheme.bodyLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: MyColors.primary_500,
@@ -73,9 +65,9 @@ class DocRegisterScreen extends ConsumerWidget {
             ),
           ),
           SizedBox(height: context.screenHeight * 0.02), // Adjust spacing
-          Container(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: ElevatedButton(
+            child: TextButton(
               onPressed: () {
                 GoRouter.of(context).pushNamed(MyNamedRoutes.patientRegister);
               },
@@ -84,6 +76,8 @@ class DocRegisterScreen extends ConsumerWidget {
                 style: context.textTheme.bodyLarge?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: MyColors.primary_500,
+                  decoration: TextDecoration.underline,
+                  decorationColor: MyColors.blue,
                 ),
               ),
             ),

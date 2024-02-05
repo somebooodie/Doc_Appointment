@@ -1,20 +1,18 @@
 {
-    "login":"Login",
-    "register":"Register",
-    "email":"Email",
-    "userName":"User Name",
-    "password":"Password",
-    "patientlogin":"Patient Login",
-    "docLogin":"Doctor Login",
-    "home":"Home",
-    "calendar":"Calendar",
-    "prescription":"Prescription",
-    "profile":"Profile",
-    "changepassword": "Change Password",
-    "patientregister": "Patient Register",
-    "doctorId": "Doctor Id",
-    "docRegister":"Doctor Register",
-    "patientRegister": "Patient Register"
-  
-
+  "login": "Login",
+  "register": "Not Registered? Register now!",
+  "email": "Email",
+  "userName": "User Name",
+  "password": "Password",
+  "patientlogin": "Switch to Patient Login",
+  "docLogin": "Switch to Doctor Login",
+  "home": "Home",
+  "calendar": "Calendar",
+  "prescription": "Prescription",
+  "profile": "Profile",
+  "changepassword": "Change Password",
+  "patientregister": "Patient Register",
+  "doctorId": "Doctor Id",
+  "docRegister": "Doctor Register",
+  "patientRegister": "Patient Register"
 }

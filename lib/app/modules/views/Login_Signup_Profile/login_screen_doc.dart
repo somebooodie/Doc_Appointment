@@ -21,95 +21,120 @@ class doclogin extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final authController = ref.read(authControllerProvider.notifier);
     final formProvider = ref.watch(authFormController);
+
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: MyColors.primary_500,
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-        title: Text(context.translate.docLogin,
-            style: context.textTheme.headlineMedium
-                ?.copyWith(fontSize: 16, color: MyColors.white)),
-      ),
-      body: SingleChildScrollView(
+      body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            DocLoginAuthForm(
-              registerFormKey: registerFormKey,
+            SizedBox(height: context.screenHeight * 0.03),
+            Image.asset(
+              'assets/images/Big_logo.png',
+              width: context.screenWidth * 0.8,
+              height: context.screenHeight * 0.3,
             ),
-            SizedBox(
-              height: context.screenHeight * 0.04,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                if (registerFormKey.currentState?.validate() == true) {
-                  authController
-                      .login(
-                          email: formProvider.email,
-                          password: formProvider.password)
-                      .then((value) async {
-                    if (value == true) {
-                      Future<MyUser?> getCurrentUserData() async {
-                        try {
-                          DocumentSnapshot userData = await FirebaseFirestore
-                              .instance
-                              .collection('users')
-                              .doc(FirebaseAuth.instance.currentUser!.uid)
-                              .get();
+            Padding(
+              padding:
+                  const EdgeInsets.all(8.0), // Adjusted the overall padding
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  DocLoginAuthForm(
+                    registerFormKey: registerFormKey,
+                  ),
+                  SizedBox(
+                    height: context.screenHeight * 0.02,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (registerFormKey.currentState?.validate() == true) {
+                        authController
+                            .login(
+                                email: formProvider.email,
+                                password: formProvider.password)
+                            .then((value) async {
+                          if (value == true) {
+                            Future<MyUser?> getCurrentUserData() async {
+                              try {
+                                DocumentSnapshot userData =
+                                    await FirebaseFirestore.instance
+                                        .collection('users')
+                                        .doc(FirebaseAuth
+                                            .instance.currentUser!.uid)
+                                        .get();
 
-                          // 2. Create user object and map the value from Firebase to this user object.
-                          MyUser user = MyUser.fromMap(
-                              userData.data() as Map<String, dynamic>);
-                          return user;
-                        } catch (e) {
-                          print("Error fetching user data: $e");
-                          return null;
-                        }
+                                MyUser user = MyUser.fromMap(
+                                    userData.data() as Map<String, dynamic>);
+                                return user;
+                              } catch (e) {
+                                print("Error fetching user data: $e");
+                                return null;
+                              }
+                            }
+
+                            MyUser? user = await getCurrentUserData();
+
+                            if (user!.doctorId == formProvider.doctorId) {
+                              GoRouter.of(context)
+                                  .goNamed(MyNamedRoutes.docHomeScreen);
+                            } else {
+                              print("User is not a doctor");
+                            }
+                          }
+                        });
                       }
-
-                      MyUser? user = await getCurrentUserData();
-                      print(user!.doctorId + "\n");
-                      print(user!.email + "\n");
-                      //   Verify if the user has a doctor ID
-                      if (user!.doctorId == formProvider.doctorId) {
-                        // Navigate to the doctor home screen
-                        GoRouter.of(context)
-                            .goNamed(MyNamedRoutes.docHomeScreen);
-                      } else {
-                        //   // Handle the case when the user is not a doctor
-                        //   // You can show an error message or perform other actions
-
-                        print("User is not a doctor");
-                      }
-                    }
-                  });
-                }
-              },
-              child: Text(
-                context.translate.login,
-                style: context.textTheme.bodyLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: MyColors.primary_500,
-                ),
+                    },
+                    child: Text(
+                      context.translate.login,
+                      style: context.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: MyColors.white,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      minimumSize: Size(300, 60), // Set button size
+                    ),
+                  ),
+                  SizedBox(
+                    height: context.screenHeight * 0.02,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      GoRouter.of(context).pushNamed(MyNamedRoutes.docRegister);
+                    },
+                    child: Text(
+                      context.translate.register,
+                      style: context.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: MyColors.blue,
+                        decoration: TextDecoration.underline,
+                        decorationColor: MyColors.blue,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: context.screenHeight * 0.02,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      GoRouter.of(context).goNamed(MyNamedRoutes.patientlogin);
+                    },
+                    child: Text(
+                      context.translate.patientlogin,
+                      style: context.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: MyColors.blue,
+                        decoration: TextDecoration.underline,
+                        decorationColor:
+                            MyColors.blue, // Set the underline color
+                      ),
+                    ),
+                  )
+                ],
               ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                GoRouter.of(context).pushNamed(MyNamedRoutes.docRegister);
-              },
-              child: Text(context.translate.register,
-                  style: context.textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: MyColors.primary_500)),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                GoRouter.of(context).goNamed(MyNamedRoutes.patientlogin);
-              },
-              child: Text(context.translate.patientlogin,
-                  style: context.textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: MyColors.primary_500)),
             ),
           ],
         ),
