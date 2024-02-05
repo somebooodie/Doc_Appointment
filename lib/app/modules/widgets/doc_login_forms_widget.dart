@@ -67,7 +67,7 @@ class _MyAuthFormState extends ConsumerState<DocLoginAuthForm> {
                   authFormContrller.setEmailField(val);
                 },
               ),
-              SizedBox(height: context.screenHeight * 0.05),
+              // SizedBox(height: context.screenHeight * 0.02),
               MyTextFormField(
                 textEditingController: doctorIdController,
                 obscureText: false,
@@ -80,7 +80,7 @@ class _MyAuthFormState extends ConsumerState<DocLoginAuthForm> {
                   authFormContrller.setDoctorId(val);
                 },
               ),
-              SizedBox(height: context.screenHeight * 0.05),
+              // SizedBox(height: context.screenHeight * 0.02),
               MyTextFormField(
                 textEditingController: passwordController,
                 obscureText: authFormContrller.togglePassword,

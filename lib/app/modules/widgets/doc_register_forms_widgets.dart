@@ -59,7 +59,7 @@ class _MyAuthFormState extends ConsumerState<DocRegisterAuthForm> {
       child: Form(
         key: widget.registerFormKey,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.symmetric(vertical: 20),
           child: Column(
             children: [
               MyTextFormField(
@@ -76,7 +76,7 @@ class _MyAuthFormState extends ConsumerState<DocRegisterAuthForm> {
                   authFormContrller.setEmailField(val);
                 },
               ),
-              SizedBox(height: context.screenHeight * 0.05),
+              //SizedBox(height: context.screenHeight * 0.05),
               MyTextFormField(
                 textEditingController: userNameController,
                 obscureText: false,
@@ -89,7 +89,7 @@ class _MyAuthFormState extends ConsumerState<DocRegisterAuthForm> {
                   authFormContrller.setUserNameField(val);
                 },
               ),
-              SizedBox(height: context.screenHeight * 0.05),
+              // SizedBox(height: context.screenHeight * 0.05),
               MyTextFormField(
                 textEditingController:
                     doctorIdController, // Change to doctorIdController
@@ -105,7 +105,7 @@ class _MyAuthFormState extends ConsumerState<DocRegisterAuthForm> {
                   authFormContrller.setDoctorId(val);
                 },
               ),
-              SizedBox(height: context.screenHeight * 0.05),
+              // SizedBox(height: context.screenHeight * 0.05),
               MyTextFormField(
                 textEditingController: passwordController,
                 obscureText: authFormContrller.togglePassword,

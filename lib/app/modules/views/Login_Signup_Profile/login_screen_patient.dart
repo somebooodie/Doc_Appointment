@@ -12,70 +12,102 @@ import 'package:go_router/go_router.dart';
 class LoginScreen extends ConsumerWidget {
   LoginScreen({super.key});
   final registerFormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final authController = ref.read(authControllerProvider.notifier);
     final formProvider = ref.watch(authFormController);
+
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: MyColors.primary_500,
-        centerTitle: true,
-        automaticallyImplyLeading: false,
-        title: Text(context.translate.patientlogin,
-            style: context.textTheme.headlineMedium
-                ?.copyWith(fontSize: 16, color: MyColors.white)),
-      ),
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            PatientLoginAuthForm(
-              registerFormKey: registerFormKey,
+            SizedBox(height: context.screenHeight * 0.03),
+            Image.asset(
+              'assets/images/Big_logo.png',
+              width: context.screenWidth * 0.8,
+              height: context.screenHeight * 0.3,
             ),
-            SizedBox(
-              height: context.screenHeight * 0.04,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                if (registerFormKey.currentState?.validate() == true) {
-                  authController
-                      .login(
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  PatientLoginAuthForm(
+                    registerFormKey: registerFormKey,
+                  ),
+                  SizedBox(
+                    height: context.screenHeight * 0.02,
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (registerFormKey.currentState?.validate() == true) {
+                        authController
+                            .login(
                           email: formProvider.email,
-                          //  userName: formProvider.userName,
-                          password: formProvider.password)
-                      .then((value) {
-                    if (value == true) {
+                          password: formProvider.password,
+                        )
+                            .then((value) {
+                          if (value == true) {
+                            GoRouter.of(context)
+                                .goNamed(MyNamedRoutes.patientHomeScreen);
+                          }
+                        });
+                      }
+                    },
+                    child: Text(
+                      context.translate.login,
+                      style: context.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: MyColors.white,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: MyColors.blue, // Set the background color
+                      onPrimary: MyColors.white, // Set the text color
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      minimumSize: Size(300, 60), // Set button size
+                    ),
+                  ),
+                  SizedBox(
+                    height: context.screenHeight * 0.02,
+                  ),
+                  TextButton(
+                    onPressed: () {
                       GoRouter.of(context)
-                          .goNamed(MyNamedRoutes.patientHomeScreen);
-                    }
-                  });
-                  // sign up router will be here)
-                  //GoRouter.of(context).goNamed(MyNamedRoutes.homepage);
-                }
-                //GoRouter.of(context).goNamed(MyNamedRoutes.login);
-              },
-              child: Text(context.translate.login,
-                  style: context.textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: MyColors.primary_500)),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                GoRouter.of(context).pushNamed(MyNamedRoutes.patientRegister);
-              },
-              child: Text(context.translate.register,
-                  style: context.textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: MyColors.primary_500)),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                GoRouter.of(context).goNamed(MyNamedRoutes.doclogin);
-              },
-              child: Text(context.translate.docLogin,
-                  style: context.textTheme.bodyLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: MyColors.primary_500)),
+                          .pushNamed(MyNamedRoutes.patientRegister);
+                    },
+                    child: Text(
+                      context.translate.register,
+                      style: context.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: MyColors.primary_500,
+                        decoration: TextDecoration.underline,
+                        decorationColor: MyColors.blue,
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: context.screenHeight * 0.02,
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      GoRouter.of(context).goNamed(MyNamedRoutes.doclogin);
+                    },
+                    child: Text(
+                      context.translate.docLogin,
+                      style: context.textTheme.bodyLarge?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: MyColors.primary_500,
+                        decoration: TextDecoration.underline,
+                        decorationColor: MyColors.blue,
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ],
         ),

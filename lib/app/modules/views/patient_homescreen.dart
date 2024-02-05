@@ -8,13 +8,13 @@ class PatientHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: context.screenHeight * 0.12,
-        backgroundColor: Colors.white, // Set background color to white
-        elevation: 0, // Remove elevation
+        toolbarHeight: context.screenHeight * 0.15,
+        backgroundColor: Colors.white,
+        elevation: 0,
         title: Image.asset(
           'assets/images/logo.png',
-          width: context.screenHeight * 0.1,
-          height: context.screenHeight * 0.06,
+          width: context.screenHeight * 0.12,
+          height: context.screenHeight * 0.12,
           fit: BoxFit.cover,
         ),
         centerTitle: true,
@@ -28,7 +28,8 @@ class PatientHomeScreen extends StatelessWidget {
               },
               icon: Icon(
                 Icons.account_circle,
-                color: Colors.blue, // Profile icon color
+                color: Colors.blue,
+                size: context.screenHeight * 0.045,
               ),
             ),
           ),
@@ -38,16 +39,37 @@ class PatientHomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _buildSquareButton(
-              context: context,
-              imagePath: 'assets/images/patient_appointment.png',
-              text: 'Book Appointment for Patient',
-              routeName: MyNamedRoutes.schedulePatient,
+            ElevatedButton(
+              onPressed: () {
+                // Handle login action
+              },
+              child: Text(
+                context.translate.login,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                minimumSize: Size(300, 60),
+              ),
             ),
             SizedBox(height: context.screenHeight * 0.05),
             _buildSquareButton(
               context: context,
-              imagePath: 'assets/images/faq_patient.png',
+              imagePath:
+                  'assets/images/overhead-view-stethoscope-near-ecg-paper-graph-report-blue-backdrop.jpg',
+              text: 'Book Appointment for Patient',
+              routeName: MyNamedRoutes.schedulePatient,
+            ),
+            _buildSquareButton(
+              context: context,
+              imagePath:
+                  'assets/images/doctors-day-curly-handsome-cute-guy-medical-uniform-thinking-looking-far.jpg',
               text: 'Ask FAQ for Patient',
               routeName: MyNamedRoutes.faqPatient,
             ),
@@ -70,7 +92,7 @@ class PatientHomeScreen extends StatelessWidget {
         } else if (routeName == MyNamedRoutes.faqPatient) {
           GoRouter.of(context).push('/patientHomeScreen/faqPatient');
         } else if (routeName == MyNamedRoutes.PatientProfileScreen) {
-          GoRouter.of(context).push('/patientHomeScreen/profile');
+          GoRouter.of(context).push('/patientHomeScreen/Profile');
         } else {
           GoRouter.of(context).go(routeName);
         }
@@ -84,39 +106,40 @@ class PatientHomeScreen extends StatelessWidget {
               color: Colors.grey.withOpacity(0.5),
               spreadRadius: 1,
               blurRadius: 3,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: Offset(0, 3),
             ),
           ],
         ),
-        child: Card(
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12.0),
-          ),
-          child: Container(
-            width: context.screenWidth * 0.6,
-            height: context.screenWidth * 0.6,
-            padding: EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Image.asset(
-                  imagePath,
-                  width: context.screenWidth * 0.4,
-                  height: context.screenWidth * 0.4,
-                  fit: BoxFit.cover,
-                ),
-                Text(
+        child: Stack(
+          children: [
+            Container(
+              width: double.infinity,
+              height: context.screenWidth * 0.6,
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
+              width: double.infinity,
+              height: context.screenWidth * 0.6,
+              decoration: BoxDecoration(
+                color: Colors.black.withOpacity(0.2),
+                borderRadius: BorderRadius.circular(12.0),
+              ),
+              child: Center(
+                child: Text(
                   text,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    color: Colors.white,
+                    fontSize: 18,
                   ),
                 ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );

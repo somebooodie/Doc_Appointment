@@ -17,80 +17,72 @@ class DocRegisterScreen extends ConsumerWidget {
     final formProvider = ref.watch(authFormController);
 
     return Scaffold(
-      backgroundColor: Colors.white, // Set scaffold background color to white
-      appBar: AppBar(
-        title: Text('Doctor Register', style: TextStyle(color: Colors.white),),
-        centerTitle: true,
-        backgroundColor: MyColors.primary_500, // Use the primary color from MyColors
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            GoRouter.of(context).pop();
-          },
-        ),
-        // Removed the question mark icon from the AppBar actions
-      ),
-      body: SingleChildScrollView( // Use SingleChildScrollView to avoid overflow when keyboard appears
-        child: Column(
-          children: [
-            SizedBox(
+      body: Column(
+        crossAxisAlignment:
+            CrossAxisAlignment.center, // Make components take full width
+        children: [
+          // Adjust the height of the image asset to fill the top part
+          Expanded(
+            child: SizedBox(
               height: double.infinity,
               width: double.infinity,
               child: Image.asset(
                 'assets/images/Big_logo.png',
-                fit: BoxFit.contain, // Use BoxFit.contain to keep the image aspect ratio
+                fit: BoxFit.cover,
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0), // Adjust padding to bring fields closer
-              child: DocRegisterAuthForm(
-                registerFormKey: registerFormKey,
-              ),
+          ),
+          // Smaller and less spaced-out cards
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: DocRegisterAuthForm(
+              registerFormKey: registerFormKey,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  primary: MyColors.primary_500, // Set the background color to the primary color
-                  onPrimary: Colors.white, // Set the text color to white
-                ),
-                onPressed: () {
-                  if (registerFormKey.currentState?.validate() == true) {
-                    authController.docregister(
-                      email: formProvider.email,
-                      userName: formProvider.userName,
-                      password: formProvider.password,
-                      doctorId: formProvider.doctorId,
-                    );
-                    GoRouter.of(context).goNamed(MyNamedRoutes.doclogin);
-                  }
-                },
-                child: Text(
-                  context.translate.register,
-                  style: context.textTheme.bodyLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: TextButton(
-                onPressed: () {
-                  GoRouter.of(context).pushNamed(MyNamedRoutes.patientRegister);
-                },
-                child: Text(
-                  "Switch to Patient",
-                  style: TextStyle(
-                    decoration: TextDecoration.underline, // Underline the text
-                    color: MyColors.primary_500, // Use the primary color for the text
-                  ),
+          ),
+          SizedBox(height: context.screenHeight * 0.02), // Adjust spacing
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: ElevatedButton(
+              onPressed: () {
+                if (registerFormKey.currentState?.validate() == true) {
+                  authController.docregister(
+                    email: formProvider.email,
+                    userName: formProvider.userName,
+                    password: formProvider.password,
+                    doctorId: formProvider.doctorId,
+                  );
+                  // sign up router will be here
+                  GoRouter.of(context).goNamed(MyNamedRoutes.doclogin);
+                }
+              },
+              child: Text(
+                "Register",
+                style: context.textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: MyColors.primary_500,
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+          SizedBox(height: context.screenHeight * 0.02), // Adjust spacing
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            child: TextButton(
+              onPressed: () {
+                GoRouter.of(context).pushNamed(MyNamedRoutes.patientRegister);
+              },
+              child: Text(
+                "Switch to Patient",
+                style: context.textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: MyColors.primary_500,
+                  decoration: TextDecoration.underline,
+                  decorationColor: MyColors.blue,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

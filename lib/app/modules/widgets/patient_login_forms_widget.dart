@@ -76,36 +76,7 @@ class _MyAuthFormState extends ConsumerState<PatientLoginAuthForm> {
                   authFormContrller.setEmailField(val);
                 },
               ),
-              // SizedBox(height: context.screenHeight * 0.05),
-              // MyTextFormField(
-              //   textEditingController: userNameController,
-              //   obscureText: false,
-              //   myFocusNode: userNameFocus,
-              //   validator: (input) => authValidators.userNameValidator(input),
-              //   prefexIcon: const Icon(Icons.person),
-              //   labelText: context.translate.userName,
-              //   myTextInputAction: TextInputAction.next,
-              //   onChanged: (val) {
-              //     authFormContrller.setUserNameField(val);
-              //   },
-              // ),
-              // SizedBox(height: context.screenHeight * 0.05),
-              // MyTextFormField(
-              //   textEditingController: doctorIdController, // Change to doctorIdController
-              //   obscureText: false,
-              //   myFocusNode: doctorIdFocus, // Change to doctorIdFocus
-              //   validator: (input) =>
-              //       authValidators.doctorIdValidator(input), // Adjust the validator if needed
-              //   prefexIcon: const Icon(Icons.medical_services),
-              //   labelText: context.translate.doctorId, // Change to doctorId
-              //   myTextInputAction: TextInputAction.next,
-              //   onChanged: (val) {
-              //     // Handle doctor id changes
-              //      authFormContrller.setDoctorId(val);
-              //   },
-              // ),
-
-              SizedBox(height: context.screenHeight * 0.05),
+              //SizedBox(height: context.screenHeight * 0.05),
               MyTextFormField(
                 textEditingController: passwordController,
                 obscureText: authFormContrller.togglePassword,
