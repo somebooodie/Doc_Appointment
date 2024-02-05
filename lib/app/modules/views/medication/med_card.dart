@@ -32,7 +32,7 @@ class MedicationCard extends StatelessWidget {
                 SizedBox(height: 4.0),
                 Text(
                   'Tablets in box: ${med.quantity}',
-                  style: TextStyle(color: Colors.purple, fontSize: 11.0),
+                  style: TextStyle(color: Colors.blue, fontSize: 11.0),
                 ),
               ],
             ),

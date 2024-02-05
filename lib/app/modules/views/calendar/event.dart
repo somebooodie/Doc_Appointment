@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 class Event {
   final String title;
   final DateTime date;
@@ -5,4 +7,3 @@ class Event {
 
   Event(this.title, this.date, this.username);
 }
-

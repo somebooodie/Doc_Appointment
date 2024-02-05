@@ -3,36 +3,36 @@ import 'package:doc_appointment/app/core/extensions/build_context_extension.dart
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class mdDocPage extends StatelessWidget {
+class MdDocPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: context.screenHeight * 0.12,
+        toolbarHeight: context.screenHeight * 0.15,
         title: Image.asset(
-          'assets/images/logo.png', // Replace with your [DA] logo asset path
-          width: context.screenHeight * 0.05,
-          height: context.screenHeight * 0.09,
+          'assets/images/logo.png',
+          width: context.screenHeight * 0.12,
+          height: context.screenHeight * 0.12,
           fit: BoxFit.cover,
         ),
-        centerTitle: true, // Centers the title image
+        centerTitle: true,
       ),
       body: Center(
-        // Center the content
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _buildSquareButton(
               context: context,
-              imagePath: 'assets/images/box_meds.png',
-              text: 'Add meds By Docotor',
+              imagePath: 'assets/images/top-view-variety-medicine-tablets.jpg',
+              text: 'Add Meds By Doctor',
               routeName: MyNamedRoutes.medDocAdd,
             ),
-            SizedBox(height: context.screenHeight * 0.09),
+            SizedBox(height: context.screenHeight * 0.0), // Adjusted spacing
             _buildSquareButton(
               context: context,
-              imagePath: 'assets/images/med_report.png',
-              text: 'write prescription by Docotor',
+              imagePath:
+                  'assets/images/glasses-medications-around-clipboard.jpg',
+              text: 'Write Prescription By Doctor',
               routeName: MyNamedRoutes.PrescriptionUploadPage,
             ),
           ],
@@ -49,7 +49,6 @@ class mdDocPage extends StatelessWidget {
   }) {
     return InkWell(
       onTap: () {
-        // Check if it's a nested route and use the full path
         if (routeName == MyNamedRoutes.medDocAdd) {
           GoRouter.of(context).pushNamed(MyNamedRoutes.medDocAdd);
         } else if (routeName == MyNamedRoutes.PrescriptionUploadPage) {
@@ -58,78 +57,40 @@ class mdDocPage extends StatelessWidget {
           GoRouter.of(context).go(routeName);
         }
       },
-      child: Container(
-        width: context.screenHeight * 0.3,
-        height: context.screenHeight * 0.3, // Making the container square
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              imagePath,
-              width: context.screenHeight * 0.2,
-              height: context.screenHeight * 0.2,
-              fit: BoxFit.cover,
+      child: Stack(
+        children: [
+          Container(
+            width: double.infinity, // Adjusted width
+            height: context.screenHeight * 0.35, // Adjusted height
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(imagePath),
+                fit: BoxFit.cover,
+              ),
+              borderRadius: BorderRadius.circular(12.0),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: Text(text),
+          ),
+          Container(
+            width: double.infinity,
+            height: context.screenHeight * 0.35,
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.12),
+              borderRadius: BorderRadius.circular(12.0),
             ),
-          ],
-        ),
+            child: Center(
+              child: Text(
+                text,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
 }
-
-
-// import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-// class mdDocPage extends ConsumerWidget {
-//   const mdDocPage({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         toolbarHeight: context.screenHeight * 0.12,
-//         title: Image.asset(
-//           'assets/images/logo.png', // Replace with your [DA] logo asset path
-//           width: context.screenHeight * 0.05,
-//           height: context.screenHeight * 0.09,
-//           fit: BoxFit.cover,
-//         ),
-//         centerTitle: true, // This will center the title image
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//           children: [
-//             Expanded(
-//               child: Center(
-//                 child: Image.asset(
-//                   'assets/images/box_meds.png',
-//                   width: context.screenHeight * 0.3,
-//                   height: context.screenHeight * 0.2,
-//                   fit: BoxFit.cover,
-//                 ),
-//               ),
-//             ),
-//             Padding(
-//               padding: EdgeInsets.only(bottom: context.screenHeight * 0.09),
-//               child: Image.asset(
-//                 'assets/images/med_report.png',
-//                 width: context.screenHeight * 0.3,
-//                 height: context.screenHeight * 0.2,
-//                 fit: BoxFit.cover,
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
-
-

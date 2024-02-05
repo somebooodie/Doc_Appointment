@@ -74,7 +74,7 @@ class faqPatient extends ConsumerWidget {
               height: 80,
             ),
             Image.asset(
-              'assets/images/med_report.png',
+              'assets/images/doctors-day-curly-handsome-cute-guy-medical-uniform-thinking-looking-far.jpg',
               width: context.screenHeight * 0.3,
               height: context.screenHeight * 0.2,
               fit: BoxFit.cover,

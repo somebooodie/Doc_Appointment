@@ -16,11 +16,11 @@ class UserInfoRow extends StatelessWidget {
         children: [
           Text(
             label,
-            style: TextStyle(fontSize: 14, color: MyColors.white),
+            style: TextStyle(fontSize: 14, color: MyColors.primary_500),
           ),
           Text(
             value,
-            style: TextStyle(fontSize: 14, color: MyColors.white),
+            style: TextStyle(fontSize: 14, color: MyColors.primary_500),
           ),
         ],
       ),

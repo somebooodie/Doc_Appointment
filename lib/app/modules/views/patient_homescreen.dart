@@ -3,35 +3,38 @@ import 'package:doc_appointment/app/core/extensions/build_context_extension.dart
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class patientHomeScreen extends StatelessWidget {
+class PatientHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: context.screenHeight * 0.12,
+        backgroundColor: Colors.white, // Set background color to white
+        elevation: 0, // Remove elevation
         title: Image.asset(
-          'assets/images/logo.png', // Replace with your [DA] logo asset path
-          width: context.screenHeight * 0.05,
-          height: context.screenHeight * 0.09,
+          'assets/images/logo.png',
+          width: context.screenHeight * 0.1,
+          height: context.screenHeight * 0.06,
           fit: BoxFit.cover,
         ),
-        centerTitle: true, // Centers the title image
+        centerTitle: true,
         actions: [
-          // Profile Icon
           Padding(
             padding: EdgeInsets.only(right: 16.0),
             child: IconButton(
               onPressed: () {
-                GoRouter.of(context).goNamed(MyNamedRoutes
-                    .PatientProfileScreen); // Add your profile navigation logic here
+                GoRouter.of(context)
+                    .goNamed(MyNamedRoutes.PatientProfileScreen);
               },
-              icon: Icon(Icons.account_circle),
+              icon: Icon(
+                Icons.account_circle,
+                color: Colors.blue, // Profile icon color
+              ),
             ),
           ),
         ],
       ),
       body: Center(
-        // Center the content
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -41,7 +44,7 @@ class patientHomeScreen extends StatelessWidget {
               text: 'Book Appointment for Patient',
               routeName: MyNamedRoutes.schedulePatient,
             ),
-            SizedBox(height: context.screenHeight * 0.09),
+            SizedBox(height: context.screenHeight * 0.05),
             _buildSquareButton(
               context: context,
               imagePath: 'assets/images/faq_patient.png',
@@ -62,7 +65,6 @@ class patientHomeScreen extends StatelessWidget {
   }) {
     return InkWell(
       onTap: () {
-        // Check if it's a nested route and use the full path
         if (routeName == MyNamedRoutes.schedulePatient) {
           GoRouter.of(context).push('/patientHomeScreen/schedulePatient');
         } else if (routeName == MyNamedRoutes.faqPatient) {
@@ -74,102 +76,49 @@ class patientHomeScreen extends StatelessWidget {
         }
       },
       child: Container(
-        width: context.screenHeight * 0.3,
-        height: context.screenHeight * 0.3, // Making the container square
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              imagePath,
-              width: context.screenHeight * 0.2,
-              height: context.screenHeight * 0.2,
-              fit: BoxFit.cover,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8.0),
-              child: Text(text),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(12.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 1,
+              blurRadius: 3,
+              offset: Offset(0, 3), // changes position of shadow
             ),
           ],
+        ),
+        child: Card(
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          child: Container(
+            width: context.screenWidth * 0.6,
+            height: context.screenWidth * 0.6,
+            padding: EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Image.asset(
+                  imagePath,
+                  width: context.screenWidth * 0.4,
+                  height: context.screenWidth * 0.4,
+                  fit: BoxFit.cover,
+                ),
+                Text(
+                  text,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
   }
 }
-
-
-// //import 'package:doc_appointment/app/config/routes/named_routes.dart';
-// import 'package:doc_appointment/app/core/extensions/build_context_extension.dart';
-// import 'package:doc_appointment/app/modules/auth/domain/providers/state/auth_provider.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_riverpod/flutter_riverpod.dart';
-// import 'package:go_router/go_router.dart';
-
-// // ignore: camel_case_types
-// class DocHomeScreen extends ConsumerWidget {
-//   const DocHomeScreen({Key? key});
-
-//   @override
-//   Widget build(BuildContext context, WidgetRef ref) {
-//     final checkIfUserAuthenticated =
-//         ref.watch(checkIfAuthinticatedFutureProvider);
-
-//     return Scaffold(
-//       appBar: AppBar(
-//         toolbarHeight: context.screenHeight * 0.12,
-//         title: Image.asset(
-//           'assets/images/logo.png', // Replace with your [DA] logo asset path
-//           width: context.screenHeight * 0.05,
-//           height: context.screenHeight * 0.09,
-//           fit: BoxFit.cover,
-//         ),
-//         centerTitle: true, // This will center the title image
-//       ),
-//       body: Center(
-//         child: checkIfUserAuthenticated.when(
-//           data: (data) {
-//             if (data.value?.uid != null) {
-//               WidgetsBinding.instance.addPostFrameCallback((_) {
-//                 // Go to patient login page
-//                 // GoRouter.of(context).goNamed(MyNamedRoutes.patientlogin);
-//               });
-//             } else {
-//               WidgetsBinding.instance.addPostFrameCallback((_) {
-//                 // Go to login page
-//                 // GoRouter.of(context).goNamed(MyNamedRoutes.login);
-//               });
-//             }
-
-//             return Column(
-//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//               children: [
-//                 Expanded(
-//                   child: Center(
-//                     child: Image.asset(
-//                       'assets/images/doctor_appointment.png',
-//                       width: context.screenHeight * 0.3,
-//                       height: context.screenHeight * 0.2,
-//                       fit: BoxFit.cover,
-//                     ),
-//                   ),
-//                 ),
-//                 Padding(
-//                   padding: EdgeInsets.only(bottom: context.screenHeight * 0.09),
-//                   child: Image.asset(
-//                     'assets/images/faq_doctor.png',
-//                     width: context.screenHeight * 0.3,
-//                     height: context.screenHeight * 0.2,
-//                     fit: BoxFit.cover,
-//                   ),
-//                 ),
-//               ],
-//             );
-//           },
-//           loading: () => Center(child: CircularProgressIndicator()),
-//           error: (error, stackTrace) => Center(
-//             child: Text(error.toString()),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

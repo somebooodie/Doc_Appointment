@@ -65,18 +65,22 @@ class faqDoctor extends ConsumerWidget {
         ref.watch(checkIfAuthinticatedFutureProvider);
 
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: context.screenHeight * 0.12,
+        title: Image.asset(
+          'assets/images/logo.png',
+          width: context.screenHeight * 0.05,
+          height: context.screenHeight * 0.09,
+          fit: BoxFit.cover,
+        ),
+        centerTitle: true,
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
               height: 60,
-            ),
-            Image.asset(
-              'assets/images/faq_doctor.png',
-              width: context.screenHeight * 0.3,
-              height: context.screenHeight * 0.2,
-              fit: BoxFit.cover,
             ),
             Expanded(
               child: ListView.separated(
@@ -97,6 +101,22 @@ class faqDoctor extends ConsumerWidget {
               ),
             ),
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Handle the Add button click
+          // You can navigate to another screen or perform any other action
+        },
+        child: Text("Answer"),
+        backgroundColor: Colors.white, // Set the background color to blue
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(), // Set the shape to a circle
+        color: Colors.blue, // Set the background color to blue
+        child: Container(
+          height: 60,
         ),
       ),
     );
