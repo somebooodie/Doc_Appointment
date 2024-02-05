@@ -13,7 +13,7 @@ class SplashScreen extends ConsumerWidget {
     Future<void> navigateToNextScreen() async {
       await Future.delayed(const Duration(seconds: 2)); // Delay for 3 seconds
       // Navigate to docHomeScreen after the delay
-      GoRouter.of(context).goNamed(MyNamedRoutes.docRegister);
+      GoRouter.of(context).goNamed(MyNamedRoutes.patientHomeScreen);
     }
 
     // Call the navigateToNextScreen function when the widget is built
